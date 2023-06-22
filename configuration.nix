@@ -93,8 +93,15 @@ boot = {
   kernelPackages = pkgs.linuxPackages_latest;
   loader = {
     # FIXME change first line if you want to use Grub
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+    efi = {
+            canTouchEfiVariables = true;
+    };
+    grub = {
+            enable = true;
+            devices = ["nodev"];
+            efiSupport = true;
+            useOSProber = true;
+            };
     timeout = 5;
   };
 
@@ -111,17 +118,8 @@ networking = {
     #wifi.macAddress = "random";
   };
 
-  # Killer feature, Its a must these days.
-  # Adblocker!! It uses steven black hosts.
-  stevenBlackHosts = {
-    enable = true;
-    blockFakenews = true;
-    blockGambling = true;
-    blockPorn = true;
-    blockSocial = false;
-  };
-
 firewall.enable = false;
+};
 
 # Avoid slow boot time
 #systemd.services.NetworkManager-wait-online.enable = false;
@@ -140,13 +138,10 @@ services = {
     enable = true;
   };
   # udev.packages = with pkgs; [gnome.gnome-settings-daemon];
-
   # To mount drives with udiskctl command
   udisks2.enable = true;
-
   # tlp.enable = true;     # TLP and auto-cpufreq for power management
   #auto-cpufreq.enable = true;
-
   # For Laptop, make lid close and power buttom click to suspend
   logind = {
     lidSwitch = "suspend";
@@ -154,20 +149,13 @@ services = {
   HandlePowerKey = suspend
   '';
   };
-
   atd.enable = true;
   fstrim.enable = true;
   # See if you want bluetooth setup
   blueman.enable = true;
-
-  # For android file transfer via usb, or better check on KDE connect 
-  gvfs.enable = true;
-  };
-
-  # This makes the user 'i' to autologin in all tty
+  gvfs.enable = true;   # For android file transfer via usb, or better check on KDE connect
   # Depends on you if you want login manager or prefer entering password manually
   #getty.autologinUser = "i" ;
-
   # Pipewire setup, just these lines enought to make sane default for it
   pipewire = {
     enable = true;
@@ -178,9 +166,7 @@ services = {
     pulse.enable = true;
   };
 
-
   flatpak.enable = true;
-
 };
 
 systemd.services = {
