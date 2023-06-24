@@ -3,6 +3,34 @@
 Check the configuration.nix file and make sure that there is a `/boot/efi` directory if the 
 `efiSysMount` option is set to `/boot`
 
+# Adding unstable channel for nix 
+
+First you need to add unstable to your nix-channels:
+
+```
+sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+```
+Then we need to fetch the actual channel 
+```
+sudo nix-channel --update
+```
+Furthermore we have to update the cache of nix search:
+```
+sudo nix search -u
+```
+remove stable version if needed, check using  
+```
+sudo nix-channel --list
+```
+Update all of your packages in the home-manager or the current user environment.
+```
+nix-env -u '*'
+home-manager switch 
+```
+To update system root packages 
+```
+sudo nixos-rebuild switch 
+```
 # Making NixOS Rolling
 
 To make your NixOS installation a rolling release, you can either download a rolling release image or follow these steps after a fresh install:
