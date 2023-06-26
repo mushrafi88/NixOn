@@ -232,19 +232,32 @@ To clean up older files, you can use the following commands:
 ```
 nix-env --list-generations
 ```
+if for some reason it does not work use this command. 
+```
+nix-env -p /nix/var/nix/profiles --list-generations 
+```
 2. To delete a particular generation 
 ```
-nix-collect-garbage  --delete-generations 1 2 3
+nix-env -p /nix/var/nix/profiles  --delete-generations 1 2 3
 ```
 3. It is recommeneded to sometimes run as sudo to collect additional garbage
 ```
 sudo nix-collect-garbage -d
 ```
-4. run this command to clean out boot
+The above will delete all system garbages. To remove home-manager garbage use the command without root 
+```
+nix-collect-garbage -d 
+```
+4. To remove deleted generations entry from boot 
 ```
 sudo nixos-rebuild switch
 ```
 
+if you are using flakes then 
+
+```
+sudo nixos-rebuild switch --flakes .#laptop
+```
 Reference 
 
 1. `https://tech.aufomm.com/my-nixos-journey-home-manager/`

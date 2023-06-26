@@ -1,0 +1,13 @@
+[
+  ./firefox
+  ./gpg
+  ./lazygit
+  ./music
+  ./neofetch
+  ./joshuto
+  ./resource_monitor
+  ./search
+  ./yt-dlp
+  ./zathura
+  ./kitty 
+]
