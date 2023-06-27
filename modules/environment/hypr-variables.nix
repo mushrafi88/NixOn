@@ -6,9 +6,10 @@
       EDITOR = "nvim";
       BROWSER = "firefox";
       TERMINAL = "kitty";
-      # GTK_IM_MODULE = "fcitx5";
-      # QT_IM_MODULE = "fcitx5";
-      # XMODIFIERS = "@im=fcitx5";
+      GTK_THEME = "Catppuccin-Frappe-Pink";
+      GTK_IM_MODULE = "ibus";
+      QT_IM_MODULE = "ibus";
+      XMODIFIERS = "@im=ibus";
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1";
       MOZ_ENABLE_WAYLAND = "1";

@@ -26,9 +26,9 @@ return {
 		if os.getenv("GTK_THEME") == "Nordic" then
 			vim.cmd([[ colorscheme nord ]])
 		elseif os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" then
-			vim.cmd([[colorscheme catppuccin-frappe ]])
+			vim.cmd.colorscheme("catppuccin")
 		else
-			vim.cmd([[colorscheme catppuccin-latte ]])
+			vim.cmd.colorscheme("catppuccin")
 		end
 
 		local keymap = vim.keymap.set

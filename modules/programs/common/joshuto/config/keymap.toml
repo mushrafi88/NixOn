@@ -1,11 +1,10 @@
 [default_view]
 
 keymap = [
-  { keys = ["escape"], command = "escape" },
+#  { keys = ["escape"], command = "escape" },
   { keys = ["ctrl+t"], command = "new_tab" },
   { keys = ["alt+t"], command = "new_tab --cursor" },
   { keys = ["T"], command = "new_tab --current" },
-  { keys = ["W"], command = "close_tab" },
   { keys = ["ctrl+w"], command = "close_tab" },
   { keys = ["q"], command = "close_tab" },
   { keys = ["ctrl+c"], command = "quit" },
@@ -24,15 +23,15 @@ keymap = [
   { keys = ["alt+4"], command = "tab_switch_index 4" },
   { keys = ["alt+5"], command = "tab_switch_index 5" },
 
-  { keys = ["1"], command = "numbered_command 1" },
-  { keys = ["2"], command = "numbered_command 2" },
-  { keys = ["3"], command = "numbered_command 3" },
-  { keys = ["4"], command = "numbered_command 4" },
-  { keys = ["5"], command = "numbered_command 5" },
-  { keys = ["6"], command = "numbered_command 6" },
-  { keys = ["7"], command = "numbered_command 7" },
-  { keys = ["8"], command = "numbered_command 8" },
-  { keys = ["9"], command = "numbered_command 9" },
+	#  { keys = ["1"], command = "numbered_command 1" },
+	#	{ keys = ["2"], command = "numbered_command 2" },
+	#  { keys = ["3"], command = "numbered_command 3" },
+	#  { keys = ["4"], command = "numbered_command 4" },
+	#  { keys = ["5"], command = "numbered_command 5" },
+	#  { keys = ["6"], command = "numbered_command 6" },
+	#  { keys = ["7"], command = "numbered_command 7" },
+	#  { keys = ["8"], command = "numbered_command 8" },
+	#  { keys = ["9"], command = "numbered_command 9" },
 
   # arrow keys
   { keys = ["arrow_up"], command = "cursor_move_up" },
@@ -71,8 +70,8 @@ keymap = [
   { keys = ["y", "p"], command = "copy_filepath" },
   { keys = ["y", "d"], command = "copy_dirpath" },
 
-  { keys = ["p", "l"], command = "symlink_files --relative=false" },
-  { keys = ["p", "L"], command = "symlink_files --relative=true" },
+	# { keys = ["p", "l"], command = "symlink_files --relative=false" },
+	#  { keys = ["p", "L"], command = "symlink_files --relative=true" },
 
   { keys = ["delete"], command = "delete_files" },
   { keys = ["d", "D"], command = "delete_files" },
@@ -87,16 +86,15 @@ keymap = [
 
   { keys = [" "], command = "select --toggle=true" },
   { keys = ["t"], command = "select --all=true --toggle=true" },
-  { keys = ["V"], command = "toggle_visual" },
+	#  { keys = ["V"], command = "toggle_visual" },
 
   { keys = ["w"], command = "show_tasks --exit-key=w" },
   { keys = ["b", "b"], command = "bulk_rename" },
   { keys = ["="], command = "set_mode" },
 
-  { keys = [":"], command = ":" },
   { keys = [";"], command = ":" },
 
-  { keys = ["'"], command = ":shell " },
+  { keys = [":"], command = ":shell " },
   { keys = ["m", "k"], command = ":mkdir " },
   { keys = ["c", "w"], command = ":rename " },
 
@@ -116,9 +114,9 @@ keymap = [
   { keys = ["s", "s"], command = "sort size" },
   { keys = ["s", "e"], command = "sort ext" },
 
-  { keys = ["m", "s"], command = "linemode size" },
-  { keys = ["m", "m"], command = "linemode mtime" },
-  { keys = ["m", "M"], command = "linemode sizemtime" },
+	#  { keys = ["m", "s"], command = "linemode size" },
+	#  { keys = ["m", "m"], command = "linemode mtime" },
+	#  { keys = ["m", "M"], command = "linemode sizemtime" },
 
   { keys = ["g", "r"], command = "cd /" },
   { keys = ["g", "c"], command = "cd ~/.config" },
@@ -129,7 +127,7 @@ keymap = [
   { keys = ["?"], command = "help" },
 
   # `Shift + s` enter shell 
-  { keys = ["S"], command = "shell fish" },
+  { keys = ["W"], command = "shell fish" },
   #youtube-dl 
   { keys = ["y", "a"], command = ":shell yt-dlp -x --audio-format mp3 " },
   { keys = ["y", "v"], command = ":shell yt-dlp -x -ic " },
@@ -150,8 +148,8 @@ keymap = [
   { keys = ["g", "g"], command = "cursor_move_home" },
   { keys = ["G"], command = "cursor_move_end" },
 
-  { keys = ["w"], command = "show_tasks" },
-  { keys = ["escape"], command = "show_tasks" },
+  { keys = ["S"], command = "show_tasks" },
+	# { keys = ["escape"], command = "show_tasks" },
 ]
 
 [help_view]
@@ -170,5 +168,5 @@ keymap = [
   { keys = ["G"], command = "cursor_move_end" },
 
   { keys = ["w"], command = "show_tasks" },
-  { keys = ["escape"], command = "show_tasks" },
+	#  { keys = ["escape"], command = "show_tasks" },
 ]

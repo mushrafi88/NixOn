@@ -18,7 +18,7 @@
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "audio" ];
     packages = (with pkgs; [
       tdesktop
-      thunderbird 
+      thunderbird
     ]) ++ (with config.nur.repos;[
       # linyinfeng.icalingua-plus-plus
     ]);
@@ -27,13 +27,13 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     bootspec.enable = true;
     loader = {
-       grub = {
-            enable = true;
-            devices = ["nodev"];
-            efiSupport = true;
-            useOSProber = true; 
-              };
-        efi = {
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+      };
+      efi = {
         #canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
@@ -48,8 +48,9 @@
     initrd.verbose = false;
   };
 
- i18n = {
+  i18n = {
     defaultLocale = "en_US.UTF-8";
+    inputMethod.enabled = "ibus";
   };
 
   environment = {
@@ -78,6 +79,7 @@
       pkgs.sway-contrib.grimshot
       flameshot
       grim
+      #openbangla-keyboard
     ];
   };
 

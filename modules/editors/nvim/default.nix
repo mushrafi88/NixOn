@@ -33,16 +33,13 @@
       gopls
       pyright
       zk
-      rust-analyzer
       clang-tools
-      haskell-language-server
       #-- tree-sitter --#
       tree-sitter
       #-- format --#
       stylua
       black
       nixpkgs-fmt
-      rustfmt
       beautysh
       nodePackages.prettier
       stylish-haskell

@@ -32,7 +32,7 @@ video_default = [
 ]
 
 text_default = [
-  { command = "micro" },
+  { command = "nvim" },
   { command = "gedit", fork = true, silent = true },
   { command = "bat", args = [
     "--paging=always",
@@ -182,7 +182,7 @@ zip.app_list = [
 aup.app_list = [{ command = "audacity", fork = true, silent = true }]
 
 m3u.app_list = [
-  { command = "micro" },
+  { command = "nvim" },
   { command = "mpv" },
   { command = "gedit", fork = true, silent = true },
   { command = "bat", confirm_exit = true },
@@ -206,7 +206,7 @@ kra.app_list = [{ command = "krita", fork = true, silent = true }]
 kdenlive.app_list = [{ command = "kdenlive", fork = true, silent = true }]
 
 tex.app_list = [
-  { command = "micro" },
+  { command = "nvim" },
   { command = "gedit", fork = true, silent = true },
   { command = "bat", confirm_exit = true },
   { command = "pdflatex" },

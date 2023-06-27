@@ -11,6 +11,7 @@
       noto-fonts-emoji
       nerdfonts
       twemoji-color-font
+      lohit-fonts.bengali
     ];
     fontconfig = {
       localConf = ''
