@@ -3,8 +3,10 @@
   home = {
     packages = with pkgs; [
       file
-      joshuto
+      lf
+      ueberzug
+      autojump
     ];
   };
-  home.file.".config/joshuto".source = ./config;
+  home.file.".config/lf".source = ./config;
 }

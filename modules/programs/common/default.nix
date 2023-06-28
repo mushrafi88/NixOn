@@ -1,13 +1,13 @@
 [
   ./firefox
-  ./gpg
   ./lazygit
   ./music
   ./neofetch
-  ./joshuto
+  #./joshuto
   ./resource_monitor
   ./search
   ./yt-dlp
   ./zathura
-  ./kitty 
+  ./kitty
+  ./lf
 ]

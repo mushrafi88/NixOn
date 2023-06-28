@@ -4,6 +4,6 @@
   ./cava
   ./rofi
   ./fcitx5
-  ./kitty
+  #  ./kitty
   ./fish
 ]

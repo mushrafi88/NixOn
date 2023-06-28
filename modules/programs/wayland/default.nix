@@ -4,7 +4,8 @@ in
 [
   ./imgview
   ./launcher
-  ./mako
+  #  ./mako
   ./mpv
   ./kooha
+  ./dunst
 ] ++ common

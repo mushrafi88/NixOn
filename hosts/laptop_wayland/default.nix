@@ -79,7 +79,7 @@
       pkgs.sway-contrib.grimshot
       flameshot
       grim
-      #openbangla-keyboard
+      openbangla-keyboard
     ];
   };
 

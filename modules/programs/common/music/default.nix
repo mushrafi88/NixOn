@@ -5,7 +5,8 @@
     packages = with pkgs; [
       cava
       mpc-cli
-      go-musicfox
+      mpd
+      ncmpcpp
     ];
   };
   programs = {
@@ -30,6 +31,8 @@
                 name            "PipeWire Sound Server"
         }
       '';
+      network.listenAddress = "any"; # if you want to allow non-localhost connections
+      # startWhenNeeded = true;
     };
   };
 }

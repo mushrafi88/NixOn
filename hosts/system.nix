@@ -8,7 +8,7 @@
   networking = {
     hostName = "nixon"; # Define your hostname.
     networkmanager.enable = true;
-     };
+  };
   time.timeZone = "Asia/Dhaka";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -29,12 +29,12 @@
       neofetch
       exa
       gcc
-      clang 
+      clang
       zig
       p7zip
       atool
       unzip
-      joshuto
+      lf
       ffmpeg
       ffmpegthumbnailer
       glib
@@ -43,7 +43,14 @@
       gdb
       killall
       zip
-      rar 
+      rar
+      broot
+      pandoc
+      bat
+      mediainfo
+      unrar
+      jq
+      exiftool
     ];
   };
   services.dbus.enable = true;
