@@ -49,12 +49,18 @@
          kb_options = caps:escape
          kb_rules =
 
-         follow_mouse = 2 # 0|1|2|3
-         float_switch_override_focus = 2
+         follow_mouse = 1 # 0|1|2|3
+         float_switch_override_focus = 1
          numlock_by_default = true
 
          touchpad {
-         natural_scroll = yes
+         disable_while_typing = true 
+         natural_scroll = false 
+         scroll_factor = 1.0
+         middle_button_emulation = false 
+         clickfinger_behavior = false 
+         tap-to-click = true 
+         drag_lock = true 
          }
 
          sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
@@ -113,18 +119,6 @@
          col.shadow = rgba(1a1a1aee)
        }
 
-       # animations {
-       #   enabled = yes
-       #
-       #   bezier = easeOutElastic, 0.05, 0.9, 0.1, 1.05
-       #   # bezier=overshot,0.05,0.9,0.1,1.1
-       #
-       #   animation = windows, 1, 5, easeOutElastic
-       #   animation = windowsOut, 1, 5, default, popin 80%
-       #   animation = border, 1, 8, default
-       #   animation = fade, 1, 5, default
-       #   animation = workspaces, 1, 6, default
-       # }
        animations {
          enabled=1
          bezier = overshot, 0.13, 0.99, 0.29, 1.1
@@ -161,13 +155,13 @@
        }
 
        bind = $mainMod, Return, exec, kitty
-       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat"
-       bind = $mainMod SHIFT, P, killactive,
-       bind = $mainMod SHIFT, Q, exit,
-       bind = $mainMod SHIFT, Space, togglefloating,
-       bind = $mainMod,F,fullscreen
-       bind = $mainMod,Y,pin
-       bind = $mainMod, P, pseudo, # dwindle
+       bind = CTRL ALT, t, exec, kitty --class="termfloat"
+       bind = CTRL ALT, k, killactive,
+       bind = CTRL,q, exit,
+       bind = $mainMod, Space, togglefloating,
+       bind = $mainMod,f,fullscreen
+       bind = $mainMod,y,pin
+       bind = $mainMod, p, pseudo, # dwindle
        bind = $mainMod, J, togglesplit, # dwindle
 
        #-----------------------#
@@ -228,32 +222,32 @@
        #---------------------------------------------------------------#
        # Move active window to a workspace with mainMod + ctrl + [0-9] #
        #---------------------------------------------------------------#
-       bind = $mainMod CTRL, 1, movetoworkspace, 1
-       bind = $mainMod CTRL, 2, movetoworkspace, 2
-       bind = $mainMod CTRL, 3, movetoworkspace, 3
-       bind = $mainMod CTRL, 4, movetoworkspace, 4
-       bind = $mainMod CTRL, 5, movetoworkspace, 5
-       bind = $mainMod CTRL, 6, movetoworkspace, 6
-       bind = $mainMod CTRL, 7, movetoworkspace, 7
-       bind = $mainMod CTRL, 8, movetoworkspace, 8
-       bind = $mainMod CTRL, 9, movetoworkspace, 9
-       bind = $mainMod CTRL, 0, movetoworkspace, 10
-       bind = $mainMod CTRL, left, movetoworkspace, -1
-       bind = $mainMod CTRL, right, movetoworkspace, +1
+       bind = $mainMod SHIFT, 1, movetoworkspace, 1
+       bind = $mainMod SHIFT, 2, movetoworkspace, 2
+       bind = $mainMod SHIFT, 3, movetoworkspace, 3
+       bind = $mainMod SHIFT, 4, movetoworkspace, 4
+       bind = $mainMod SHIFT, 5, movetoworkspace, 5
+       bind = $mainMod SHIFT, 6, movetoworkspace, 6
+       bind = $mainMod SHIFT, 7, movetoworkspace, 7
+       bind = $mainMod SHIFT, 8, movetoworkspace, 8
+       bind = $mainMod SHIFT, 9, movetoworkspace, 9
+       bind = $mainMod SHIFT, 0, movetoworkspace, 10
+       bind = $mainMod SHIFT, left, movetoworkspace, -1
+       bind = $mainMod SHIFT, right, movetoworkspace, +1
        # same as above, but doesnt switch to the workspace
-       bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
-       bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
-       bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
-       bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
-       bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
-       bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
-       bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
-       bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
-       bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
-       bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
+       bind = $mainMod CTRL, 1, movetoworkspacesilent, 1
+       bind = $mainMod CTRL, 2, movetoworkspacesilent, 2
+       bind = $mainMod CTRL, 3, movetoworkspacesilent, 3
+       bind = $mainMod CTRL, 4, movetoworkspacesilent, 4
+       bind = $mainMod CTRL, 5, movetoworkspacesilent, 5
+       bind = $mainMod CTRL, 6, movetoworkspacesilent, 6
+       bind = $mainMod CTRL, 7, movetoworkspacesilent, 7
+       bind = $mainMod CTRL, 8, movetoworkspacesilent, 8
+       bind = $mainMod CTRL, 9, movetoworkspacesilent, 9
+       bind = $mainMod CTRL, 0, movetoworkspacesilent, 10
        # Scroll through existing workspaces with mainMod + scroll
-       bind = $mainMod, mouse_down, workspace, e+1
-       bind = $mainMod, mouse_up, workspace, e-1
+       bind = CTRL ALT, RIGHT, workspace, e+1
+       bind = CTRL ALT, LEFT, workspace, e-1
 
        #-------------------------------------------#
        # switch between current and last workspace #
@@ -267,18 +261,19 @@
        #------------------------#
        # quickly launch program #
        #------------------------# 
-       bind=$mainMod,B,exec,nvidia-offload firefox
-       bind=$mainMod,M,exec,netease-cloud-music-gtk4 
-       bind=$mainMod SHIFT,M,exec,kitty --class="musicfox" --hold sh -c "musicfox" 
+       #bind=$mainMod,B,exec,nvidia-offload librewolf
+       bind=CTRL ALT,F,exec,librewolf
+       #bind=$mainMod,M,exec,netease-cloud-music-gtk4 
+       #bind=$mainMod SHIFT,M,exec,kitty --class="musicfox" --hold sh -c "musicfox" 
        bind=$mainMod SHIFT,D,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
-       bind=$mainMod SHIFT,X,exec,myswaylock
-       bind=$mainMod,T,exec,telegram-desktop
-       bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
-       bind=$mainMod,bracketleft,exec,grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
+       bind=CTRL ALT,L,exec,myswaylock
+       #bind=CTRL,,exec,telegram-desktop
+       #bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
+       bind=CTRL ALT,P,exec,grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
        bind=$mainMod,bracketright,exec, grimblast --notify --cursor  copy area
        bind=$mainMod,A,exec, grimblast_watermark
        bind=$mainMod,r,exec, pkill rofi || ~/.config/rofi/launcher.sh
-       bind=$mainMod,Super_L,exec, bash ~/.config/rofi/powermenu.sh
+       bind=$mainMod,x,exec, bash ~/.config/rofi/powermenu.sh
 
        #-----------------------------------------#
        # control volume,brightness,media players-#
@@ -296,7 +291,7 @@
        #---------------#
        # waybar toggle #
        # --------------#
-       bind=$mainMod,O,exec,killall -SIGUSR1 .waybar-wrapped
+       #bind=$mainMod,O,exec,killall -SIGUSR1 .waybar-wrapped
 
        #---------------#
        # resize window #
@@ -349,9 +344,9 @@
        windowrule=float,imv
        windowrule=move 25%-,imv
        windowrule=size 960 540,imv
-       windowrule=float,mpv
-       windowrule=move 25%-,mpv
-       windowrule=size 960 540,mpv
+       windowrule=fullscreen,mpv
+       #windowrule=move 25%-,mpv
+       #windowrule=size 960 540,mpv
        windowrule=float,danmufloat
        windowrule=move 25%-,danmufloat
        windowrule=pin,danmufloat
@@ -365,13 +360,13 @@
        windowrule=move 25%-,nemo
        windowrule=size 960 540,nemo
        windowrule=opacity 0.95,title:Telegram
-       windowrule=opacity 0.95,title:QQ
-       windowrule=opacity 0.95,title:NetEase Cloud Music Gtk4
+       #windowrule=opacity 0.95,title:QQ
+       #windowrule=opacity 0.95,title:NetEase Cloud Music Gtk4
        windowrule=animation slide right,kitty
        windowrule=workspace name:QQ, title:Icalingua++
        windowrule=workspace name:TG, title:Telegram
-       windowrule=workspace name:Music, title:NetEase Cloud Music Gtk4
-       windowrule=workspace name:Music, musicfox
+       #windowrule=workspace name:Music, title:NetEase Cloud Music Gtk4
+       #windowrule=workspace name:Music, musicfox
        windowrule=float,ncmpcpp
        windowrule=move 25%-,ncmpcpp
        windowrule=size 960 540,ncmpcpp
