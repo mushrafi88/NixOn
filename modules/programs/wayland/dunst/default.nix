@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let
-  colors = import ./dunst_colors.nix; # Import colors theme
-in
 {
   home.packages = [ pkgs.libnotify ]; # Dependency
   services.dunst = {
@@ -13,24 +10,24 @@ in
       package = pkgs.papirus-icon-theme;
       size = "32x32";
     };
-    settings = with colors.scheme.doom; {
+    settings = {
       # Settings
       global = {
         monitor = 0;
         # geometry [{width}x{height}][+/-{x}+/-{y}]
-        # geometry = "600x50-50+65";
+        geometry = "750x10-15+55";
         #follow = mouse;
         #width = 300;
         #height = 200;
-        origin = "top-right";
-        offset = "50x50";
+        #origin = "top-right";
+        #offset = "50x50";
         shrink = "yes";
         transparency = 0;
         padding = 4;
         horizontal_padding = 4;
         text_icon_padding = 0;
         frame_width = 3;
-        frame_color = "#${bg}";
+        frame_color = "#8AADF4";
         separator_color = "frame";
         font = "FiraCode Nerd Font 12";
         line_height = 4;
@@ -52,21 +49,21 @@ in
       };
       urgency_low = {
         # Colors
-        background = "#${bg}";
-        foreground = "#${text}";
+        background = "#24273A";
+        foreground = "#CAD3F5";
         timeout = 4;
         icon = "~/.config/dunst/icon/confused.jpg";
       };
       urgency_normal = {
-        background = "#${bg}";
-        foreground = "#${text}";
+        background = "#24273A";
+        foreground = "#CAD3F5";
         timeout = 4;
         icon = "~/.config/dunst/icon/normal.jpg";
       };
       urgency_critical = {
-        background = "#${bg}";
-        foreground = "#${text}";
-        frame_color = "#${red}";
+        background = "#24273A";
+        foreground = "#CAD3F5";
+        frame_color = "#F5A97F";
         timeout = 10;
         icon = "~/.config/dunst/icon/angry.png";
       };
@@ -74,5 +71,5 @@ in
   };
   xdg.dataFile."dbus-1/services/org.knopwob.dunst.service".source = "${pkgs.dunst}/share/dbus-1/services/org.knopwob.dunst.service";
 
-  home.file.".config/dunst/icon".source = ./config/icon;
+  home.file.".config/dunst/icon".source = ./icon;
 }

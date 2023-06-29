@@ -5,22 +5,22 @@ return {
 	config = function()
 		if os.getenv("GTK_THEME") == "Nordic" then
 			local lualine = require("lualine")
--- Color table for highlights
--- stylua: ignore
-local colors = {
-  bg       = '#3B4252', --nord:#3B4252 catppuccin:#302D41
-  fg       = '#D6DCE7',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
-  custom   = '#B38DAC',
-}
+			-- Color table for highlights
+			-- stylua: ignore
+			local colors = {
+				bg       = '#3B4252', --nord:#3B4252 catppuccin:#302D41
+				fg       = '#D6DCE7',
+				yellow   = '#ECBE7B',
+				cyan     = '#008080',
+				darkblue = '#081633',
+				green    = '#98be65',
+				orange   = '#FF8800',
+				violet   = '#a9a1e1',
+				magenta  = '#c678dd',
+				blue     = '#51afef',
+				red      = '#ec5f67',
+				custom   = '#B38DAC',
+			}
 
 			local conditions = {
 				buffer_not_empty = function()
@@ -223,25 +223,25 @@ local colors = {
 
 			-- Now don't forget to initialize lualine
 			lualine.setup(config)
-		elseif os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" then
+		elseif os.getenv("GTK_THEME") == "Catppuccin-Mocha-Sapphire" then
 			local lualine = require("lualine")
 
--- Color table for highlights
--- stylua: ignore
-local colors = {
-  bg       = '#302D41', --nord:#3B4252 catppuccin:#302D41
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
-  custom   = '#b0c4de',
-}
+			-- Color table for highlights
+			-- stylua: ignore
+			local colors = {
+				bg       = '#302D41', --nord:#3B4252 catppuccin:#302D41
+				fg       = '#bbc2cf',
+				yellow   = '#ECBE7B',
+				cyan     = '#008080',
+				darkblue = '#081633',
+				green    = '#98be65',
+				orange   = '#FF8800',
+				violet   = '#a9a1e1',
+				magenta  = '#c678dd',
+				blue     = '#51afef',
+				red      = '#ec5f67',
+				custom   = '#b0c4de',
+			}
 
 			local conditions = {
 				buffer_not_empty = function()
@@ -447,22 +447,22 @@ local colors = {
 		else
 			local lualine = require("lualine")
 
--- Color table for highlights
--- stylua: ignore
-local colors = {
-  bg       = '#FAF4FC', --nord:#3B4252 catppuccin:#302D41
-  fg       = '#1E1E2E',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
-  custom   = '#FF99CC',
-}
+			-- Color table for highlights
+			-- stylua: ignore
+			local colors = {
+				bg       = '#FAF4FC', --nord:#3B4252 catppuccin:#302D41
+				fg       = '#1E1E2E',
+				yellow   = '#ECBE7B',
+				cyan     = '#008080',
+				darkblue = '#081633',
+				green    = '#98be65',
+				orange   = '#FF8800',
+				violet   = '#a9a1e1',
+				magenta  = '#c678dd',
+				blue     = '#51afef',
+				red      = '#ec5f67',
+				custom   = '#FF99CC',
+			}
 
 			local conditions = {
 				buffer_not_empty = function()

@@ -11,14 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-local lazy_theme
-if os.getenv("GTK_THEME") == "Nordic" then
-	lazy_theme = "nord"
-elseif os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" then
-	lazy_theme = "catppuccin"
-else
-	lazy_theme = "catppuccin"
-end
+local lazy_theme = "catppuccin"
 local opts = {
 	install = {
 		colorscheme = { lazy_theme },

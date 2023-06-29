@@ -51,6 +51,7 @@
       unrar
       jq
       exiftool
+      socat
     ];
   };
   services.dbus.enable = true;

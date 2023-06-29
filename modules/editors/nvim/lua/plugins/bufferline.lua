@@ -1,20 +1,24 @@
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", "glepnir/lspsaga.nvim" },
+	after = "catppuccin",
 	config = function()
-		local highlights
-		if os.getenv("GTK_THEME") == "Nordic" then
-			highlights = require("nord").bufferline.highlights({
-				italic = true,
-				bold = true,
-			})
-		elseif
-			os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" or os.getenv("GTK_THEME") == "Catppuccin-Latte-Green"
-		then
-			highlights = require("catppuccin.groups.integrations.bufferline").get()
-		end
+		local mocha = require("catppuccin.palettes").get_palette("mocha")
 		require("bufferline").setup({
-			highlights = highlights,
+			highlights = require("catppuccin.groups.integrations.bufferline").get({
+				styles = { "italic", "bold" },
+				custom = {
+					all = {
+						fill = { bg = "#000000" },
+					},
+					mocha = {
+						background = { fg = mocha.text },
+					},
+					latte = {
+						background = { fg = "#000000" },
+					},
+				},
+			}),
 			options = {
 				mode = "buffers", -- set to "tabs" to only show tabpages instead
 				numbers = "buffer_id",

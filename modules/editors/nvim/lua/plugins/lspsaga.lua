@@ -5,13 +5,8 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		local colors, kind
-		if os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" or os.getenv("GTK_THEME") == "Catppuccin-Latte-Green" then
-			colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors()
-			kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
-		else
-			colors = { normal_bg = "#3b4252" }
-		end
+		-- local colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors()
+		local kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
 		require("lspsaga").setup({
 			ui = {
 				colors = colors,
@@ -23,13 +18,7 @@ return {
 			},
 		})
 		--Switch theme again after lspsaga loaded from
-		if os.getenv("GTK_THEME") == "Nordic" then
-			vim.cmd([[ colorscheme nord ]])
-		elseif os.getenv("GTK_THEME") == "Catppuccin-Frappe-Pink" then
-			vim.cmd.colorscheme("catppuccin")
-		else
-			vim.cmd.colorscheme("catppuccin")
-		end
+		vim.cmd.colorscheme("catppuccin")
 
 		local keymap = vim.keymap.set
 		-- Lsp finder find the symbol definition implement reference

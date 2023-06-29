@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       # package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {

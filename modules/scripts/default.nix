@@ -163,25 +163,21 @@ let
     fi
   '';
   launch_waybar = pkgs.writeShellScriptBin "launch_waybar" ''
-    #!/bin/bash
-    killall .waybar-wrapped
-    SDIR="$HOME/.config/waybar"
-    if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-      waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 & 
-    fi
+        #!/bin/bash
+        killall .waybar-wrapped
+        SDIR="$HOME/.config/waybar"
+    	waybar -c "$SDIR"/config -s "$SDIR"/style.css > /dev/null 2>&1 & 
   '';
   border_color = pkgs.writeShellScriptBin "border_color" ''
       function border_color {
-      if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-        hyprctl keyword general:col.active_border rgb\(ffc0cb\) 
-      elif [[ "$GTK_THEME" == "Catppuccin-Latte-Green" ]]; then
-          hyprctl keyword general:col.active_border rgb\(C4ACEB\)
-      else
-          hyprctl keyword general:col.active_border rgb\(81a1c1\)
-      fi
+      hyprctl keyword general:col.active_border rgb\(ffc0cb\) 
     }
-
     socat - UNIX-CONNECT:/tmp/hypr/$(echo $HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock | while read line; do border_color $line; done
+  '';
+
+  greeting_master = pkgs.writeShellScriptBin "greeting_master" ''
+    greeting="Hello you are the best"
+    echo $greeting $USER
   '';
 in
 {
@@ -196,5 +192,6 @@ in
     default_wall
     launch_waybar
     border_color
+    greeting_master
   ];
 }

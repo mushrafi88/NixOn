@@ -6,6 +6,6 @@ in
   ./launcher
   #  ./mako
   ./mpv
-  ./kooha
+#  ./kooha
   ./dunst
 ] ++ common

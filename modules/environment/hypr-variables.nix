@@ -4,9 +4,9 @@
   home = {
     sessionVariables = {
       EDITOR = "nvim";
-      BROWSER = "firefox";
+      BROWSER = "librewolf";
       TERMINAL = "kitty";
-     # GTK_THEME = "Catppuccin-Frappe-Pink";
+      # GTK_THEME = "Catppuccin-Frappe-Pink";
       GTK_IM_MODULE = "ibus";
       QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
