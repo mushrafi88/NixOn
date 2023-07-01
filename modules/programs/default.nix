@@ -1,0 +1,23 @@
+[
+  ./stremio
+  ./lazygit
+  ./music
+  ./nitch
+  ./pcmanfm
+  # ./librewolf
+  ./resource_monitor
+  ./search
+  ./yt-dlp
+  ./zathura
+  ./kitty
+  ./lf
+  ./rofi
+  ./sioyek
+  ./transmission
+  ./okular
+  ./firefox
+  ./imgview
+  ./launcher
+  ./mpv
+  ./dunst
+]

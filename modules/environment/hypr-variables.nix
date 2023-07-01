@@ -4,20 +4,22 @@
   home = {
     sessionVariables = {
       EDITOR = "nvim";
-      BROWSER = "librewolf";
+      BROWSER = "firefox";
       TERMINAL = "kitty";
-      # GTK_THEME = "Catppuccin-Frappe-Pink";
+      GTK_THEME = "Dracula";
       GTK_IM_MODULE = "ibus";
       QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
-      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_SCALE_FACTOR = "1";
       MOZ_ENABLE_WAYLAND = "1";
       SDL_VIDEODRIVER = "wayland";
       _JAVA_AWT_WM_NONREPARENTING = "1";
+      #GTK-APPLICATION-PREFER-DARK-THEME = 1;
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      #QT_STYLE_OVERRIDE = "Dracula";
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
       WLR_NO_HARDWARE_CURSORS = "1"; # if no cursor,uncomment this line  
       WLR_RENDERER_ALLOW_SOFTWARE = "1";

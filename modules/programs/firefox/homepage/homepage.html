@@ -1,0 +1,146 @@
+<html>
+
+<head>
+	<title>~</title>
+	<meta content="" />
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			/*background-color: #23262e;*/
+			background-color: #20242d;
+			font-family: "Product Sans", sans-serif;
+		}
+
+		/*a{
+    		text-decoration: none;
+    		color: #eff;
+    	}*/
+		.note {
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			font-family: "Product Sans", sans-serif;
+			/*min-width: -10vw;
+            min-height: 0vh;
+            display: flex;
+            align-items: right;
+            justify-content: right;*/
+		}
+
+		.anime {
+			min-width: 0vw;
+			min-height: 0vh;
+			display: flex;
+			align-items: left;
+			justify-content: left;
+		}
+
+		.main {
+			min-width: 80vw;
+			min-height: 70vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.container {
+			height: 650px;
+			width: 600px;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			background-color: #23262e;
+			border-radius: 4px;
+			/*background: url(imgs/hanging-light.svg) no-repeat, url(imgs/plant-3.svg) no-repeat;
+    		background-size: (50% 50%);*/
+		}
+
+		.image img {
+			width: 380px;
+			border-radius: 2px;
+			margin-right: 1px;
+		}
+
+		.sites {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+			line-height: 2em;
+		}
+
+		.part ul {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: #9cacad;
+		}
+
+		.part {
+			margin-right: 25px;
+		}
+
+		.all {
+			margin: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="anime">
+		<object type="text/plain" data="anime-upcoming.txt"></object>
+	</div>
+	<div class="main">
+		<div class="container">
+			<div class="image">
+				<img src="./boy.jpg" />
+			</div>
+			<div class="all">
+				<div class="sites">
+					<div class="part">
+						<p class="head" style="color: #07ff7b">work</p>
+						<ul>
+							<li><a href="https://gitlab.com/mushrafi88">gitlab</a></li>
+							<li>
+								<a href="https://mail.google.com/mail/u/0/#inbox">mail</a>
+							</li>
+							<li><a href="https://www.linkedin.com/feed/">linkedin</a></li>
+						</ul>
+					</div>
+					<div class="part">
+						<p class="head" style="color: #ff716a">study</p>
+						<ul>
+							<li><a href="https://www.coursera.org">coursera</a></li>
+							<li><a href="https://www.kaggle.com/">kaggle</a></li>
+						</ul>
+					</div>
+					<div class="part">
+						<p class="head" style="color: #1090ff">social</p>
+						<ul>
+							<li><a href="https://anilist.co/home">anilist</a></li>
+							<li><a href="https://www.reddit.com/">reddit</a></li>
+						</ul>
+					</div>
+					<div class="part">
+						<p class="head" style="color: #fff047">other</p>
+						<ul>
+							<li><a href="https://reddit.com/r/unixporn">unixporn</a></li>
+							<li><a href="https://youtube.com">youtube</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="note">
+		<object type="text/plain" data="note.txt"></object>
+	</div>
+</body>
+
+</html>

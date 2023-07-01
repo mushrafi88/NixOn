@@ -18,6 +18,9 @@
     openssh = {
       enable = false;
     };
+    flatpak = {
+      enable = true;
+    };
   };
   environment = {
     binsh = "${pkgs.dash}/bin/dash";

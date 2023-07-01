@@ -1,6 +1,4 @@
 [
-  ./fish
-#  ./git
   ./bash
-  ./nushell
+  ./zsh
 ]

@@ -179,7 +179,14 @@ let
     greeting="Hello you are the best"
     echo $greeting $USER
   '';
+  im_imv = pkgs.writeShellScriptBin "im_imv" ''
+      function im_imv()
+      {
+    	  imv "$1" .
+      }
+  '';
 in
+
 {
   home.packages = with pkgs; [
     cava-internal
@@ -193,5 +200,6 @@ in
     launch_waybar
     border_color
     greeting_master
+    im_imv
   ];
 }

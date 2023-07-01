@@ -6,7 +6,7 @@
     [ (import ../../modules/scripts) ] ++
     (import ../../modules/shell) ++
     (import ../../modules/editors) ++
-    (import ../../modules/programs/wayland) ++
+    (import ../../modules/programs) ++
     (import ../../modules/theme/catppuccin-dark/wayland);
 
   home = {
