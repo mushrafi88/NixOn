@@ -3,10 +3,12 @@
 {
   imports =
     [ ./cava-internal.nix ] ++
-    [ ./grimblast.nix ] ++
-    [ ./flameshot_watermark.nix ] ++
     [ ./myswaylock.nix ] ++
     [ ./launch_waybar.nix ] ++
     [ ./border_color.nix ] ++
-    [ ./wallpaper.nix ];
+    [ ./wallpaper.nix ] ++
+    [ ./volume_high.nix ] ++
+    [ ./lfub.nix ] ++
+    [ ./battery_warning.nix ] ++
+    [ ./bluetooth_headphone.nix ];
 }

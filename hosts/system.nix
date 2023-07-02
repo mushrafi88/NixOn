@@ -55,6 +55,7 @@
       jq
       exiftool
       socat
+      acpi
     ];
   };
   services.dbus.enable = true;

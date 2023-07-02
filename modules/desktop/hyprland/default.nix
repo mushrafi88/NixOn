@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 {
-  imports = [ ../../programs/waybar/hyprland_waybar.nix ];
+  imports = [ ../waybar/hyprland_waybar.nix ];
   programs = {
     dconf.enable = true;
     light.enable = true;
