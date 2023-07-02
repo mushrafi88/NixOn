@@ -21,9 +21,9 @@ cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        application/pdf) setsid -f org.kde.okular $fx >/dev/null 2>&1 ;;
+        application/pdf) setsid -f okular $fx >/dev/null 2>&1 ;;
         video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-        image/*) setsid -f mirage $f -quiet >/dev/null 2>&1 ;;
+        image/*) setsid -f imv $f -quiet >/dev/null 2>&1 ;;
         text/*|application/txt) $EDITOR "$f";;
 
         *) xdg-open "$f" ;;
@@ -79,9 +79,9 @@ cmd extract ${{
 
 
 
-cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
-cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
-cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
+cmd yank-dirname $dirname -- "$f" | head -c-1 | wl-copy
+cmd yank-path $printf '%s' "$fx" | wl-copy
+cmd yank-basename $basename -a -- $fx | head -c-1 | wl-copy
 
 cmd yank-basename-without-extension ${{
     echo "$fx" |
@@ -99,8 +99,7 @@ cmd yank-basename-without-extension ${{
         if (i == 0)
           print $0
       }' |
-      if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
-      xclip -i -selection clipboard
+      if [ -n "$fs" ]; then cat; else tr -d '\n'; fi | wl-copy
 }}
 
 cmd fzf_search ${{

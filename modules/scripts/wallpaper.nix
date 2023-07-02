@@ -37,7 +37,7 @@ let
         swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
         OLD_PID=$!
         while true; do
-            sleep 15
+            sleep 180
         swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
             NEXT_PID=$!
             sleep 5
