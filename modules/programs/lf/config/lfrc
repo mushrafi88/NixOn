@@ -21,7 +21,7 @@ cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        application/pdf) setsid -f okular $fx >/dev/null 2>&1 ;;
+        application/pdf) setsid -f org.kde.okular $fx >/dev/null 2>&1 ;;
         video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         image/*) setsid -f imv $f -quiet >/dev/null 2>&1 ;;
         text/*|application/txt) $EDITOR "$f";;
