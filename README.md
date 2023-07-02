@@ -1,4 +1,4 @@
-# Preparing for NixOS Installation
+# Preparing for NixOS Installation (Incomplete)
 
 Check the configuration.nix file and make sure that there is a `/boot/efi` directory if the
 `efiSysMount` option is set to `/boot`
@@ -314,6 +314,12 @@ To update Home-Manager
 ```
 sudo nixos-rebuild switch --flake /home/manager/venerable_white/NixOn#nixon
 ```
+
+![](Screenshots/1.png)
+![](Screenshots/2.png)
+![](Screenshots/3.png)
+![](Screenshots/4.png)
+
 
 Reference
 
