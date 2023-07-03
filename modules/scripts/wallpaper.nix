@@ -1,81 +1,111 @@
 { config, lib, pkgs, ... }:
 
 let
-  default_wall = pkgs.writeShellScriptBin "default_wall" ''
-    if command -v swww >/dev/null 2>&1; then 
-          killall dynamic_wallpaper
-           if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-             swww img "${../theme/catppuccin-dark/common/wall/default.png}" --transition-type random 
-           fi
-    elif command -v swaybg >/dev/null 2>&1; then 
-        killall swaybg
-        killall dynamic_wallpaper
-        if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-          swaybg -i "${../theme/catppuccin-dark/common/wall/default.png}" -m fill &
-        fi
-    else 
-        killall feh
-        killall dynamic_wallpaper
-        if [[ "$GTK_THEME" == "Catppuccin-Frappe-Pink" ]]; then
-          feh --randomize --bg-fill "${../theme/catppuccin-dark/common/wall/default.png}" &
-        fi
-    fi
-  '';
-  wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" ''
-    if command -v swww >/dev/null 2>&1; then 
-        killall dynamic_wallpaper
-        swww img $(find ~/pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
-    else 
-        killall swaybg
-        killall dynamic_wallpaper
-        swaybg -i $(find ~/pictures/wallpaper/. -name "*.png" | shuf -n1) -m fill &
-    fi
+  wallpaper_folder = pkgs.writeShellScriptBin "wallpaper_folder" '' 
+      options="dark bright mild ALL"
+      selected_folder=$(printf '%s\n' $options | rofi -dmenu -p "Please choose a wallpaper Folder:" -theme ~/.config/rofi/drun_theme.rasi)
+      echo "$selected_folder" > $HOME/selected_folder.txt
+      pkill -f wallpaper_set 
+
+      rm -f /tmp/wallpaper_set.lock
+      wallpaper_set &
   '';
 
-  dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" ''
-    if command -v swww >/dev/null 2>&1; then 
-        swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
-        OLD_PID=$!
-        while true; do
-            sleep 180
-        swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
-            NEXT_PID=$!
-            sleep 5
-            kill $OLD_PID
-            OLD_PID=$NEXT_PID
-        done
-    elif command -v swaybg >/dev/null 2>&1; then  
-        killall swaybg
-        swaybg -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fill &
-        OLD_PID=$!
-        while true; do
-            sleep 120
-            swaybg -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fill &
-            NEXT_PID=$!
-            sleep 5
-            kill $OLD_PID
-            OLD_PID=$NEXT_PID
-        done
-    else 
-        killall feh 
-        feh --randomize --bg-fill $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) &
-        OLD_PID=$!
-        while true; do
-            sleep 120
-            feh --randomize --bg-fill $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) &
-            NEXT_PID=$!
-            sleep 5
-            kill $OLD_PID
-            OLD_PID=$NEXT_PID
-        done
-    fi
-  '';
+  wallpaper_next = pkgs.writeShellScriptBin "wallpaper_next" '' 
+  lock_file="/tmp/wallpaper_set.lock" 
+  if [ -e "$lock_file" ]; then 
+	  kill -USR1 $(cat "$lock_file")
+  else 
+	  echo "set_wallpaper.sh is not running."
+  fi
+'';
+  wallpaper_prev = pkgs.writeShellScriptBin "wallpaper_prev" '' 
+
+  lock_file="/tmp/wallpaper_set.lock" 
+  if [ -e "$lock_file" ]; then 
+	  kill -USR2 $(cat "$lock_file")
+  else 
+	  echo "set_wallpaper.sh is not running."
+  fi
+'';
+  wallpaper_set = pkgs.writeShellScriptBin "wallpaper_set" '' 
+
+# Lock file
+lock_file="/tmp/wallpaper_set.lock"
+
+# Check if there's already a running instance
+if [ -e "$lock_file" ]; then
+  echo "wallpaper_set is already running."
+  exit 0
+fi
+
+# Create lock file with the current process ID
+echo $$ > "$lock_file"
+
+# Function to set the selected folder and shuffle wallpapers
+load_selected_folder() {
+  selected_folder=$(cat $HOME/selected_folder.txt)
+  echo "reading txt found $selected_folder"
+  if [[ "$selected_folder" = "ALL" ]]; then
+    selected_folder=$HOME/Pictures/wallpapers
+  else
+    selected_folder=$HOME/Pictures/wallpapers/"$selected_folder"
+  fi
+  echo "final selected_folder $selected_folder"
+  shuffled_wallpapers=""
+
+for file in $(find "$selected_folder" -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \) | sort -R)
+do
+    shuffled_wallpapers="$shuffled_wallpapers$file\n"
+done
+
+printf "$shuffled_wallpapers"
+
+ # shuffled_wallpapers=($(find "$selected_folder" -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \) | shuf))
+}
+
+# Global variables
+current_index=1
+direction=1
+
+# Functions for moving to the next or previous wallpaper
+move_next() {
+  direction=1
+  current_index=$((current_index + direction))
+}
+
+move_previous() {
+  direction=-1
+  current_index=$((current_index + direction))
+}
+
+# Trap signals to move to the next or previous wallpaper
+trap 'move_next' USR1
+trap 'move_previous' USR2
+
+# Load the initial selected folder and shuffle wallpapers
+load_selected_folder
+
+# Continuously set the wallpaper using feh
+while true; do
+  #echo "shuffled_wallpapers list $shuffled_wallpapers"
+  #wallpaper="$shuffled_wallpapers["$current_index"]"
+  wallpaper=$(printf "$shuffled_wallpapers" | awk -v idx=$current_index 'NR==idx')
+  echo "selected_wallpaper location $wallpaper"
+  swww img "$wallpaper" --transition-type random
+  sleep 300 & # 5 minutes * 60 seconds
+  wait $!
+  current_index=$((current_index + direction))
+done
+'';
+
 in
 
 {
   home.packages = with pkgs; [
-    default_wall
-    wallpaper_random
-    dynamic_wallpaper
+    wallpaper_set
+    wallpaper_next
+    wallpaper_prev
+    wallpaper_folder
   ];
 }

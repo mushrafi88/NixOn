@@ -5,7 +5,6 @@
     [ ./cava-internal.nix ] ++
     [ ./myswaylock.nix ] ++
     [ ./launch_waybar.nix ] ++
-    [ ./border_color.nix ] ++
     [ ./wallpaper.nix ] ++
     [ ./volume_high.nix ] ++
     [ ./lfub.nix ] ++
