@@ -9,5 +9,6 @@
     [ ./volume_high.nix ] ++
     [ ./lfub.nix ] ++
     [ ./battery_warning.nix ] ++
-    [ ./bluetooth_headphone.nix ];
+    [ ./bluetooth_headphone.nix ] ++
+    [ ./animdl.nix ];
 }

@@ -29,7 +29,8 @@
       LIBVA_DRIVER_NAME = "nvidia";
       WLR_RENDERER = "vulkan";
       # __NV_PRIME_RENDER_OFFLOAD = "1";
-
+      ANIME_DOWNLOAD_FOLDER = "/mnt/media_m/Anime/Airing";
+      MUSIC_DOWNLOAD_FOLDER = "/mnt/media_m/Music/Selection";
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";

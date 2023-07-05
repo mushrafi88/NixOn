@@ -1,4 +1,5 @@
 [
+  ./animdl
   ./stremio
   ./lazygit
   ./music

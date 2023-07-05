@@ -24,145 +24,202 @@
         target = "graphical-session.target";
       };
       style = ''
-                               * {
-                                 font-family: "JetBrainsMono Nerd Font";
-                                 font-size: 11pt;
-                                 font-weight: bold;
-                                 border-radius: 0px;
-                                 transition-property: background-color;
-                                 transition-duration: 0.5s;
-                               }
-                               @keyframes blink_red {
-                                 to {
-                                   background-color: rgb(242, 143, 173);
-                                   color: rgb(26, 24, 38);
-                                 }
-                               }
-                               .warning, .critical, .urgent {
-                                 animation-name: blink_red;
-                                 animation-duration: 1s;
-                                 animation-timing-function: linear;
-                                 animation-iteration-count: infinite;
-                                 animation-direction: alternate;
-                               }
-                               window#waybar {
-                                 background-color: transparent;
-                				 background: rgba(21, 18, 27, 0.0);
-                                 color: #f6f7fc;
-                               }
-                               window > box {
-                                 margin-left: 0px;
-                                 margin-right: 0px;
-                                 margin-top: 0px;
-                                 background-color: rgba(30, 30, 46, 0.4);
-                               }
-                         #workspaces {
-                                 padding-left: 0px;
-                                 padding-right: 4px;
-                               }
-                         #workspaces button {
-                                 padding-top: 4px;
-                                 padding-bottom: 4px;
-                                 padding-left: 6px;
-                                 padding-right: 6px;
-        						 background-color: rgba(248, 189, 150,0.5);
-                                 color: rgb(26, 24, 38);
-                               }
-                         #workspaces button.active {
-                                 background-color: rgba(181, 232, 224, 0.5);
-                                 color: rgb(26, 24, 38);
-                               }
-                         #workspaces button.urgent {
-                                 color: rgb(26, 24, 38);
-                               }
-                         #workspaces button:hover {
-                                 background-color: rgb(248, 189, 150);
-                                 color: rgb(26, 24, 38);
-                               }
-                               tooltip {
-                                 background: rgb(48, 45, 65);
-                               }
-                               tooltip label {
-                                 color: rgb(217, 224, 238);
-                               }
-                         #custom-launcher {
-                                 font-size: 15px;
-                                 padding-left: 8px;
-                                 padding-right: 6px;
-                                 color: #7ebae4;
-                               }
-                         #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
-                                 padding-left: 10px;
-                                 padding-right: 10px;
-                               }
-                               /* #mode { */
-                               /* 	margin-left: 10px; */
-                               /* 	background-color: rgb(248, 189, 150); */
-                               /*     color: rgb(26, 24, 38); */
-                               /* } */
-                         #memory {
-                                 color: rgb(181, 232, 224);
-                               }
-                         #cpu {
-                                 color: rgb(245, 194, 231);
-                               }
-                         #clock {
-                                 color: #ABE9B3;
-                               }
-                        /* #idle_inhibitor {
+              * {
+          font-family: "JetBrainsMono Nerd Font";
+          font-size: 10pt;
+          min-height: 0;
+          font-weight: bold;
+          border-radius: 0px;
+          transition-property: background-color;
+          transition-duration: 0.5s;
+        }
+        @keyframes blink_red {
+          to {
+            background-color: rgb(242, 143, 173);
+            color: rgb(26, 24, 38);
+          }
+        }
+        .warning,
+        .critical,
+        .urgent {
+          animation-name: blink_red;
+          animation-duration: 1s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+        window#waybar {
+          background-color: transparent;
+          background: rgba(21, 18, 27, 0);
+          color: #f6f7fc;
+        }
+        window > box {
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          background-color: rgba(30, 30, 46, 0);
+        }
+        #workspaces {
+          padding-left: 0px;
+          padding-right: 4px;
+          margin: 7px; /* This will create space around the component */
+          border-radius: 8px;
+        }
+        #workspaces button {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          padding-left: 6px;
+          padding-right: 6px;
+          background-color: rgba(248, 189, 150, 0.5);
+          color: rgb(26, 24, 38);
+
+          /* Set this to the same value as width */
+          border-radius: 50%; /* Makes the element round */
+        }
+        #workspaces button.active {
+          background-color: rgba(181, 232, 224, 0.5);
+          color: rgb(26, 24, 38);
+        }
+        #workspaces button.urgent {
+          color: rgb(26, 24, 38);
+        }
+        #workspaces button:hover {
+          background-color: rgb(248, 189, 150);
+          color: rgb(26, 24, 38);
+        }
+        tooltip {
+          background: rgb(48, 45, 65);
+        }
+        tooltip label {
+          color: rgb(217, 224, 238);
+        }
+        #custom-launcher {
+          background-color: rgba(10, 10, 10, 0.5);
+          font-size: 11px;
+          padding-left: 8px;
+          padding-right: 6px;
+          color: #7ebae4;
+          border-radius: 100%;
+        }
+        #mode,
+        #clock,
+        #memory,
+        #temperature,
+        #cpu,
+        #mpd,
+        #custom-wall,
+        #temperature,
+        #backlight,
+        #pulseaudio,
+        #network,
+        #battery,
+        #custom-powermenu,
+        #custom-cava-internal {
+          padding-left: 10px;
+          padding-right: 10px;
+          margin: 7px; /* This will create space around the component */
+          border-radius: 8px;
+        }
+        /* #mode { */
+        /* 	margin-left: 10px; */
+        /* 	background-color: rgb(248, 189, 150); */
+        /*     color: rgb(26, 24, 38); */
+        /* } */
+        #memory {
+          background-color: rgba(10, 10, 10, 0.5);
+          color: rgb(181, 232, 224);
+        }
+        #cpu {
+          background-color: rgba(10, 10, 10, 0.5);
+          color: rgb(245, 194, 231);
+        }
+        #clock {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: #abe9b3;
+        }
+        /* #idle_inhibitor {
                                  color: rgb(221, 182, 242);
                                }*/
-                         #custom-wall {
-                                 color: rgb(221, 182, 242);
-                            }
-                         #temperature {
-                                 color: rgb(150, 205, 251);
-                               }
-                         #backlight {
-                                 color: rgb(248, 189, 150);
-                               }
-                         #pulseaudio {
-                                 color: rgb(245, 224, 220);
-                               }
-                         #network {
-                                 color: #ABE9B3;
-                               }
+        #custom-wall {
+          color: rgb(221, 182, 242);
+        }
+        #temperature {
+          color: rgb(150, 205, 251);
+        }
+        #backlight {
+          background-color: rgba(10, 10, 10, 0.5);
 
-                         #network.disconnected {
-                                 color: rgb(255, 255, 255);
-                               }
-                         #battery.charging, #battery.full, #battery.discharging {
-                                 color: rgb(250, 227, 176);
-                               }
-                         #battery.critical:not(.charging) {
-                                 color: rgb(242, 143, 173);
-                               }
-                         #custom-powermenu {
-                                 color: rgb(242, 143, 173);
-                               }
-                         #tray {
-                                 padding-right: 8px;
-                                 padding-left: 10px;
-                               }
-                         #mpd.paused {
-                                 color: #414868;
-                                 font-style: italic;
-                               }
-                         #mpd.stopped {
-                                 background: transparent;
-                               }
-                         #mpd {
-                                 color: #c0caf5;
-                               }
-                         #custom-cava-internal{
-                                 font-family: "Hack Nerd Font" ;
-                               }
+          color: rgb(248, 189, 150);
+        }
+        #pulseaudio {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: rgb(245, 224, 220);
+        }
+        #network {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: #abe9b3;
+        }
+
+        #network.disconnected {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: rgb(255, 255, 255);
+        }
+        #battery.charging,
+        #battery.full,
+        #battery.discharging {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: rgb(250, 227, 176);
+        }
+        #battery.critical:not(.charging) {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: rgb(242, 143, 173);
+        }
+        #custom-powermenu {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: rgb(242, 143, 173);
+        }
+        #tray {
+          background-color: rgba(10, 10, 10, 0);
+          padding-right: 3px;
+          padding-left: 3px;
+          border-radius: 8px;
+        }
+        #mpd.paused {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: #414868;
+          font-style: italic;
+        }
+        #mpd.stopped {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          background: transparent;
+        }
+        #mpd {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          color: #c0caf5;
+        }
+        #custom-cava-internal {
+          background-color: rgba(10, 10, 10, 0.5);
+
+          font-family: "Hack Nerd Font";
+        }
+                      
       '';
       settings = [{
         "layer" = "top";
         "position" = "top";
         modules-left = [
-          "custom/launcher"
+          # "custom/launcher"
           "wlr/workspaces"
           #"idle_inhibitor"
           #"custom/wall"
@@ -173,8 +230,8 @@
           "clock"
         ];
         modules-right = [
-          "pulseaudio"
-          "backlight"
+          # "pulseaudio"
+          # "backlight"
           "memory"
           "cpu"
           "network"
@@ -275,9 +332,9 @@
         };
         "network" = {
           "format-disconnected" = "󰯡 Disconnected";
-          "format-ethernet" = "󰀂 {ifname} ({ipaddr})";
+          "format-ethernet" = "↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes} 󰀂  󰖩  {ifname} ({ipaddr})";
           "format-linked" = "󰖪 {essid} (No IP)";
-          "format-wifi" = "󰖩 {essid}";
+          "format-wifi" = "↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}";
           "interval" = 1;
           "tooltip" = true;
         };

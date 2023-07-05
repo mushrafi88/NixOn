@@ -56,6 +56,7 @@
       exiftool
       socat
       acpi
+      python311Packages.pip
     ];
   };
   services.dbus.enable = true;
