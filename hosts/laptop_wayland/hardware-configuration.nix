@@ -18,11 +18,6 @@
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8D18-A67B";
-      fsType = "vfat";
-    };
-
   fileSystems."/mnt/media_m" =
     { device = "/dev/disk/by-uuid/a8be5171-7de0-4549-b4f4-0987f625e237";
       fsType = "ext4";
@@ -30,6 +25,16 @@
 
   fileSystems."/mnt/study" =
     { device = "/dev/disk/by-uuid/90c21674-dd82-4cfb-af81-aaec5c4d9dc1";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/8D18-A67B";
+      fsType = "vfat";
+    };
+
+  fileSystems."/mnt/downloads" =
+    { device = "/dev/disk/by-uuid/683474f3-1756-424f-8125-c86996f31ed2";
       fsType = "ext4";
     };
 
