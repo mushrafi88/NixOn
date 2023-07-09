@@ -20,5 +20,6 @@
   ./imgview
   ./launcher
   ./mpv
+  ./latex
   ./dunst
 ]

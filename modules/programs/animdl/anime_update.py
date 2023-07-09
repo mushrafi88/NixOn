@@ -60,7 +60,7 @@ def mahayana(l):
 
 li = []
 
-with open("$HOME/homepage/anime-list.txt", "r") as filehandle:
+with open("$HOME/.config/animdl/anime-list.txt", "r") as filehandle:
     for line in filehandle:
         cur = line[:-1]
         li.append(cur)

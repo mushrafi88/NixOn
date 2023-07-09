@@ -19,7 +19,7 @@ window {
   width:                      100%;
   location:                   north;
   x-offset:                   0;
-  y-offset:                   -35;
+  y-offset:                   -45;
 }
 
 prompt {

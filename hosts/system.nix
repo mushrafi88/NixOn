@@ -56,6 +56,7 @@
       exiftool
       socat
       acpi
+      inotify-tools
       python311Packages.pip
     ];
   };
