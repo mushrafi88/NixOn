@@ -28,6 +28,5 @@ jujutsu_num=$(cat "$file" | grep -iE "jujutsu" | awk '{print $NF}')
 animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($jujutsu_num + 1))
 
 #update anilist
-bash $HOME/.config/animdl/anime_episode_update.sh &&
-exit
+bash $HOME/.config/animdl/anime_episode_update.sh && exit
 #python $HOME/.config/animdl/anilist_update.py
