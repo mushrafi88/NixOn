@@ -22,4 +22,5 @@
   ./mpv
   ./latex
   ./dunst
+  ./git
 ]
