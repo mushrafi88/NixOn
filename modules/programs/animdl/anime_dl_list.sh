@@ -27,6 +27,10 @@ animdl download "animepahe:bleach sennen kessen hen ketsubetsu" -d $ANIME_DOWNLO
 jujutsu_num=$(cat "$file" | grep -iE "jujutsu" | awk '{print $NF}')
 animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($jujutsu_num + 1))
 
+#zom 100
+zom_100_num=$(cat "$file" | grep -iE "zom 100" | awk '{print $NF}')
+animdl download "animepahe:zom 100" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($zom_100_num + 1))
+
 #update anilist
 bash $HOME/.config/animdl/anime_episode_update.sh && exit
 #python $HOME/.config/animdl/anilist_update.py

@@ -68,8 +68,7 @@
             alias cp='cp -i'
             alias mv='mv -i'
             alias ff='find -L | fzf'
-            alias q='exit' 
-      
+            alias q='exit'
       	  nitch
     '';
   };

@@ -5,14 +5,14 @@ let
       options="dark bright mild ALL"
       selected_folder=$(printf '%s\n' $options | rofi -dmenu -p "Please choose a wallpaper Folder:" -theme ~/.config/rofi/drun_theme.rasi)
       echo "$selected_folder" > $HOME/selected_folder.txt
-      pkill -f wallpaper_set 
+      pkill -f wallpaper_process 
 
-      rm -f /tmp/wallpaper_set.lock
-      wallpaper_set &
+      rm -f /tmp/wallpaper_process.lock
+      wallpaper_process &
   '';
 
   wallpaper_next = pkgs.writeShellScriptBin "wallpaper_next" '' 
-  lock_file="/tmp/wallpaper_set.lock" 
+  lock_file="/tmp/wallpaper_process.lock" 
   if [ -e "$lock_file" ]; then 
 	  kill -USR1 $(cat "$lock_file")
   else 
@@ -21,21 +21,21 @@ let
 '';
   wallpaper_prev = pkgs.writeShellScriptBin "wallpaper_prev" '' 
 
-  lock_file="/tmp/wallpaper_set.lock" 
+  lock_file="/tmp/wallpaper_process.lock" 
   if [ -e "$lock_file" ]; then 
 	  kill -USR2 $(cat "$lock_file")
   else 
 	  echo "set_wallpaper.sh is not running."
   fi
 '';
-  wallpaper_set = pkgs.writeShellScriptBin "wallpaper_set" '' 
+  wallpaper_process = pkgs.writeShellScriptBin "wallpaper_process" '' 
 
 # Lock file
-lock_file="/tmp/wallpaper_set.lock"
+lock_file="/tmp/wallpaper_process.lock"
 
 # Check if there's already a running instance
 if [ -e "$lock_file" ]; then
-  echo "wallpaper_set is already running."
+  echo "wallpaper_process is already running."
   exit 0
 fi
 
@@ -103,7 +103,7 @@ in
 
 {
   home.packages = with pkgs; [
-    wallpaper_set
+    wallpaper_process
     wallpaper_next
     wallpaper_prev
     wallpaper_folder

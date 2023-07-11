@@ -2,15 +2,16 @@
 
 let
   anime_dl_env = pkgs.writeShellScriptBin "anime_dl_env" ''
-            #!/usr/bin/env bash 
-            while true 
-    			do 
-    				kitty -e bash -c " 
-    				hyprctl dispatch movetoworkspacesilent D 
-                    nix-shell $HOME/.config/animdl/animdl.nix 
-    				" 
-    				sleep 6h  
-    			done
+                #!/usr/bin/env bash 
+                while true 
+        			do 
+    					sleep 10m
+        				kitty -e bash -c " 
+        				hyprctl dispatch movetoworkspacesilent D 
+                        nix-shell $HOME/.config/animdl/animdl.nix 
+        				" 
+        				sleep 6h  
+        			done
   '';
   #  anime_downloader_daily = pkgs.writeShellScriptBin "anime_downloader_daily" '' 
 

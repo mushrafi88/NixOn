@@ -7,8 +7,8 @@
     [ ./launch_waybar.nix ] ++
     [ ./wallpaper.nix ] ++
     [ ./volume_high.nix ] ++
-    [ ./lfub.nix ] ++
     [ ./battery_warning.nix ] ++
     [ ./bluetooth_headphone.nix ] ++
+    [ ./yt_music.nix ] ++
     [ ./animdl.nix ];
 }

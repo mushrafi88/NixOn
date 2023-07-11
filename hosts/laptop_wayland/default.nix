@@ -11,6 +11,10 @@
       ../../modules/desktop/hyprland
     ];
 
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "gnome3";
+  };
   programs.zsh.enable = true;
   users.users.venerable_white = {
     shell = pkgs.zsh;

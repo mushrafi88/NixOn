@@ -8,8 +8,8 @@ set scrolloff 10
 set ignorecase true
 set period 1
 set hidden true
-set cleaner '~/.config/lf/cleaner'
-set previewer '~/.config/lf/scope'
+#set cleaner '~/.config/lf/kitty_cleaner.sh'
+#set previewer '~/.config/lf/kitty_preview.sh'
 set autoquit on
 set drawbox 
 

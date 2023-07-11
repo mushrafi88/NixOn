@@ -1,11 +1,6 @@
 [
   ./animdl
-  ./stremio
-  ./lazygit
   ./music
-  ./nitch
-  ./pcmanfm
-  # ./librewolf
   ./resource_monitor
   ./search
   ./yt-dlp
@@ -18,9 +13,8 @@
   ./okular
   ./firefox
   ./imgview
-  ./launcher
   ./mpv
-  ./latex
   ./dunst
   ./git
+  ./others
 ]
