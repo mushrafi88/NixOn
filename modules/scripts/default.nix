@@ -10,5 +10,6 @@
     [ ./battery_warning.nix ] ++
     [ ./bluetooth_headphone.nix ] ++
     [ ./yt_music.nix ] ++
-    [ ./animdl.nix ];
+    [ ./animdl.nix ] ++
+    [ ./todo.nix ];
 }
