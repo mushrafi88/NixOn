@@ -22,6 +22,7 @@
       enable = true;
     };
   };
+
   environment = {
     binsh = "${pkgs.dash}/bin/dash";
     shells = with pkgs; [ zsh ];
@@ -57,6 +58,7 @@
       socat
       acpi
       inotify-tools
+      python311
       python311Packages.pip
     ];
   };

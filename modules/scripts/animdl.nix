@@ -15,7 +15,7 @@ let
   '';
   #  anime_downloader_daily = pkgs.writeShellScriptBin "anime_downloader_daily" '' 
 
-  anime_downloader_folder_watcher = pkgs.writeShellScriptBin "anime_downloader_folder_watcher" '' 
+  anime_list_update = pkgs.writeShellScriptBin "anime_list_update" '' 
 #!/usr/bin/env bash 
 
 ANIME_DIRECTORY="$ANIME_DOWNLOAD_FOLDER"  # Replace with your anime directory path
@@ -27,7 +27,7 @@ do
         # Parse the anime name and episode number from the deleted file's path
         ANIME_NAME=$(basename "$(dirname "$FILE")")
         EPISODE_NUMBER=$(echo "$FILE" | grep -oP '(?<=E)[0-9]+')
-        python $HOME/.config/animdl/anilist_update.py "$ANIME_NAME" "$EPISODE_NUMBER"  # Replace with your Python script path # Replace with your Python script path
+        $HOME/.config/animdl/anilist_update.py "$ANIME_NAME" "$EPISODE_NUMBER"  # Replace with your Python script path # Replace with your Python script path
     fi
 done
 
@@ -38,6 +38,6 @@ in
   home.packages = with pkgs; [
     anime_dl_env
     #anime_downloader_daily
-    anime_downloader_folder_watcher
+    anime_list_update
   ];
 }

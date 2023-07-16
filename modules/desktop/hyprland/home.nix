@@ -388,7 +388,7 @@
                                     exec-once = volume_high & 
                                     exec-once = battery_warning &
                                     exec-once = bluetoothctl power off & 
-                                    exec-once = anime_downloader_folder_watcher &
+                                    exec-once = anime_list_update &
                         		      exec-once = anime_dl_env &
             						  exec-once = yt_music &
       							  exec-once = dunst_todo &

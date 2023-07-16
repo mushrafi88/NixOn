@@ -35,7 +35,7 @@ confirmations=(reboot shutdown logout)
 
 # By default, no dry run
 dryrun=false
-showsymbols=true
+showsymbols=false
 
 function check_valid {
     option="$1"
