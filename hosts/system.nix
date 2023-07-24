@@ -57,6 +57,7 @@
       exiftool
       socat
       acpi
+      perl
       inotify-tools
       python311
       python311Packages.pip
