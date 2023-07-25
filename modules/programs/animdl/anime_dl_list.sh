@@ -31,6 +31,10 @@ animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --in
 zom_100_num=$(cat "$file" | grep -iE "zom 100" | awk '{print $NF}')
 animdl download "animepahe:zom 100" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($zom_100_num + 1))
 
+link_click_2=$(cat "$file" | grep -iE "link click" | awk '{print $NF}')
+animdl download "animepahe:link click 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($link_click_2 + 1))
+
+
 #update anilist
 bash $HOME/.config/animdl/anime_episode_update.sh && exit
 #python $HOME/.config/animdl/anilist_update.py
