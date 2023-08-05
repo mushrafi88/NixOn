@@ -14,6 +14,10 @@
       catdoc
       exiftool
       ctpv
+      elinks
+      jq
+      poppler_utils
+      mdcat
     ];
   };
   home.file.".config/lf".source = ./config;

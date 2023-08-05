@@ -38,7 +38,6 @@
       p7zip
       atool
       unzip
-      lf
       ffmpeg
       ffmpegthumbnailer
       glib
@@ -53,8 +52,6 @@
       bat
       mediainfo
       unrar
-      jq
-      exiftool
       socat
       acpi
       perl
