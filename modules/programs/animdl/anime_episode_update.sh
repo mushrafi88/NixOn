@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Directory to scan
-ANIME_DOWNLOAD_FOLDER="$ANIME_DOWNLOAD_FOLDER"
-
 # File to write
 outfile="$ANIME_DOWNLOAD_FOLDER/episode.txt"
 
@@ -12,17 +9,17 @@ if [ ! -f "$outfile" ]; then
 fi
 
 # Iterate over all directories in ANIME_DOWNLOAD_FOLDER
-while IFS=  read -r -d $'\0' dir; do
+find "$ANIME_DOWNLOAD_FOLDER" -type d -print0 | while IFS= read -r -d $'\0' dir; do
     # Extract directory name (removing leading ANIME_DOWNLOAD_FOLDER)
     dirname=${dir#$ANIME_DOWNLOAD_FOLDER/}
 
     # Skip if it's the parent directory itself
-    if [ "$dirname" = "" ]; then
+    if [ -z "$dirname" ]; then
         continue
     fi
 
     # Find highest episode number in the directory
-    highest_ep=$(find "$dir" -type f -name 'E*.mp4' -print0 | xargs -0 -n1 bash -c 'basename "$0" .mp4' | sed 's/E//' | sort -nr | head -n 1)
+    highest_ep=$(find "$dir" -maxdepth 1 -type f -name 'E*.mp4' | sed -n 's/.*E\([0-9]\+\)\.mp4/\1/p' | sort -n | tail -n 1)
 
     # Continue if no episodes were found
     if [ -z "$highest_ep" ]; then
@@ -41,4 +38,4 @@ while IFS=  read -r -d $'\0' dir; do
         # Send a dunst notification
         dunstify "$dirname" "New episode $highest_ep" -i "~/.config/dunst/icon/love.png" -t 5000
     fi
-done < <(find "$ANIME_DOWNLOAD_FOLDER" -type d -print0)
+done
