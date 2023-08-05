@@ -10,6 +10,7 @@
       pcmanfm
       gtk-engine-murrine
       stremio
+      libreoffice-fresh
     ];
   };
 }

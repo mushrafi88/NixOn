@@ -13,6 +13,7 @@
       chafa
       catdoc
       exiftool
+      ctpv
     ];
   };
   home.file.".config/lf".source = ./config;

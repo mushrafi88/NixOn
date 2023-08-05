@@ -37,7 +37,8 @@ in
           overlays =
             [
               inputs.picom.overlays.default
-            ];
+            ]
+            ++ (import ../overlays);
         };
       }
     ];

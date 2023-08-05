@@ -2,8 +2,7 @@
 {
   home = {
     packages = with pkgs; [
-      imv
+      nsxiv
     ];
-    file.".config/imv/config".source = ./config;
   };
 }

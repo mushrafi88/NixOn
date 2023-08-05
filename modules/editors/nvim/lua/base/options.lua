@@ -25,6 +25,8 @@ local options = {
 	updatetime = 50, -- faster completion (4000ms default)
 	foldenable = false,
 	foldlevel = 99,
+	spelllang = "en_us",
+	spell = true,
 }
 
 for k, v in pairs(options) do
