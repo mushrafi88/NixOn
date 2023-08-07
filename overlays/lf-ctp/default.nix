@@ -4,7 +4,7 @@ self: super:
     src = super.fetchFromGitHub {
       owner = "horriblename";
       repo = "lf";
-      rev = "88b3c99";
+      rev = "1bb0b43";
       hash = "sha256-hlhmnkPm1x7uJMwUM/B02rXLffsXFbkxXYITKD3BERY=";
     };
   });
