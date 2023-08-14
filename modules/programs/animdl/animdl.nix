@@ -15,7 +15,7 @@ pkgs.mkShell {
             source $HOME/.config/animdl/animdl_env/bin/activate
             echo "Updating pip"
             echo "Installing animdl"
-            pip install animdl
+            pip install -U animdl
         	bash $HOME/.config/animdl/anime_dl_list.sh &&
     		exit
         	'';

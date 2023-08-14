@@ -22,7 +22,7 @@ mushoku_num=$(cat "$file" | grep -iE "mushoku" | awk '{print $NF}')
 animdl download "animepahe:mushoku tensei ii isekai ittara" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($mushoku_num + 1))
 # bleach
 bleach_num=$(cat "$file" | grep -iE "bleach" | awk '{print $NF}')
-animdl download "animepahe:bleach sennen kessen hen ketsubetsu" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($bleach_num + 1))
+animdl download "gogoanime:bleach sennen kessen hen ketsubetsu" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($bleach_num + 1))
 #jujutsu kaisen
 jujutsu_num=$(cat "$file" | grep -iE "jujutsu" | awk '{print $NF}')
 animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($jujutsu_num + 1))
