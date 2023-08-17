@@ -11,6 +11,7 @@
       gtk-engine-murrine
       stremio
       libreoffice-fresh
+      micromamba
     ];
   };
 }

@@ -86,6 +86,7 @@
       pkgs.sway-contrib.grimshot
       grim
       openbangla-keyboard
+      syncthing
     ];
   };
 
@@ -104,6 +105,36 @@
       pulse.enable = true;
       jack.enable = true;
       wireplumber.enable = true;
+    };
+  };
+
+  services = {
+    syncthing = {
+      enable = true;
+      systemService = true;
+      user = "venerable_white";
+      dataDir = "/home/venerable_white";
+      configDir = "/home/venerable_white/.config/syncthing";
+      overrideDevices = false; # overrides any devices added or deleted through the WebUI
+      overrideFolders = false; # overrides any folders added or deleted through the WebUI
+      settings = {
+        devices = {
+          "realme" = { id = "5O4CEWW-OZFK5XF-PCQL2U4-PMBILKU-PWYI6HD-YX75SLZ-ANUWTMW-2AGQGAH"; };
+        };
+        folders = {
+          "Documents" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/home/venerable_white/Documents"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+          "Example" = {
+            path = "/home/venerable_white/Templates";
+            devices = [ "realme" ];
+            ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+          };
+        };
+      };
     };
   };
 
