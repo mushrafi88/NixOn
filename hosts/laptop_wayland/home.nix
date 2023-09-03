@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, impermanence, ... }:
+{ config, lib, pkgs, user, impermanence, inputs, ... }:
 
 {
   imports =

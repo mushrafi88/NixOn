@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   programs.firefox = {
@@ -10,6 +10,11 @@
         enableTridactylNative = true;
       };
       extraPolicies = {
+        CaptivePortal = false;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DisableFirefoxAccounts = true;
         DisplayBookmarksToolbar = true;
         Preferences = {
           "browser.toolbars.bookmarks.visibility" = "never";
@@ -18,9 +23,17 @@
         };
       };
     };
-    profiles.default = {
+    profiles.venerable_asura = {
       settings = {
+        "dom.security.https_only_mode" = true;
+        "identity.fxaccounts.enabled" = false;
+        "signon.rememberSignons" = false;
         "browser.startup.homepage" = "file:///home/venerable_white/Browser-Homepage/homepage.html";
+        "browser.bookmarks.addedImportButton" = "true";
+        "browser.download.panel.shown" = "true";
+        "pdfjs.enabledCache.state" = "true";
+        "privacy.clearOnShutdown.history" = "false";
+        "toolkit.telemetry.reportingpolicy.firstRun" = "false";
       };
       userChrome = ''
               /* change these variables to get different colors */
@@ -283,6 +296,12 @@
         /* } */
 
         	  '';
+      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+        ublock-origin
+        darkreader
+        tridactyl
+        youtube-shorts-block
+      ];
     };
   };
   home.file.".config/tridactyl".source = ./tridactyl;

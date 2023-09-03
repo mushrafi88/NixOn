@@ -24,7 +24,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit user inputs; };
           users.venerable_white = {
             imports = [
               (import ./laptop_wayland/home.nix)
