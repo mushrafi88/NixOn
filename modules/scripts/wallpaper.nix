@@ -10,7 +10,14 @@ let
       rm -f /tmp/wallpaper_process.lock
       wallpaper_process &
   '';
+  wallpaper_start = pkgs.writeShellScriptBin "wallpaper_start" ''
+    sleep 60
+    echo dark > $HOME/selected_folder.txt
+    pkill -f wallpaper_process 
 
+    rm -f /tmp/wallpaper_process.lock
+    wallpaper_process &
+  '';
   wallpaper_next = pkgs.writeShellScriptBin "wallpaper_next" '' 
   lock_file="/tmp/wallpaper_process.lock" 
   if [ -e "$lock_file" ]; then 
@@ -93,7 +100,7 @@ while true; do
   wallpaper=$(printf "$shuffled_wallpapers" | awk -v idx=$current_index 'NR==idx')
   echo "selected_wallpaper location $wallpaper"
   swww img "$wallpaper" --transition-type random
-  sleep 300 & # 5 minutes * 60 seconds
+  sleep 900 & # 5 minutes * 60 seconds
   wait $!
   current_index=$((current_index + direction))
 done
@@ -107,5 +114,6 @@ in
     wallpaper_next
     wallpaper_prev
     wallpaper_folder
+    wallpaper_start
   ];
 }

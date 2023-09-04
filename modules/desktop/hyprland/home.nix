@@ -380,7 +380,7 @@
                                                       exec-once = launch_waybar &
                                                       exec-once = nm-applet --indicator &
                                                       exec-once = transmission-gtk &
-                                                      exec-once = wallpaper_process &
+                                                      exec-once = wallpaper_start &
                                                       exec-once = wl-copy &
                                                       exec-once = volume_high & 
                                                       exec-once = battery_warning &

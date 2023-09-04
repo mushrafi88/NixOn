@@ -31,15 +31,11 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     bootspec.enable = true;
     loader = {
-      grub = {
+      systemd-boot = {
         enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = true;
       };
       efi = {
-        #canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        canTouchEfiVariables = true;
       };
       timeout = 3;
     };
