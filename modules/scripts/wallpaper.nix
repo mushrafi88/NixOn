@@ -11,10 +11,9 @@ let
       wallpaper_process &
   '';
   wallpaper_start = pkgs.writeShellScriptBin "wallpaper_start" ''
-    sleep 60
+    sleep 600
     echo dark > $HOME/selected_folder.txt
     pkill -f wallpaper_process 
-
     rm -f /tmp/wallpaper_process.lock
     wallpaper_process &
   '';

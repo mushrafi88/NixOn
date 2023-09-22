@@ -10,13 +10,13 @@ pkgs.mkShell {
     pkgs.python311.pkgs.beautifulsoup4
   ];
   shellHook = ''
-            echo "Creating animdl_env"
-            python3 -m venv $HOME/.config/animdl/animdl_env
-            source $HOME/.config/animdl/animdl_env/bin/activate
-            echo "Updating pip"
-            echo "Installing animdl"
-            pip install -U animdl
-        	bash $HOME/.config/animdl/anime_dl_list.sh &&
-    		exit
-        	'';
+                echo "Creating animdl_env"
+                python3 -m venv $HOME/animdl/animdl_env
+                source $HOME/animdl/animdl_env/bin/activate
+                echo "Updating pip"
+                echo "Installing animdl"
+                pip install -U animdl
+            	bash $HOME/.config/animdl/anime_dl_list.sh && 
+    			exit
+            	'';
 }

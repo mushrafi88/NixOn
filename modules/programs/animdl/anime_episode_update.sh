@@ -30,7 +30,7 @@ find "$ANIME_DOWNLOAD_FOLDER" -type d -print0 | while IFS= read -r -d $'\0' dir;
     last_ep=$(grep "^$dirname " "$outfile" | awk '{print $NF}')
 
     # If the new episode is greater than the last recorded, or if it's a new series
-    if [[ -z "$last_ep" || "$highest_ep" -gt "$last_ep" ]]; then
+    if [[ -z "$last_ep" || ${highest_ep#0} -gt ${last_ep#0} ]]; then
         # Write to the output file
         sed -i "/^$dirname /d" "$outfile"
         echo "$dirname $highest_ep" >> "$outfile"

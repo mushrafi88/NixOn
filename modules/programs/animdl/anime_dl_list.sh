@@ -13,26 +13,35 @@
 file="$ANIME_DOWNLOAD_FOLDER/episode.txt"
 # masamune kun
 masamune_num=$(cat "$file" | grep -iE "masamune" | awk '{print $NF}')
-animdl download "animepahe:masamune kun r" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($masamune_num + 1))
+echo "Original masamune_num: $masamune_num"
+masamune_num=$((10#$masamune_num + 1))
+echo "Incremented masamune_num: $masamune_num"
+animdl download "animepahe:masamune kun r" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$masamune_num"
 #horimiya
 horimiya_num=$(cat "$file" | grep -iE "horimiya" | awk '{print $NF}')
-animdl download "animepahe:horimiya piece" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($horimiya_num + 1))
+horimiya_num=$((10#$horimiya_num + 1))
+animdl download "animepahe:horimiya piece" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$horimiya_num"
 # mushoku tensei
 mushoku_num=$(cat "$file" | grep -iE "mushoku" | awk '{print $NF}')
-animdl download "animepahe:mushoku tensei ii isekai ittara" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($mushoku_num + 1))
+mushoku_num=$((10#$mushoku_num + 1))
+animdl download "animepahe:mushoku tensei ii isekai ittara" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$mushoku_num"
 # bleach
 bleach_num=$(cat "$file" | grep -iE "bleach" | awk '{print $NF}')
-animdl download "gogoanime:bleach sennen kessen hen ketsubetsu" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($bleach_num + 1))
+bleach_num=$((10#$bleach_num + 1))
+animdl download "gogoanime:bleach sennen kessen hen ketsubetsu" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$bleach_num"
 #jujutsu kaisen
 jujutsu_num=$(cat "$file" | grep -iE "jujutsu" | awk '{print $NF}')
-animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($jujutsu_num + 1))
+jujutsu_num=$((10#$jujutsu_num + 1))
+animdl download "animepahe:jujutsu kaisen second" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$jujutsu_num"
 
 #zom 100
 zom_100_num=$(cat "$file" | grep -iE "zom 100" | awk '{print $NF}')
-animdl download "animepahe:zom 100" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($zom_100_num + 1))
+zom_100_num=$((10#$zom_100_num + 1))
+animdl download "animepahe:zom 100" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$zom_100_num"
 
 link_click_2=$(cat "$file" | grep -iE "link click" | awk '{print $NF}')
-animdl download "animepahe:link click 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r $(($link_click_2 + 1))
+link_click_2=$((10#$link_click_2 + 1))
+animdl download "animepahe:link click 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$link_click_2"
 
 
 #update anilist
