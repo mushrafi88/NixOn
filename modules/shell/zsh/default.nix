@@ -69,7 +69,7 @@
             alias mv='mv -i'
             alias ff='find -L | fzf'
             alias q='exit'
-      	  nitch
+      	  pfetch
     '';
   };
 

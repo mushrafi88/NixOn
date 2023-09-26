@@ -5,7 +5,7 @@
       rofi-wayland
       texlive.combined.scheme-full
       lazygit
-      nitch
+      pfetch
       pass
       pcmanfm
       gtk-engine-murrine
