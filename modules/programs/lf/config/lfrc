@@ -4,7 +4,7 @@ set ifs "\n"
 set filesep "\n"
 
 set scrolloff 10
-#set icons true
+set icons true
 set ignorecase true
 set period 1
 set hidden true
@@ -14,7 +14,7 @@ set cleaner ctpvclear
 &ctpvquit $id
 set chafasixel ~/.config/ctpv/config
 set autoquit on
-set drawbox 
+set drawbox true 
 
 
 # cmds/functions
