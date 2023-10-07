@@ -24,6 +24,15 @@ zom_100_num=$(cat "$file" | grep -iE "zom 100" | awk '{print $NF}')
 zom_100_num=$((10#$zom_100_num + 1))
 animdl download "animepahe:zom 100" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$zom_100_num"
 
+freiren_num=$(cat "$file" | grep -iE "frieren" | awk '{print $NF}')
+freiren_num=$((10#$freiren_num + 1))
+animdl download "animepahe:sousou no freiren" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$freiren_num"
+
+eminence_num=$(cat "$file" | grep -iE "kage no" | awk '{print $NF}')
+eminence_num=$((10#$eminence_num + 1))
+animdl download "animepahe: The Eminence in Shadow Season 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$eminence_num"
+
+
 #update anilist
 bash $HOME/.config/animdl/anime_episode_update.sh && exit
 #python $HOME/.config/animdl/anilist_update.py
