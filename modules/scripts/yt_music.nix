@@ -8,7 +8,7 @@ let
     			  sleep 5m
         		  dunstify "Downloading Songs from Youtube" -i "~/.config/dunst/icon/normal.jpg" 
         		  kitty -e bash -c "
-        		    hyprctl dispatch movetoworkspacesilent D 
+        		    hyprctl dispatch movetoworkspacesilent 10 
                     dl_music_yt 
         			exit
         		  "

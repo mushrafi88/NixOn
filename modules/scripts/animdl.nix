@@ -7,7 +7,7 @@ let
         			do 
     					sleep 10m
         				kitty -e bash -c " 
-        				hyprctl dispatch movetoworkspacesilent D 
+        				hyprctl dispatch movetoworkspacesilent 10 
                         nix-shell $HOME/.config/animdl/animdl.nix 
         				" 
         				sleep 6h  

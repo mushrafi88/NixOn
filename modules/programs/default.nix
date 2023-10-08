@@ -16,5 +16,6 @@
   ./mpv
   ./dunst
   ./git
+  ./waybar
   ./others
 ]

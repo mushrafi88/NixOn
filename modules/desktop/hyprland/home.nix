@@ -343,23 +343,23 @@
                                                       windowrule=size 960 540,pcmanfm
 
                                                       windowrulev2 = opacity 90.95 0.95,class:^(org.telegram.desktop)$
-                                                      windowrulev2=workspace name:S silent, title:Telegram 
+                                                      windowrulev2=workspace 9 silent, title:Telegram 
                                                       windowrulev2 = opacity 1.0 1.0,class:^(librewolf)$
                                                       windowrulev2= workspace 3,class:^(firefox)$
                                                       windowrulev2 = opacity 0.98 0.98,class:^(firefox)$
                                                       windowrulev2 = opacity 0.7 0.7,class:^(kitty)$
                                                       windowrulev2 = workspace 4,class:^(org.kde.okular)$
                                                       windowrulev2 = opacity 0.97 0.97,class:^(org.kde.okular)$
-                                                      windowrulev2 = workspace name:D silent,class:^(transmission-gtk)$
+                                                      windowrulev2 = workspace 10 silent,class:^(transmission-gtk)$
                                                       windowrulev2 = opacity 0.88 0.88, class:^(transmission-gtk)$
-                                                      windowrulev2 = workspace name:S silent,class:^(discord)$
+                                                      windowrulev2 = workspace 9 silent,class:^(discord)$
                                                 	  windowrulev2 = opacity 0.9 0.9, class:^(pcmanfm)$
 
 
 
                                                       #windowrule=opacity 0.95,title:QQ
                                                       windowrule=animation slide right,kitty
-                                                      windowrule=workspace name:S silent, title:Discord
+                                                      windowrule=workspace 9 silent, title:Discord
                                                       windowrule=float,ncmpcpp
                                                       windowrule=move 25%-,ncmpcpp
                                                       windowrule=size 960 540,ncmpcpp
