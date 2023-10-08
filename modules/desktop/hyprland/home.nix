@@ -23,7 +23,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    nvidiaPatches = false;
     extraConfig = ''
                                                       $mainMod = SUPER
                                                       # $scripts=$HOME/.config/hypr/scripts
@@ -88,7 +87,6 @@
 
                                                       # cursor_inactive_timeout = 0
                                                       decoration {
-                                                      multisample_edges = true
                                                       active_opacity = 1.0 
                                                       inactive_opacity = 0.93 
                                                       fullscreen_opacity = 1.0

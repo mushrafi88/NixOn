@@ -2,8 +2,8 @@
 {
   home = {
     packages = with pkgs; [
-      file
       lf
+      file
       ffmpegthumbnailer
       ueberzugpp
       autojump

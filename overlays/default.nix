@@ -1,1 +1,1 @@
-[ (import ./lf-ctp) ]
+[ ]

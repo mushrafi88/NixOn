@@ -31,7 +31,7 @@
       neovim
       wget
       neofetch
-      exa
+      eza
       gcc
       clang
       zig
@@ -55,6 +55,7 @@
       socat
       acpi
       perl
+      go
       inotify-tools
       python311
       python311Packages.pip

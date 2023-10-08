@@ -69,7 +69,7 @@
                   alias mv='mv -i'
                   alias ff='find -L | fzf'
                   alias q='exit'
-      			alias animdl='nix-shell $HOME/NixOn/environment/animdl.nix'
+      			alias animdl_start='nix-shell $HOME/NixOn/environment/animdl.nix'
             	  pfetch
     '';
   };
