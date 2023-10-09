@@ -12,6 +12,7 @@
       stremio
       libreoffice-fresh
       micromamba
+      brave
     ];
   };
 }

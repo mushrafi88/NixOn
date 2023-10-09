@@ -55,7 +55,6 @@
       socat
       acpi
       perl
-      go
       inotify-tools
       python311
       python311Packages.pip

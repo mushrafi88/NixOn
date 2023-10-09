@@ -32,6 +32,11 @@ eminence_num=$(cat "$file" | grep -iE "kage no" | awk '{print $NF}')
 eminence_num=$((10#$eminence_num + 1))
 animdl download "animepahe: The Eminence in Shadow Season 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$eminence_num"
 
+spy_num=$(cat "$file" | grep -iE "spy" | awk '{print $NF}')
+spy_num=$((10#$spy_num + 1))
+animdl download "animepahe: spy x family Season 2" -d $ANIME_DOWNLOAD_FOLDER --index 1 -r "$spy_num"
+
+
 
 #update anilist
 bash $HOME/.config/animdl/anime_episode_update.sh && exit
