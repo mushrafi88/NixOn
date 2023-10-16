@@ -113,9 +113,13 @@
       configDir = "/home/venerable_white/.config/syncthing";
       overrideDevices = false; # overrides any devices added or deleted through the WebUI
       overrideFolders = false; # overrides any folders added or deleted through the WebUI
+      relay.enable = false;
       settings = {
         devices = {
-          "realme" = { id = "5O4CEWW-OZFK5XF-PCQL2U4-PMBILKU-PWYI6HD-YX75SLZ-ANUWTMW-2AGQGAH"; };
+          "realme" = {
+            id = "YVZ3U2X-WPQ75Z5-TDTRWVX-X5H2WIQ-2PB5PMO-QEO72XL-DG26W26-XTVKNQQ";
+            addresses = [ "tcp://192.168.0.177:22000" ];
+          };
         };
         folders = {
           "Documents" = {
@@ -127,8 +131,15 @@
           "Example" = {
             path = "/home/venerable_white/Templates";
             devices = [ "realme" ];
-            ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+            ignorePerms = false;
+            type = "sendonly";
+            # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
           };
+        };
+        options = {
+          relaysEnabled = false;
+          globalAnnounceServer = "";
+          globalAnnounceEnabled = false;
         };
       };
     };
