@@ -122,19 +122,50 @@
           };
         };
         folders = {
-          "Documents" = {
+          "Sync" = {
             # Name of folder in Syncthing, also the folder ID
-            path = "/home/venerable_white/Documents"; # Which folder to add to Syncthing
+            path = "/home/venerable_white/Sync"; # Which folder to add to Syncthing
             devices = [ "realme" ]; # Which devices to share the folder with
             ignorePerms = false;
           };
-          "Example" = {
-            path = "/home/venerable_white/Templates";
-            devices = [ "realme" ];
+
+          "Music" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/media_m/Music/Selection"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
             ignorePerms = false;
-            type = "sendonly";
-            # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
           };
+
+          "Important Files" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/study/important_files"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+
+          "Pictures" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/media_m/Pictures/pictures"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+
+          "camera" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/media_m/Pictures/camera"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+
+          "Study" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/study/fourth_year"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+
+
+
         };
         options = {
           relaysEnabled = false;
