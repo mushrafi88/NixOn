@@ -13,6 +13,7 @@
       libreoffice-fresh
       micromamba
       brave
+      calcurse
     ];
   };
 }

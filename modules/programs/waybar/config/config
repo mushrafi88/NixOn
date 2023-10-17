@@ -20,9 +20,10 @@
       "tooltip": false
     },
     "clock": {
-      "format": "{:%I:%M %p  %A %b %d}",
+      "format": "{:%I:%M %p}",
       "interval": 1,
-      "tooltip": true,
+      "tooltip": false,
+	  "on-click-middle": "kitty --class='calcurse' calcurse ",
       "tooltip-format": "<tt>{calendar}</tt>"
     },
     "cpu": {
@@ -66,8 +67,8 @@
         "warning": 85
       }
     },
-    "modules-center": ["clock"],
-    "modules-left": ["hyprland/workspaces", "mpd", "custom/cava-internal"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["clock", "mpd", "custom/cava-internal"],
     "modules-right": ["memory", "cpu", "network", "battery", "tray"],
     "mpd": {
       "format": "<span foreground='#bb9af7'></span> {title}",

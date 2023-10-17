@@ -17,7 +17,9 @@
   };
   home.file = {
     ".config/ncmpcpp/config".text = ''
-      mpd_music_dir = ~/Music
+            mpd_music_dir = ~/Music 
+      	  browser_sort = date_mod 
+      	  playlist_sort = date_mod
     '';
   };
 
