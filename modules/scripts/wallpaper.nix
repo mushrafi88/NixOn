@@ -108,7 +108,8 @@ done
 '';
 
   live_wallpaper = pkgs.writeShellScriptBin "live_wallpaper" '' 
-  file_list="$HOME/Pictures/wallpapers/live_wallpapers/playlist.txt"
+ 
+ file_list="$HOME/Pictures/wallpapers/live_wallpapers/playlist.txt"
 
 if [ ! -f "$file_list" ]; then
     echo "File list not found: $file_list"
