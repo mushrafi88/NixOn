@@ -6,19 +6,21 @@ let
       selected_folder=$(printf '%s\n' $options | rofi -dmenu -p "Please choose a wallpaper Folder:" -theme ~/.config/rofi/drun_theme.rasi)
       echo "$selected_folder" > $HOME/selected_folder.txt
       pkill -f wallpaper_process 
-
+      pkill mpvpaper
       rm -f /tmp/wallpaper_process.lock
       wallpaper_process &
   '';
   wallpaper_start = pkgs.writeShellScriptBin "wallpaper_start" ''
-    sleep 600
-    echo dark > $HOME/selected_folder.txt
-    pkill -f wallpaper_process 
-    rm -f /tmp/wallpaper_process.lock
-    wallpaper_process &
+        sleep 600
+        echo dark > $HOME/selected_folder.txt
+        pkill -f wallpaper_process 
+    	pkill mpvpaper
+        rm -f /tmp/wallpaper_process.lock
+        wallpaper_process &
   '';
   wallpaper_next = pkgs.writeShellScriptBin "wallpaper_next" '' 
   lock_file="/tmp/wallpaper_process.lock" 
+  pkill mpvpaper
   if [ -e "$lock_file" ]; then 
 	  kill -USR1 $(cat "$lock_file")
   else 
@@ -105,6 +107,22 @@ while true; do
 done
 '';
 
+  live_wallpaper = pkgs.writeShellScriptBin "live_wallpaper" '' 
+  file_list="$HOME/Pictures/wallpapers/live_wallpapers/playlist.txt"
+
+if [ ! -f "$file_list" ]; then
+    echo "File list not found: $file_list"
+    exit 1
+fi
+
+  video_files=$(cat "$file_list")
+
+  random_video=$(shuf -n 1 -e $video_files)
+
+  pkill mpvpaper 
+  mpvpaper -vs -o "no-audio loop" eDP-1 $HOME/Pictures/wallpapers/live_wallpapers/"$random_video"
+
+'';
 in
 
 {
@@ -114,5 +132,6 @@ in
     wallpaper_prev
     wallpaper_folder
     wallpaper_start
+    live_wallpaper
   ];
 }
