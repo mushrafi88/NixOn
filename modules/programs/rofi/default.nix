@@ -9,6 +9,7 @@
   home.file.".config/rofi/drun_theme.rasi".source = ./drun_theme.rasi;
   home.file.".config/rofi/kill_process.sh".source = ./kill_process.sh;
   home.file.".config/rofi/kill_process_theme.rasi".source = ./kill_process_theme.rasi;
+  home.file.".config/rofi/launch_with_nvidia.sh".source = ./launch_with_nvidia.sh;
 
 
 
