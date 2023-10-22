@@ -16,7 +16,7 @@ pkgs.mkShell {
                 echo "Updating pip"
                 echo "Installing animdl"
                 pip install -U animdl
-            	bash $HOME/.config/animdl/anime_dl_list.sh && 
+            	bash $ANIME_DOWNLOAD_FOLDER/anime_dl_list.sh && 
     			exit
             	'';
 }
