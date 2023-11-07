@@ -256,7 +256,7 @@
                                                                # quickly launch program #
                                                                #------------------------# 
                                                                #bind=$mainMod,B,exec,nvidia-offload librewolf
-                                                               bind=CTRL ALT,F,exec,nvidia-offload firefox 
+                                                               bind=CTRL ALT,F,exec, firefox 
                                                                bind=$mainMod SHIFT,D,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
                                                                bind=CTRL ALT,L,exec,myswaylock
                                                                #bind=CTRL,,exec,telegram-desktop

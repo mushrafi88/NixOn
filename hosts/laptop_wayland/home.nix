@@ -7,7 +7,7 @@
     (import ../../modules/shell) ++
     (import ../../modules/editors) ++
     (import ../../modules/programs) ++
-    (import ../../modules/theme/catppuccin-dark/wayland);
+    (import ../../modules/theme/catppuccin-dark);
 
   home = {
     username = "venerable_white";
