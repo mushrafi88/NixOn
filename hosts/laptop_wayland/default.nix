@@ -52,7 +52,7 @@
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
       enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ m17n ];
+      ibus.engines = with pkgs.ibus-engines; [ openbangla-keyboard ];
     };
   };
 
@@ -81,7 +81,6 @@
       imagemagick
       pkgs.sway-contrib.grimshot
       grim
-      openbangla-keyboard
       syncthing
     ];
   };
