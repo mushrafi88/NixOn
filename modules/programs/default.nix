@@ -18,6 +18,5 @@
   ./git
   ./waybar
   ./others
-  ./obsidian
   ./discord
 ]

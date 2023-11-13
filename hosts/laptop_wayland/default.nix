@@ -48,6 +48,14 @@
     initrd.verbose = false;
   };
 
+
+  services.xserver = {
+    exportConfiguration = true; # link /usr/share/X11/ properly
+    layout = "us";
+    xkbOptions = "caps:escape";
+  };
+  console.useXkbConfig = true;
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
@@ -55,40 +63,6 @@
       ibus.engines = with pkgs.ibus-engines; [ openbangla-keyboard ];
     };
   };
-
-  environment = {
-    systemPackages = with pkgs; [
-      libnotify
-      wl-clipboard
-      wlr-randr
-      wayland
-      wayland-scanner
-      wayland-utils
-      egl-wayland
-      wayland-protocols
-      pkgs.xorg.xeyes
-      glfw-wayland
-      xwayland
-      pkgs.qt6.qtwayland
-      polkit_gnome
-      networkmanagerapplet
-      wev
-      alsa-lib
-      alsa-utils
-      flac
-      pulsemixer
-      linux-firmware
-      imagemagick
-      pkgs.sway-contrib.grimshot
-      grim
-      syncthing
-    ];
-  };
-
-  services.xserver = {
-    xkbOptions = "caps:escape";
-  };
-  console.useXkbConfig = true;
 
   services = {
     dbus.packages = [ pkgs.gcr ];
@@ -174,6 +148,36 @@
       };
     };
   };
+
+  environment = {
+    systemPackages = with pkgs; [
+      libnotify
+      wl-clipboard
+      wlr-randr
+      wayland
+      wayland-scanner
+      wayland-utils
+      egl-wayland
+      wayland-protocols
+      pkgs.xorg.xeyes
+      glfw-wayland
+      xwayland
+      pkgs.qt6.qtwayland
+      polkit_gnome
+      networkmanagerapplet
+      wev
+      alsa-lib
+      alsa-utils
+      flac
+      pulsemixer
+      linux-firmware
+      imagemagick
+      pkgs.sway-contrib.grimshot
+      grim
+      syncthing
+    ];
+  };
+
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

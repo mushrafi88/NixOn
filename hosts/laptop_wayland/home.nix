@@ -18,4 +18,5 @@
   };
 
   home.stateVersion = "23.11";
+  home.language.base = "en_US.UTF-8";
 }
