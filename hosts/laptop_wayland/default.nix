@@ -28,7 +28,7 @@
     ]);
   };
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages;
     bootspec.enable = true;
     loader = {
       systemd-boot = {

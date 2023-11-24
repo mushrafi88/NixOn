@@ -4,7 +4,7 @@ self: super:
     src = super.fetchFromGitHub {
       owner = "mpv-player";
       repo = "mpv";
-      rev = "f4210f8";
+      rev = "6e161ff";
       hash = "sha256-hlhmnkPm1x7uJMwUM/B02rXLffsXFbkxXYITKD3BERY=";
     };
   });

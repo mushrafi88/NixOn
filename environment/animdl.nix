@@ -10,13 +10,14 @@ pkgs.mkShell {
     pkgs.python311.pkgs.beautifulsoup4
   ];
   shellHook = ''
-                        python3 -m venv $HOME/animdl/animdl_env
-                        source $HOME/animdl/animdl_env/bin/activate
-                        pip install -U animdl
-            			echo "###############################"
-            			echo "#####     Launching     #######"
-            			echo "#####  Anime Downloader #######"
-            			echo "###############################" 
-    					zsh
-                    	'';
+                            python3 -m venv $HOME/animdl/animdl_env
+                            source $HOME/animdl/animdl_env/bin/activate
+    						pip install --upgrade pip
+                            pip install -U animdl
+                			echo "###############################"
+                			echo "#####     Launching     #######"
+                			echo "#####  Anime Downloader #######"
+                			echo "###############################" 
+        					zsh
+                        	'';
 }
