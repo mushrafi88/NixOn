@@ -34,6 +34,9 @@
         "pdfjs.enabledCache.state" = "true";
         "privacy.clearOnShutdown.history" = "false";
         "toolkit.telemetry.reportingpolicy.firstRun" = "false";
+        "browser.policies.runOncePerModification.displayBookmarksToolbar" = "never";
+        "browser.toolbars.bookmarks.showOtherBookmarks" = "false";
+        "browser.toolbars.bookmarks.visibility" = "never";
       };
       userChrome = ''
               /* change these variables to get different colors */

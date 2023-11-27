@@ -52,7 +52,6 @@
       unrar
       socat
       acpi
-      perl
       inotify-tools
       python311
       python311Packages.pip
@@ -83,6 +82,6 @@
       enable = false;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 }

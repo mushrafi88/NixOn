@@ -101,7 +101,7 @@ while true; do
   wallpaper=$(printf "$shuffled_wallpapers" | awk -v idx=$current_index 'NR==idx')
   echo "selected_wallpaper location $wallpaper"
   swww img "$wallpaper" --transition-type random
-  sleep 900 & # 5 minutes * 60 seconds
+  sleep 1800 & # 30 minutes * 60 seconds
   wait $!
   current_index=$((current_index + direction))
 done

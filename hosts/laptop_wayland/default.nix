@@ -28,7 +28,7 @@
     ]);
   };
   boot = {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     bootspec.enable = true;
     loader = {
       systemd-boot = {
@@ -51,8 +51,8 @@
 
   services.xserver = {
     exportConfiguration = true; # link /usr/share/X11/ properly
-    layout = "us";
-    xkbOptions = "caps:escape";
+    xkb.layout = "us";
+    xkb.options = "caps:escape";
   };
   console.useXkbConfig = true;
 
