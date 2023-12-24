@@ -169,7 +169,7 @@ map <c-j> push :aj<space>
 map / :broot_jump
 
 map ga cd /mnt/media_m/Anime/Airing  
-map gs cd /mnt/study/fourth_year 
+map gs cd /mnt/study/research 
 map gd cd /mnt/downloads 
 map gh cd /home/venerable_white 
 map gc cd ~/.config

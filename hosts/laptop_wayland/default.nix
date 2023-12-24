@@ -175,6 +175,7 @@
       pkgs.sway-contrib.grimshot
       grim
       syncthing
+      conda
     ];
   };
 
