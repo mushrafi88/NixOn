@@ -23,7 +23,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     extraConfig = ''
                                                                $mainMod = SUPER
                                                                # $scripts=$HOME/.config/hypr/scripts

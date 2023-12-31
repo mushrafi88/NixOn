@@ -130,9 +130,9 @@
             ignorePerms = false;
           };
 
-          "Study" = {
+          "Research" = {
             # Name of folder in Syncthing, also the folder ID
-            path = "/mnt/study/fourth_year"; # Which folder to add to Syncthing
+            path = "/mnt/study/research/sivr"; # Which folder to add to Syncthing
             devices = [ "realme" ]; # Which devices to share the folder with
             ignorePerms = false;
           };
