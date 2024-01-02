@@ -1,7 +1,7 @@
 { system, self, nixpkgs, inputs, user, ... }:
 
 let
-  pkgs = import nixpkgs {
+  pkgs = import <nixpkgs-unstable> {
     inherit system;
     config.allowUnfree = true; # Allow proprietary software
   };
@@ -34,6 +34,7 @@ in
           };
         };
         nixpkgs = {
+          config.allowUnfree = true;
           overlays =
             [
               inputs.picom.overlays.default

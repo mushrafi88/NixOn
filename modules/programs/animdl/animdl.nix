@@ -1,21 +1,17 @@
 let
-  pkgs = import <nixpkgs> { };
+  pkgs = import <nixpkgs-unstable> { };
 in
 pkgs.mkShell {
   buildInputs = [
-    pkgs.python312
-    pkgs.python312.pkgs.pip
-    pkgs.python312.pkgs.virtualenv
-    pkgs.python312.pkgs.requests
+    pkgs.python311
+    pkgs.python311.pkgs.pip
+    pkgs.python311.pkgs.virtualenv
+    pkgs.python311.pkgs.requests
     pkgs.python311.pkgs.beautifulsoup4
+    pkgs.animdl
   ];
   shellHook = ''
-                echo "Creating animdl_env"
-                python -m venv $HOME/animdl/animdl_env
-                source $HOME/animdl/animdl_env/bin/activate
-                echo "Installing animdl"
-                pip install -U animdl
-            	bash $ANIME_DOWNLOAD_FOLDER/anime_dl_list.sh && 
+                sh $ANIME_DOWNLOAD_FOLDER/anime_dl_list.sh && 
     			exit
             	'';
 }

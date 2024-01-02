@@ -69,10 +69,13 @@
     gvfs.enable = true;
     pipewire = {
       enable = true;
-      alsa.enable = true;
+      #alsa.enable = true;
+      audio.enable = true;
       alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
+      #pulse.enable = true;
+      #jack.enable = true;
+      socketActivation = true;
+      systemWide = true;
       wireplumber.enable = true;
     };
   };
@@ -176,6 +179,7 @@
       grim
       syncthing
       conda
+      helvum
     ];
   };
 
