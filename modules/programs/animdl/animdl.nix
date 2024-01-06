@@ -3,6 +3,9 @@ let
 in
 pkgs.mkShell {
   buildInputs = [
+    pkgs.python311
+    pkgs.python311Packages.types-beautifulsoup4
+    pkgs.python311Packages.requests
     pkgs.ani-cli
     pkgs.aria
   ];

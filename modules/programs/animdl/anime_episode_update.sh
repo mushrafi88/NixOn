@@ -19,7 +19,9 @@ find "$ANIME_DOWNLOAD_FOLDER" -type d -print0 | while IFS= read -r -d $'\0' dir;
     fi
 
     # Find highest episode number in the directory
-    highest_ep=$(find "$dir" -maxdepth 1 -type f -name 'E*.mp4' | sed -n 's/.*E\([0-9]\+\)\.mp4/\1/p' | sort -n | tail -n 1)
+    highest_ep=$(find "$dir" -maxdepth 1 -type f \( -name 'Episode *.mp4' -o -name 'E*.mp4' \) \
+            | sed -n 's/.*Episode \?\([0-9]\+\)\.mp4/\1/p' \
+        | sort -n | tail -n 1)
 
     # Continue if no episodes were found
     if [ -z "$highest_ep" ]; then
