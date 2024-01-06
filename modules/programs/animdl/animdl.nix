@@ -3,15 +3,13 @@ let
 in
 pkgs.mkShell {
   buildInputs = [
-    pkgs.python311
-    pkgs.python311.pkgs.pip
-    pkgs.python311.pkgs.virtualenv
-    pkgs.python311.pkgs.requests
-    pkgs.python311.pkgs.beautifulsoup4
-    pkgs.animdl
+    pkgs.ani-cli
+    pkgs.aria
   ];
   shellHook = ''
-                sh $ANIME_DOWNLOAD_FOLDER/anime_dl_list.sh && 
+                echo "Downloading weekly ongoing anime" 
+
+            	bash $HOME/.config/animdl/anime_dl_list.sh && 
     			exit
             	'';
 }
