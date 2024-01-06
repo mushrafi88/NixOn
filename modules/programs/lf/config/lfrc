@@ -28,6 +28,8 @@ cmd open ${{
         video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
         image/*) setsid -f imv $f -quiet >/dev/null 2>&1 ;;
         text/*|application/txt) $EDITOR "$f";;
+        text/*|application/lua) $EDITOR "$f";;
+        text/*|application/sh) $EDITOR "$f";;
 
         *) xdg-open "$f" ;;
     esac
@@ -77,6 +79,7 @@ cmd extract ${{
       *.tar.bz2) tar -xjvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
       *) echo "Unsupported format" ;;
+      *.rar) unrar "$f" ;; 
   esac
 }}
 
@@ -169,7 +172,7 @@ map <c-j> push :aj<space>
 map / :broot_jump
 
 map ga cd /mnt/media_m/Anime/Airing  
-map gs cd /mnt/study/research 
+map gs cd /mnt/study/research/sivr/game_theoretic_simulation_of_double_strain_disease/elsevier_paper
 map gd cd /mnt/downloads 
 map gh cd /home/venerable_white 
 map gc cd ~/.config

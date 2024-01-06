@@ -26,6 +26,7 @@ if not status then
 end
 
 require("luasnip.loaders.from_vscode").lazy_load() -- For friendly snippets, boilerplate JS, HTML, etc
+require'lspconfig'.jedi_language_server.setup{} 
 
 -- for consistency
 local diagnostic = vim.diagnostic
@@ -242,7 +243,7 @@ cmp.setup({
     },
     window = {
         completion = cmp.config.window.bordered({
-            scrollbar = false,
+            scrollbar = true,
             max_width = 1,
             max_height = 1,
         }),
@@ -297,11 +298,11 @@ cmp.setup({
         end,
     },
     sources = cmp.config.sources({
+        { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
         { name = "cmp_tabnine" },
         { name = "nvim_lua" },
-        { name = "luasnip" },
-    }),
+        }),
 })

@@ -9,7 +9,6 @@ ANILIST_API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImEwOTQ1MGFlYWI
 
 api_url = "https://graphql.anilist.co"
 
-
 def get_anime_id(search):
     query = """
     query ($search: String) {
