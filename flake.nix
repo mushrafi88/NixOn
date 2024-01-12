@@ -6,10 +6,7 @@
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
       nur.url = "github:nix-community/NUR";
-      hyprpicker.url = "github:hyprwm/hyprpicker";
-      hypr-contrib.url = "github:hyprwm/contrib";
       flake-parts.url = "github:hercules-ci/flake-parts";
-      picom.url = "github:yaocccc/picom";
       hyprland = {
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";

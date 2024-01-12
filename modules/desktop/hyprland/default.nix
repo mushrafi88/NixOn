@@ -7,8 +7,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-    inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+    grimblast
+    hyprpicker
     swaylock-effects
     pamixer
   ];

@@ -8,7 +8,7 @@ let
     					sleep 10m
         				kitty -e bash -c " 
         				hyprctl dispatch movetoworkspacesilent 10 
-                nix-shell $HOME/.config/animdl/animdl.nix 
+                        nix-shell $HOME/.config/animdl/animdl.nix 
         				" 
         				sleep 6h  
         			done
@@ -18,15 +18,13 @@ let
   anime_list_update = pkgs.writeShellScriptBin "anime_list_update" '' 
 #!/usr/bin/env bash 
 
-ANIME_DIRECTORY="$ANIME_DOWNLOAD_FOLDER"  # Replace with your anime directory path
-
-inotifywait -m -e delete --format '%w%f' "$ANIME_DIRECTORY" -r | while read -r FILE
+inotifywait -m -e delete --format '%w%f' "$ANIME_DOWNLOAD_FOLDER" -r | while read -r FILE
 do
     # Check if the deleted file is a video
     if [[ "$FILE" =~ \.(mp4|mkv|ts|avi)$ ]]; then
         # Parse the anime name and episode number from the deleted file's path
         ANIME_NAME=$(basename "$(dirname "$FILE")")
-        EPISODE_NUMBER=$(echo "$FILE" | grep -oP '(?<=E)[0-9]+')
+        EPISODE_NUMBER=$(echo "$FILE" | grep -oP '(E|Episode\s|episode)[0-9]+' | grep -oP '[0-9]+')
         $HOME/.config/animdl/anilist_update.py "$ANIME_NAME" "$EPISODE_NUMBER"  # Replace with your Python script path # Replace with your Python script path
     fi
 done

@@ -37,7 +37,7 @@ in
           config.allowUnfree = true;
           overlays =
             [
-              inputs.picom.overlays.default
+             # inputs.picom.overlays.default
             ]
             ++ (import ../overlays);
         };

@@ -30,9 +30,9 @@ file="$ANIME_DOWNLOAD_FOLDER/episode.txt"
 for key in "${!anime_series[@]}"; do
     anime_name="${anime_series[$key]}"
     anime_num=$(cat "$file" | grep -iE "$key" | awk '{print $NF}')
-    anime_num=$((10#$anime_num + 1))
+    anime_num=$(($anime_num + 1))
 
-    ./ani-cli -d -e "$anime_num" "$anime_name"
+    $HOME/.config/animdl/ani-cli -d -e "$anime_num" "$anime_name"
 done
 
 # Update anilist
