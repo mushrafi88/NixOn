@@ -180,6 +180,7 @@
       syncthing
       conda
       helvum
+      swayimg
     ];
   };
 

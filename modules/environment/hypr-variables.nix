@@ -7,9 +7,9 @@
       BROWSER = "firefox";
       TERMINAL = "kitty";
       GTK_THEME = "Dracula";
-      GTK_IM_MODULE = "ibus";
-      QT_IM_MODULE = "ibus";
-      XMODIFIERS = "@im=ibus";
+      #GTK_IM_MODULE = "wayland";
+      #QT_IM_MODULE = "wayland";
+      #XMODIFIERS = "@im=ibus";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_SCALE_FACTOR = "1";
       MOZ_ENABLE_WAYLAND = "1";

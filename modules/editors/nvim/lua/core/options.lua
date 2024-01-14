@@ -9,7 +9,7 @@ opt.number = true
 opt.relativenumber = true
 opt.cursorline = false
 opt.cursorlineopt='number'
-opt.wrap = false
+opt.wrap = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.tabstop = 4
@@ -27,6 +27,8 @@ opt.termguicolors = true
 opt.scrolloff = 8
 opt.updatetime = 50
 opt.cursorline = true
+opt.linebreak = true
+opt.breakindent = true
 vim.api.nvim_create_autocmd("FileType", { --Set indentation to 2 spaces for nix files
 	pattern = "nix",
 	command = "setlocal shiftwidth=2 tabstop=2"
