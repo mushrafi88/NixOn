@@ -1,7 +1,21 @@
 { config, lib, pkgs, ... }:
 
 {
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth={
+    enable = true;
+    powerOnBoot = true;
+    package = pkgs.bluez;
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        FastConnectable = true;
+        Experimental = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
   hardware.pulseaudio = {
     enable = false;
     package = pkgs.pulseaudioFull;
@@ -9,6 +23,5 @@
   load-module module-switch-on-connect
 ";
   };
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 }
