@@ -7,6 +7,8 @@
       mpc-cli
       mpd
       ncmpcpp
+      musikcube
+      termusic
     ];
   };
   programs = {
