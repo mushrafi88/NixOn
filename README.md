@@ -1,6 +1,6 @@
 # NixOn: Your NixOS Flake-Based Installation
 
-Welcome to the NixOn repository, your go-to resource for a flake-based NixOS configuration. This project aims to simplify the process of setting up a NixOS environment, leveraging the power of Nix Flakes for reproducible and declarative system configurations.
+Welcome to my nixos repository. 
 
 ## Introduction
 
