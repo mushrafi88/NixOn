@@ -154,6 +154,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      gpt4all-chat
       libnotify
       wl-clipboard
       wlr-randr
@@ -165,7 +166,6 @@
       pkgs.xorg.xeyes
       glfw-wayland
       xwayland
-      pkgs.qt6.qtwayland
       polkit_gnome
       networkmanagerapplet
       wev

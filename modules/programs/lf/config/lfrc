@@ -172,7 +172,7 @@ map <c-j> push :aj<space>
 map / :broot_jump
 
 map ga cd /mnt/media_m/Anime/Airing  
-map gs cd /mnt/study/research/sivr/game_theoretic_simulation_of_double_strain_disease/elsevier_paper
+map gs cd /mnt/study/research/
 map gd cd /mnt/downloads 
 map gh cd /home/venerable_white 
 map gc cd ~/.config

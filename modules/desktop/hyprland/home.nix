@@ -144,9 +144,9 @@
                                                                focus_on_activate = true
                                                                }
 
-                                                               device:epic mouse V1 {
-                                                               sensitivity = -0.5
-                                                               }
+                                                               #device:epic mouse V1 {
+                                                              # sensitivity = -0.5
+                                                              # }
 
                                                                bind = $mainMod, Return, exec, kitty
                                                                bind = CTRL ALT, t, exec, kitty --class="termfloat"
