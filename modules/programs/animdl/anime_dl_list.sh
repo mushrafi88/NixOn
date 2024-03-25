@@ -2,14 +2,11 @@
 
 # Define the list of anime series
 declare -A anime_series=(
-    ["frieren"]="sousou no frieren"
-    ["kusuriya"]="kusuriya no hitorigoto"
     ["mahou"]="mahou shoujo ni akogarete"
-    ["slave"]="Mato Seihei no Slave"
     ["michibiku"]="Tsuki ga Michibiku Isekai Douchuu 2nd Season"
     ["exorcist"]="Ao no Exorcist: Shimane Illuminati-hen"
     ["tomozaki"]="Jaku-Chara Tomozaki-kun 2nd STAGE"
-    ["shangrila"]="Shangri-La Frontier"
+    ["shangrila"]="Shangri La Frontier"
 )
 
 file="$ANIME_DOWNLOAD_FOLDER/episode.txt"

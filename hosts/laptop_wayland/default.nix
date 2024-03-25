@@ -13,7 +13,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
   programs.zsh.enable = true;
   users.users.venerable_white = {
@@ -154,7 +154,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      gpt4all-chat
       libnotify
       wl-clipboard
       wlr-randr
