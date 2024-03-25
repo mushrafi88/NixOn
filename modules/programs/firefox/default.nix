@@ -3,9 +3,8 @@
 {
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts.packages =  [ pkgs.tridactyl-native ] ;
+    #nativeMessagingHosts.packages =  [ pkgs.tridactyl-native ] ;
     #nativeMessagingHosts.tridactyl = true;
-    nativeMessagingHosts.tridactyl = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       cfg = {
         # Tridactyl native connector
