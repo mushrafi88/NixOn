@@ -26,6 +26,7 @@
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
       nodePackages_latest.bash-language-server
+      python312Packages.jedi-language-server
       # rnix-lsp
       # nil
       nixd

@@ -33,10 +33,14 @@
       eza
       gcc
       clang
+      cmake
       zig
-      p7zip
       atool
+      p7zip
       unzip
+      rar 
+      unrar
+      zip
       ffmpeg
       ffmpegthumbnailer
       glib
@@ -44,19 +48,15 @@
       pciutils
       gdb
       killall
-      zip
-      rar
       broot
       pandoc
       bat
       mediainfo
-      unrar
       socat
       acpi
       inotify-tools
       python311
       python311Packages.pip
-      cmake
     ];
   };
   services.dbus.enable = true;

@@ -61,9 +61,6 @@ local plugins = {
     "windwp/nvim-ts-autotag",                                                                               --Auto tags for HTML
     "norcalli/nvim-colorizer.lua",                                                                          --Visualize Hex/RGB/etc
     "lewis6991/gitsigns.nvim",                                                                              --Shows deletions/additions/modifications if in git repo
-    "tpope/vim-fugitive",                                                                                   --Git command integration
-    "xiyaowong/transparent.nvim",                                                                           --Transparency Toggle
-    "andweeb/presence.nvim",                                                                                --Discord Rich Presence
     "numToStr/Comment.nvim",                                                                                --Easy full line or selection commenting out
     { "folke/which-key.nvim",            event = "VeryLazy" },                                              --Shows key combinations if youre dumb
     { 'windwp/nvim-autopairs',           event = "InsertEnter" },                                           --Automatic pairs for braces, brackets, quotes, etc.
