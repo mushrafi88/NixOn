@@ -36,7 +36,7 @@ local api = vim.api
 
 diagnostic.config({
     virtual_text = true,
-    severity_sort = true,
+    severity_sort = false,
     underline = true,
 })
 

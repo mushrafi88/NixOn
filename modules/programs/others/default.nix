@@ -14,6 +14,7 @@
       micromamba
       brave
       calcurse
+      floorp-unwrapped
     ];
   };
 }
