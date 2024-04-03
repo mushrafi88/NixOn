@@ -49,4 +49,6 @@ After installation, your system will be configured according to the specificatio
 1. Edit the flake.nix or other relevant configuration files in the repository.
 2. Rebuild your system configuration using the `nixos-rebuild switch --flake .#` command to apply changes.
 
+## Post-Installation Tasks
+
 
