@@ -26,7 +26,7 @@ cmd open ${{
         text/*|application/json) $EDITOR "$f";;
         application/pdf) setsid -f org.kde.okular $fx >/dev/null 2>&1 ;;
         video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-        image/*) setsid -f imv $f -quiet >/dev/null 2>&1 ;;
+        image/*) setsid -f nsxiv "$f" -quiet >/dev/null 2>&1 ;;
         text/*|application/txt) $EDITOR "$f";;
         text/*|application/lua) $EDITOR "$f";;
         text/*|application/sh) $EDITOR "$f";;

@@ -17,6 +17,6 @@
     home-manager.enable = true;
   };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "23.11";
   home.language.base = "en_US.UTF-8";
 }

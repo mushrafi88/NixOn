@@ -104,7 +104,7 @@
                                                                # dim_strength = #0.0 ~ 1.0
                                                                col.shadow = rgba(1a1a1aee)
                      										  blur {
-                     											  enabled = true 
+                     											  enabled = false 
                      											  size = 1 
                      											  passes = 3 
                      											  new_optimizations = true 
@@ -326,11 +326,11 @@
                                                                windowrule=float,title:^(Picture-in-Picture)$
                                                                windowrule=size 960 540,title:^(Picture-in-Picture)$
                                                                windowrule=move 25%-,title:^(Picture-in-Picture)$
-                                                               windowrule=float,imv
-                                                               windowrule=move 25%-,imv
-                                                               windowrule=size 960 540,imv
+                                                               windowrule=float,nsxiv 
+                                                               windowrule=move 25%-,nsxiv 
+                                                               windowrule=size 960 540,nsxiv 
                                                                windowrule=fullscreen,mpv
-                           									windowrule=fullscreen,nsxiv
+                           									                   #windowrule=fullscreen,nsxiv
                                                                windowrule=float,danmufloat
                                                                windowrule=move 25%-,danmufloat
                                                                windowrule=pin,danmufloat
@@ -351,7 +351,7 @@
                                                                windowrulev2 = opacity 1.0 1.0,class:^(librewolf)$
                                                                windowrulev2= workspace 3,class:^(firefox)$
                                                                windowrulev2 = opacity 0.98 0.98,class:^(firefox)$
-                                                               windowrulev2 = opacity 0.7 0.7,class:^(kitty)$
+                                                               windowrulev2 = opacity 0.85 0.85,class:^(kitty)$
                                                                windowrulev2 = workspace 4,class:^(org.kde.okular)$
                                                                windowrulev2 = opacity 0.97 0.97,class:^(org.kde.okular)$
                                                                windowrulev2 = workspace 10 silent,class:^(transmission-gtk)$
