@@ -191,6 +191,7 @@
       syncthing
       conda
       helvum
+      gnome.gnome-disk-utility
     ];
   };
 
