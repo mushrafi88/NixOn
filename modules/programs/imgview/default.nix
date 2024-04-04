@@ -1,8 +1,6 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
 {
-  home = {
-    packages = with pkgs; [
-      nsxiv
-    ];
-  };
+  home.packages = [ pkgs.swayimg ];
+  #home.file.".config/sioyek".source = ./config;
 }

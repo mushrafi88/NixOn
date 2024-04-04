@@ -179,7 +179,6 @@
       syncthing
       conda
       helvum
-      swayimg
     ];
   };
 

@@ -10,7 +10,7 @@
   ./rofi
   ./sioyek
   ./transmission
-  #./okular
+  ./okular
   ./firefox
   ./imgview
   ./mpv

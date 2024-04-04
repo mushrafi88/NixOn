@@ -330,7 +330,7 @@
                                                                windowrule=move 25%-,nsxiv 
                                                                windowrule=size 960 540,nsxiv 
                                                                windowrule=fullscreen,mpv
-                           									                   #windowrule=fullscreen,nsxiv
+                           									                   windowrule=fullscreen,swayimg
                                                                windowrule=float,danmufloat
                                                                windowrule=move 25%-,danmufloat
                                                                windowrule=pin,danmufloat
