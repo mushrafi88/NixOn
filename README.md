@@ -39,13 +39,13 @@ nix-shell -p git vim
 3. **Setting up disks**: Properly link the disk addresses to the flake 
 ```bash 
 nixos-generate-config --show-hardware-config
-vim NixOn/hosts/laptop_wayland/hardware-configuration.nix 
+vim hosts/laptop_wayland/hardware-configuration.nix 
 ```
 4. **Setting up Channels**: update the nix-channels to unstable 
 ```bash
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-sudo nix-channel update 
+sudo nix-channel --update 
 ```
 5. **Applying the Configuration**: Use the `nixos-rebuild` command to apply the flake configuration to your system:
 
