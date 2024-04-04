@@ -70,7 +70,7 @@
                   alias ff='find -L | fzf'
                   alias q='exit'
       			alias animdl_start='nix-shell $HOME/NixOn/environment/animdl.nix'
-            	  pfetch
+            	  #yafetch
     '';
   };
 
