@@ -83,8 +83,6 @@ cmd extract ${{
   esac
 }}
 
-
-
 cmd yank-dirname $dirname -- "$f" | head -c-1 | wl-copy
 cmd yank-path $printf '%s' "$fx" | wl-copy
 cmd yank-basename $basename -a -- $fx | head -c-1 | wl-copy
@@ -132,13 +130,9 @@ cmd broot_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-
 cmd aj %lf -remote "send $id cd '$(autojump $1)'"
 
-
-
 %[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
-
 
 # Bindings
 map d
@@ -172,9 +166,10 @@ map <c-j> push :aj<space>
 map / :broot_jump
 
 map ga cd /mnt/media_m/Anime/Airing  
-map gs cd /mnt/study/research/
+map gs cd /mnt/study/Masters 
+map gr cd /mnt/research 
 map gd cd /mnt/downloads 
 map gh cd /home/venerable_white 
 map gc cd ~/.config
 map gv cd ~/Videos
-map gw cd ~/My\ machine\ learning\ projects
+map gp cd ~/Pictures 
