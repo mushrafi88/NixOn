@@ -26,6 +26,9 @@ Before you begin with NixOn, ensure you have:
 ## Installation Instructions
 
 1. **Prepare Your System**: Ensure Nix is installed on your system. If you're new to Nix, follow the official [Nix installation guide](https://nixos.org/download.html).
+```bash
+nix-shell -p git vim 
+```
 
 2. **Clone the Repository**: Clone this repository to your local machine using Git:
 
@@ -33,10 +36,21 @@ Before you begin with NixOn, ensure you have:
    git clone https://github.com/mushrafi88/NixOn.git
    cd NixOn
    ```
-
-3. **Applying the Configuration**: Use the `nixos-rebuild` command to apply the flake configuration to your system:
+3. **Setting up disks**: Properly link the disk addresses to the flake 
+```bash 
+nixos-generate-config --show-hardware-config
+vim NixOn/hosts/laptop_wayland/hardware-configuration.nix 
+```
+4. **Setting up Channels**: update the nix-channels to unstable 
+```bash
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+sudo nix-channel update 
+```
+5. **Applying the Configuration**: Use the `nixos-rebuild` command to apply the flake configuration to your system:
 
    ```bash
+   NIX_CONFIG="experimental-features = nix-command flakes"
    sudo nixos-rebuild switch --flake .#nixon
    ```
 
