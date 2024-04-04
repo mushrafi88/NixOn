@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.libsForQt5.okular ];
-  #home.file.".config/sioyek".source = ./config;
+  home.packages = with pkgs; [ 
+                libsForQt5.okular
+                ];
+  home.file.".config/okularrc".source = ./okularrc;
+  home.file.".config/qt5ct/qt5ct.conf".source = ./qt5ct.conf;
+
 }

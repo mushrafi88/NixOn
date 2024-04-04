@@ -15,14 +15,15 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
+
   programs.zsh.enable = true;
+
   users.users.venerable_white = {
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "video" "audio" ];
     packages = (with pkgs; [
       tdesktop
-      thunderbird
     ]) ++ (with config.nur.repos;[
       # linyinfeng.icalingua-plus-plus
     ]);
@@ -54,13 +55,24 @@
     xkb.layout = "us";
     xkb.options = "caps:escape";
   };
-  console.useXkbConfig = true;
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";                          # or us/azerty/etc
+  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ openbangla-keyboard ];
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
     };
   };
 
