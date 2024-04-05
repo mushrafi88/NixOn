@@ -41,4 +41,7 @@ ln -s /mnt/media_m/Anime/Airing ~/Videos/
 ```
 doas nix-collect-garbage -d 
 ```
-
+## Incase of git permission error 
+```bash
+git config --global --add safe.directory $dirname
+```
