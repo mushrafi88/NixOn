@@ -1,4 +1,5 @@
 [
   ./bash
   ./zsh
+  ./direnv 
 ]
