@@ -2,5 +2,5 @@
 
 {
   home.packages = [ pkgs.swayimg ];
-  #home.file.".config/sioyek".source = ./config;
+  home.file.".config/swayimg/config".source = ./config;
 }
