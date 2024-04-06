@@ -53,7 +53,7 @@ doas bluetoothctl
 [bluetooth]# agent on
 [bluetooth]# default-agent
 [bluetooth]# scan on
-[NEW] Device XX:XX:XX:XX:XX:XX David's AirPods
+[NEW] Device XX:XX:XX:XX:XX:XX HONOR CHOICE AM61 PRO 
 [bluetooth]# scan off
 [bluetooth]# trust XX:XX:XX:XX:XX:XX
 [bluetooth]# pair XX:XX:XX:XX:XX:XX
