@@ -89,7 +89,7 @@
                                                                # cursor_inactive_timeout = 0
                                                                decoration {
                                                                active_opacity = 1.0 
-                                                               inactive_opacity = 0.93 
+                                                               inactive_opacity = 1.0
                                                                fullscreen_opacity = 1.0
                                                                rounding = 1
 
@@ -108,7 +108,7 @@
                      											  size = 1 
                      											  passes = 3 
                      											  new_optimizations = true 
-                     											  xray = true 
+                     											  xray = true   
                      											  ignore_opacity = false
                      										  }
                                                                }
@@ -350,10 +350,10 @@
 
                                                                windowrulev2 = opacity 1.0 1.0,class:^(librewolf)$
                                                                windowrulev2= workspace 3,class:^(firefox)$
-                                                               windowrulev2 = opacity 0.98 0.98,class:^(firefox)$
-                                                               windowrulev2 = opacity 0.85 0.85,class:^(kitty)$
+                                                               windowrulev2 = opacity 1.0 1.0,class:^(firefox)$
+                                                               windowrulev2 = opacity 0.9 0.9,class:^(kitty)$
                                                                windowrulev2 = workspace 4,class:^(org.kde.okular)$
-                                                               windowrulev2 = opacity 0.97 0.97,class:^(org.kde.okular)$
+                                                               windowrulev2 = opacity 0.98 0.98,class:^(org.kde.okular)$
                                                                windowrulev2 = workspace 10 silent,class:^(transmission-gtk)$
                                                                windowrulev2 = opacity 0.88 0.88, class:^(transmission-gtk)$
                                                                windowrulev2 = workspace 9 silent,class:^(discord)$
