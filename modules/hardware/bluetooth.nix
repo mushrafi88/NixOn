@@ -4,7 +4,7 @@
   hardware.bluetooth={
     enable = true;
     powerOnBoot = true;
-    package = pkgs.bluez;
+    package = pkgs.bluez-experimental;
     settings = {
       General = {
         ControllerMode = "dual";
@@ -16,12 +16,6 @@
       };
     };
   };
-  hardware.pulseaudio = {
-    enable = false;
-    package = pkgs.pulseaudioFull;
-    extraConfig = "
-  load-module module-switch-on-connect
-";
-  };
+
   services.blueman.enable = true;
 }

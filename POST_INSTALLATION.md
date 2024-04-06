@@ -45,3 +45,18 @@ doas nix-collect-garbage -d
 ```bash
 git config --global --add safe.directory $dirname
 ```
+
+## Bluetooth Headphone setup 
+```bash
+doas bluetoothctl
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# default-agent
+[bluetooth]# scan on
+[NEW] Device XX:XX:XX:XX:XX:XX David's AirPods
+[bluetooth]# scan off
+[bluetooth]# trust XX:XX:XX:XX:XX:XX
+[bluetooth]# pair XX:XX:XX:XX:XX:XX
+[bluetooth]# connect XX:XX:XX:XX:XX:XX
+[bluetooth]# quit
+```
