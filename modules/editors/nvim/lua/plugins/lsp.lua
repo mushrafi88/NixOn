@@ -26,7 +26,7 @@ if not status then
 end
 
 require("luasnip.loaders.from_vscode").lazy_load() -- For friendly snippets, boilerplate JS, HTML, etc
-require'lspconfig'.jedi_language_server.setup{} 
+require'lspconfig'.jedi_language_server.setup{}
 
 -- for consistency
 local diagnostic = vim.diagnostic
@@ -88,6 +88,10 @@ lspconfig.jedi_language_server.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 })
+lspconfig.texlab.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 lspconfig.tsserver.setup({
     -- Javascript and Typescript
     on_attach = on_attach,
@@ -98,10 +102,6 @@ lspconfig.html.setup({
     capabilities = capabilities,
 })
 lspconfig.hls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 })
@@ -118,10 +118,6 @@ lspconfig.bashls.setup({
     capabilities = capabilities,
 })
 lspconfig.clangd.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-lspconfig.dockerls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 })

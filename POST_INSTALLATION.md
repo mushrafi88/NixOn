@@ -60,3 +60,9 @@ doas bluetoothctl
 [bluetooth]# connect XX:XX:XX:XX:XX:XX
 [bluetooth]# quit
 ```
+
+## Neovim Setup 
+run the below command in neovim 
+```
+:UpdateRemotePlugin
+```

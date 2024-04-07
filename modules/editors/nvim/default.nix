@@ -22,6 +22,8 @@
   home = {
     packages = with pkgs; [
       #-- LSP --#
+      yarp
+      texlab
       nodePackages_latest.typescript
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
