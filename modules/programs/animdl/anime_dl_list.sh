@@ -2,11 +2,18 @@
 
 # Define the list of anime series
 declare -A anime_series=(
-    ["mahou"]="mahou shoujo ni akogarete"
     ["michibiku"]="Tsuki ga Michibiku Isekai Douchuu 2nd Season"
-    ["exorcist"]="Ao no Exorcist: Shimane Illuminati-hen"
-    ["tomozaki"]="Jaku-Chara Tomozaki-kun 2nd STAGE"
-    ["shangrila"]="Shangri La Frontier"
+    ["konosuba"]="Kono Subarashii Sekai ni Shukufuku wo! 3"
+    ["mushoku_tensei"]="Mushoku Tensei II: Isekai Ittara Honki Dasu Part 2"
+    ["wind_breaker"]="Wind Breaker"
+    ["hananoi"]="Hananoi-kun to Koi no Yamai"
+    ["slime"]="Tensei Shitara Slime Datta Ken 3rd Season"
+    ["mahouka"]="Mahouka Koukou no Rettousei 3rd Season"
+    ["maou_elf"]="Maou no Ore ga Dorei Elf wo Yome ni Shitanda ga, Dou Medereba Ii?"
+    ["black_butler"]="Kuroshitsuji: Kishuku Gakkou-hen"
+    ["kimetsu_no_yaiba"]="Kimetsu no Yaiba: Hashira Geiko-hen"
+    ["kaiju_8"]="Kaijuu 8-gou"
+    ["yozakura_fam"]="Yozakura-san Chi no Daisakusen"
 )
 
 file="$ANIME_DOWNLOAD_FOLDER/episode.txt"
