@@ -37,7 +37,7 @@ require("luasnip").config.set_config({ -- Setting LuaSnip config
 require("luasnip.loaders.from_vscode").lazy_load() -- For friendly snippets, boilerplate JS, HTML, etc
 require'lspconfig'.jedi_language_server.setup{}
 require("luasnip.loaders.from_lua").lazy_load()
--- require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
+require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip_snippets/custom_lua/"})
 
 -- for consistency
 local diagnostic = vim.diagnostic
