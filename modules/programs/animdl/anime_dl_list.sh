@@ -1,35 +1,36 @@
 #!/usr/bin/env bash
 
-# Define the list of anime series
-declare -A anime_series=(
-    ["michibiku"]="Tsuki ga Michibiku Isekai Douchuu 2nd Season"
-    ["konosuba"]="Kono Subarashii Sekai ni Shukufuku wo! 3"
-    ["mushoku_tensei"]="Mushoku Tensei II: Isekai Ittara Honki Dasu Part 2"
-    ["wind_breaker"]="Wind Breaker"
-    ["hananoi"]="Hananoi-kun to Koi no Yamai"
-    ["slime"]="Tensei Shitara Slime Datta Ken 3rd Season"
-    ["mahouka"]="Mahouka Koukou no Rettousei 3rd Season"
-    ["maou_elf"]="Maou no Ore ga Dorei Elf wo Yome ni Shitanda ga, Dou Medereba Ii?"
-    ["black_butler"]="Kuroshitsuji: Kishuku Gakkou-hen"
-    ["kimetsu_no_yaiba"]="Kimetsu no Yaiba: Hashira Geiko-hen"
-    ["kaiju_8"]="Kaijuu 8-gou"
-    ["yozakura_fam"]="Yozakura-san Chi no Daisakusen"
-)
+# Define the path to the JSON file
+JSON_FILE="$ANIME_DOWNLOAD_FOLDER/anime_episodes.json"
 
-file="$ANIME_DOWNLOAD_FOLDER/episode.txt"
+# Loop through each anime series in the JSON file
+for key in $(jq -r '.anime_series | keys[]' "$JSON_FILE"); do
+    anime_name=$(jq -r ".anime_series[\"$key\"].title" "$JSON_FILE")
+    anime_num=$(jq -r ".anime_series[\"$key\"].episodes" "$JSON_FILE")
+    episode=$((anime_num + 1))
+    # Download the episode
+    "$HOME/.config/animdl/ani-cli" -d -e "$episode" "$anime_name"
 
-# Process each anime series
-for key in "${!anime_series[@]}"; do
-    anime_name="${anime_series[$key]}"
-    anime_num=$(cat "$file" | grep -iE "$key" | tr -d '\n' | tail -n 1 | awk '{print $NF}')
-    if ! [[ $anime_num =~ ^[0-9]+$ ]]; then 
-        echo "Error: Non-numeric value found: $anime_num"
-        # Handle error or continue to next iteration
-        continue
-    fi 
-    anime_num=$((10#$anime_num + 1))
-    echo "Checking for new episodes for ${anime_name}"
-    $HOME/.config/animdl/ani-cli -d -e "$anime_num" "$anime_name"
+    
+    # Check if the anime folder exists
+    if [ -d "$ANIME_DOWNLOAD_FOLDER/$anime_name" ]; then
+        # Find the highest episode number available in the anime folder
+        highest_episode=$(find "$ANIME_DOWNLOAD_FOLDER/$anime_name" -type f -name 'Episode *.mp4' | sed -nE 's|.*/Episode ([0-9]+)\.mp4$|\1|p' | sort -nr | head -n1)
+        if [ -n "$highest_episode" ]; then
+            # Compare the highest episode number with the current episode number
+            if [ "$highest_episode" -gt "$anime_num" ]; then
+                # Update the JSON file entry
+                jq --arg key "$key" --arg highest_episode "$highest_episode" '.anime_series[$key].episodes = $highest_episode' "$JSON_FILE" > tmp.json && mv tmp.json "$JSON_FILE"
+                echo "Episode $highest_episode of $anime_name downloaded successfully."
+                dunstify "$anime_name" "New episode $highest_episode available" -i "$HOME/.config/dunst/icon/love.png" -t 5000
+            else
+                echo "No new episodes available for $anime_name."
+            fi
+        else
+            echo "No episodes found for $anime_name."
+        fi
+    else
+        echo "Anime folder not found for $anime_name."
+    fi
 done
 
-bash $HOME/.config/animdl/anime_episode_update.sh

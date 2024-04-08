@@ -160,13 +160,13 @@ download() {
     case $1 in
         *m3u8*)
             if command -v "yt-dlp" >/dev/null; then
-                yt-dlp "$1" --no-skip-unavailable-fragments --fragment-retries infinite -N 16 -o "$ANIME_DOWNLOAD_FOLDER/$download_dir/${allanime_title}/$2.mp4"
+                yt-dlp "$1" --no-skip-unavailable-fragments --fragment-retries infinite -N 16 -o "$ANIME_DOWNLOAD_FOLDER/$download_dir/$anime_raw_name/$2.mp4"
             else
-                ffmpeg -loglevel error -stats -i "$1" -c copy "$ANIME_DOWNLOAD_FOLDER/$download_dir/${allanime_title}/$2.mp4"
+                ffmpeg -loglevel error -stats -i "$1" -c copy "$ANIME_DOWNLOAD_FOLDER/$download_dir/$anime_raw_name/$2.mp4"
             fi
             ;;
         *)
-            aria2c --enable-rpc=false --check-certificate=false --continue --summary-interval=0 -x 16 -s 16 "$1" --dir="$download_dir" -o "$ANIME_DOWNLOAD_FOLDER/${allanime_title}/$2.mp4" --download-result=hide
+            aria2c --enable-rpc=false --check-certificate=false --continue --summary-interval=0 -x 16 -s 16 "$1" --dir="$download_dir" -o "$ANIME_DOWNLOAD_FOLDER/$anime_raw_name/$2.mp4" --download-result=hide
             ;;
     esac
 }
@@ -309,7 +309,8 @@ while [ $# -gt 0 ]; do
             shift
             ;;
         -U | --update) update_script ;;
-        *) query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
+        *) anime_raw_name="$(printf "%s" "$anime_raw_name$1" | sed 's/ *$//')"
+           query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
     esac
     shift
 done
