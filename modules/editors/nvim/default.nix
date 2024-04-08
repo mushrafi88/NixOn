@@ -53,5 +53,5 @@
 
   home.file.".config/nvim/init.lua".source = ./init.lua;
   home.file.".config/nvim/lua".source = ./lua;
-  home.file.".config/latex_snippet".source = ./latex_snippet;
+  home.file.".config/nvim/LuaSnip_snippets".source = ./LuaSnip_snippets;
 }

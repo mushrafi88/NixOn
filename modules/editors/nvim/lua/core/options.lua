@@ -33,3 +33,8 @@ vim.api.nvim_create_autocmd("FileType", { --Set indentation to 2 spaces for nix 
 	pattern = "nix",
 	command = "setlocal shiftwidth=2 tabstop=2"
 })
+
+-- vimtex settings 
+vim.g.vimtex_view_method = 'zathura' 
+vim.g.vimtex_view_general_viewer = 'okular'
+
