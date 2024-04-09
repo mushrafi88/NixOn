@@ -396,6 +396,7 @@
                                                    		    exec-once = anime_dl_env &
                                        						exec-once = yt_music &
                                  							    exec-once = dunst_todo &
+                                                  exec-once = snippets_cp &
                												
 
                                                                #-----------------#

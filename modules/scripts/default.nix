@@ -11,5 +11,6 @@
     [ ./bluetooth_headphone.nix ] ++
     [ ./yt_music.nix ] ++
     [ ./animdl.nix ] ++
+    [ ./snippets_cp.nix ] ++
     [ ./todo.nix ];
 }
