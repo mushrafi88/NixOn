@@ -23,15 +23,15 @@ ANIME_FOLDER="/mnt/media_m/Anime"
 # Function to update Anilist
 update_anilist() {
     local FILE="$1"
-    local ANIME_NAME
-    local EPISODE_NUMBER
-    
+      
     # Check if the deleted file is a video
     if [[ "$FILE" =~ \.(mp4|mkv|ts|avi)$ ]]; then
         # Parse the anime name and episode number from the deleted file's path
         ANIME_NAME=$(basename "$(dirname "$FILE")")
+        echo $ANIME_NAME 
         EPISODE_NUMBER=$(echo "$FILE" | grep -oP '(E|Episode\s|episode)[0-9]+' | grep -oP '[0-9]+')
-        $HOME/.config/animdl/anilist_update.py "$ANIME_NAME" "$EPISODE_NUMBER"  # Replace with your Python script path
+        echo $EPISODE_NUMBER 
+        $HOME/.config/animdl/anilist_update.py "$ANIME_NAME" "$EPISODE_NUMBER"
     fi
 }
 
