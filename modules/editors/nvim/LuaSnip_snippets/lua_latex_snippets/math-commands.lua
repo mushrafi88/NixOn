@@ -40,24 +40,24 @@ local postfix_snippet = require("luasnip-latex-snippets.luasnippets.tex.utils.sc
 
 M = {
     -- superscripts
-    autosnippet({ trig = "sr", wordTrig = false },
+    autosnippet({ trig = "sq", wordTrig = true, snippetType = "autosnippet" },
     { t("^2") },
     { condition = tex.in_math, show_condition = tex.in_math }),
-	autosnippet({ trig = "cb", wordTrig = false },
+	autosnippet({ trig = "cb", wordTrig = false , snippetType = "autosnippet"},
     { t("^3") },
     { condition = tex.in_math, show_condition = tex.in_math }),
 	autosnippet({ trig = "compl", wordTrig = false },
     { t("^{c}") },
     { condition = tex.in_math, show_condition = tex.in_math }),
-	autosnippet({ trig = "vtr", wordTrig = false },
+	autosnippet({ trig = "vtr", wordTrig = false , snippetType = "autosnippet"},
     { t("^{T}") },
     { condition = tex.in_math, show_condition = tex.in_math }),
-	autosnippet({ trig = "inv", wordTrig = false },
+	autosnippet({ trig = "inv", wordTrig = false , snippetType = "autosnippet"},
     { t("^{-1}") },
     { condition = tex.in_math, show_condition = tex.in_math }),
 
     -- fractions
-    autosnippet({ trig='//', name='fraction', dscr="fraction (general)"},
+    autosnippet({ trig='//', name='fraction', dscr="fraction (general)", snippetType = "autosnippet"},
     fmta([[
     \frac{<>}{<>}<>
     ]],
@@ -72,7 +72,7 @@ M = {
     end), i(1), i(0) }),
     { condition = tex.in_math, show_condition = tex.in_math }),
 
-	autosnippet({ trig = "lim", name = "lim(sup|inf)", dscr = "lim(sup|inf)" },
+	autosnippet({ trig = "lim", name = "lim(sup|inf)", dscr = "lim(sup|inf)", snippetType = "autosnippet" },
     fmta([[ 
     \lim<><><>
     ]],
@@ -81,7 +81,7 @@ M = {
 	i(0)}),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
-	autosnippet({ trig = "sum", name = "summation", dscr = "summation" },
+	autosnippet({ trig = "sum", name = "summation", dscr = "summation", snippetType = "autosnippet" },
 	fmta([[
     \sum<> <>
     ]],
@@ -95,7 +95,7 @@ M = {
 	{ c(1, {fmta([[_{<>}^{<>}]], {i(1, "i = 0"), i(2, "\\infty")}), t("")}), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
-	autosnippet({ trig = "cprod", name = "coproduct", dscr = "coproduct" },
+	autosnippet({ trig = "cprod", name = "coproduct", dscr = "coproduct", snippetType = "autosnippet" },
     fmta([[
     \coprod<> <>
     ]],
@@ -109,7 +109,7 @@ M = {
 	{ c(1, { r(1, ""), sn(nil, { r(1, ""), t(" \\mid "), i(2) }), sn(nil, { r(1, ""), t(" \\colon "), i(2) })}), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
-	autosnippet({ trig = "nnn", name = "bigcap", dscr = "bigcap" },
+	autosnippet({ trig = "nnn", name = "bigcap", dscr = "bigcap", snippetType = "autosnippet" },
 	fmta([[
     \bigcap<> <>
     ]],
@@ -123,54 +123,290 @@ M = {
 	{ c(1, {fmta([[_{<>}^{<>}]], {i(1, "i = 0"), i(2, "\\infty")}), t("")}), i(0) }),
     { condition = tex.in_math, show_condition = tex.in_math }),
 
-	autosnippet({ trig = "bnc", name = "binomial", dscr = "binomial (nCR)" },
+	autosnippet({ trig = "bnc", name = "binomial", dscr = "binomial (nCR)", snippetType = "autosnippet" },
 	fmta([[
     \binom{<>}{<>}<>
     ]],
     { i(1), i(2), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
-    autosnippet({ trig='pd', name='partial', dscr='partial derivative'},
+    autosnippet({ trig='pd', name='partial', dscr='partial derivative', snippetType = "autosnippet"},
     fmta([[
     \frac{\partial <>}{\partial <>}<>
     ]],
     { i(1), i(2), i(0) }),
-    { condition = tex.in_math, show_condition = tex.in_math }),
+    { condition = tex.in_math, show_condition = tex.in_math }), 
+
+autosnippet({
+    trig = 'arcsin',
+    name = 'arcsin',
+    dscr = 'arcsin function',
+},
+fmta([[
+    \arcsin{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'sin',
+    name = 'sin',
+    dscr = 'sin function',
+},
+fmta([[
+    \sin{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'arccos',
+    name = 'arccos',
+    dscr = 'arccos function',
+},
+fmta([[
+    \arccos{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'cos',
+    name = 'cos',
+    dscr = 'cosine function',
+},
+fmta([[
+    \cos{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'arctan',
+    name = 'arctan',
+    dscr = 'arctan function',
+},
+fmta([[
+    \arctan{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'tan',
+    name = 'tan',
+    dscr = 'tangent function',
+},
+fmta([[
+    \tan{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'arccot',
+    name = 'arccot',
+    dscr = 'arccotangent function',
+},
+fmta([[
+    \arccot{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'cot',
+    name = 'cot',
+    dscr = 'cotangent function',
+},
+fmta([[
+    \cot{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'arcsec',
+    name = 'arcsec',
+    dscr = 'arcsecant function',
+},
+fmta([[
+    \arcsec{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'sec',
+    name = 'sec',
+    dscr = 'secant function',
+},
+fmta([[
+    \sec{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'arccsc',
+    name = 'arccsc',
+    dscr = 'arccosecant function',
+},
+fmta([[
+    \arccsc{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'csc',
+    name = 'csc',
+    dscr = 'cosecant function',
+},
+fmta([[
+    \csc{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+-- Add similar snippets for other functions such as log, ln, exp, abs, etc.
+
+autosnippet({
+    trig = 'sinh',
+    name = 'sinh',
+    dscr = 'hyperbolic sine function',
+},
+fmta([[
+    \sinh{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'cosh',
+    name = 'cosh',
+    dscr = 'hyperbolic cosine function',
+},
+fmta([[
+    \cosh{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'tanh',
+    name = 'tanh',
+    dscr = 'hyperbolic tangent function',
+},
+fmta([[
+    \tanh{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'coth',
+    name = 'coth',
+    dscr = 'hyperbolic cotangent function',
+},
+fmta([[
+    \coth{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'sech',
+    name = 'sech',
+    dscr = 'hyperbolic secant function',
+},
+fmta([[
+    \sech{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'csch',
+    name = 'csch',
+    dscr = 'hyperbolic cosecant function',
+},
+fmta([[
+    \csch{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'log',
+    name = 'log',
+    dscr = 'log function',
+},
+fmta([[
+    \log{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'ln',
+    name = 'ln',
+    dscr = 'ln function',
+},
+fmta([[
+    \ln{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'abs',
+    name = 'abs',
+    dscr = 'Absolute value',
+},
+fmta([[
+    \abs{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
+autosnippet({
+    trig = 'exp',
+    name = 'exp',
+    dscr = 'Exponential function',
+},
+fmta([[
+    \exp{<>}<>
+]],
+{i(1), i(0)}),
+{condition = tex.in_math, show_condition = tex.in_math}),
+
 }
 
 -- Auto backslashes
 local auto_backslash_specs = {
-	"arcsin",
-	"sin",
-	"arccos",
-	"cos",
-	"arctan",
-	"tan",
-	"cot",
-	"csc",
-	"sec",
-	"log",
-	"ln",
-	"exp",
-	"ast",
-	"star",
-	"perp",
-	"sup",
-	"inf",
-	"det",
-	"max",
-	"min",
-	"argmax",
-	"argmin",
-    "deg",
-    "angle",
+	ast = { context = { name = "ast" }, command = [[\ast]] },
+	star = { context = { name = "star" }, command = [[\star]] },
+	perp = { context = { name = "perp" }, command = [[\perp]] },
+	inf = { context = { name = "inf" }, command = [[\infty]] },
+	det = { context = { name = "det" }, command = [[\det]] },
+	max = { context = { name = "max" }, command = [[\max]] },
+	min = { context = { name = "min" }, command = [[\min]] },
+	argmax = { context = { name = "argmax" }, command = [[\argmax]] },
+	argmin = { context = { name = "argmin" }, command = [[\argmin]] },
+	deg = { context = { name = "deg" }, command = [[\deg]] },
+	angle = { context = { name = "angle" }, command = [[\angle]] }
 }
 
 local auto_backslash_snippets = {}
-for _, v in ipairs(auto_backslash_specs) do
-    table.insert(auto_backslash_snippets, auto_backslash_snippet({ trig = v }, { condition = tex.in_math }))
+for k, v in pairs(auto_backslash_specs) do
+	table.insert(
+		auto_backslash_snippets,
+		symbol_snippet(vim.tbl_deep_extend("keep", { trig = k }, v.context), v.command, { condition = tex.in_math })
+	)
 end
 vim.list_extend(M, auto_backslash_snippets)
+
 
 -- Symbols/Commands
 -- TODO: fix symbols once font works
@@ -365,6 +601,7 @@ for k, v in pairs(single_command_math_specs) do
 		)
 	)
 end
+
 vim.list_extend(M, single_command_math_snippets)
 
 local postfix_math_specs = {

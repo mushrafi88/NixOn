@@ -61,11 +61,12 @@ M = {
 }
 
 local single_command_specs = {
-	sec = {
+	csec = {
 		context = {
 			name = "section",
 			dscr = "section",
             priority = 250,
+            snippetType = "autosnippet"
 		},
 		command = [[\section]],
 		ext = { label = true, short = "sec" },
@@ -133,7 +134,8 @@ local single_command_specs = {
 			name = "textbf",
 			dscr = "bold text",
 			hidden = true,
-		},
+            snippetType = "autosnippet"
+        },
 		command = [[\textbf]],
 	},
 	it = {
@@ -141,6 +143,7 @@ local single_command_specs = {
 			name = "textit",
 			dscr = "italic text",
 			hidden = true,
+            snippetType = "autosnippet"
 		},
 		command = [[\textit]],
 	},
@@ -149,6 +152,8 @@ local single_command_specs = {
 			name = "texttt",
 			dscr = "monospace text",
 			hidden = true,
+            snippetType = "autosnippet"
+
 		},
 		command = [[\texttt]],
 	},
@@ -166,6 +171,8 @@ local single_command_specs = {
 			name = "underline (text)",
 			dscr = "underlined text in non-math mode",
 			hidden = true,
+            snippetType = "autosnippet"
+
 		},
 		command = [[\underline]],
 	},
@@ -174,6 +181,7 @@ local single_command_specs = {
 			name = "overline (text)",
 			dscr = "overline text in non-math mode",
 			hidden = true,
+            snippetType = "autosnippet"
 		},
 		command = [[\overline]],
 	},
@@ -186,7 +194,7 @@ for k, v in pairs(single_command_specs) do
 		single_command_snippet(
 			vim.tbl_deep_extend("keep", { trig = k }, v.context),
 			v.command,
-			v.opt or { condition = tex.in_text },
+			v.opt or {  },
 			v.ext or {}
 		)
 	)
