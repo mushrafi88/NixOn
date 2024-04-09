@@ -74,11 +74,9 @@ M = {
 
 	autosnippet({ trig = "lim", name = "lim(sup|inf)", dscr = "lim(sup|inf)", snippetType = "autosnippet" },
     fmta([[ 
-    \lim<><><>
+    \lim_{{<>} \to {<>}} <>  
     ]],
-	{c(1, { t(""), t("sup"), t("inf") }),
-	c(2, { t(""), fmta([[_{<> \to <>}]], { i(1, "n"), i(2, "\\infty") }) }),
-	i(0)}),
+	{ i(2), i(0), i(1) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
 	autosnippet({ trig = "sum", name = "summation", dscr = "summation", snippetType = "autosnippet" },
@@ -130,12 +128,42 @@ M = {
     { i(1), i(2), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
-    autosnippet({ trig='pd', name='partial', dscr='partial derivative', snippetType = "autosnippet"},
+    autosnippet({ trig='pd1', name='partial_1', dscr='first order partial derivative', snippetType = "autosnippet"},
     fmta([[
     \frac{\partial <>}{\partial <>}<>
     ]],
     { i(1), i(2), i(0) }),
-    { condition = tex.in_math, show_condition = tex.in_math }), 
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
+     autosnippet({ trig='pd2', name='partial_2', dscr='second order partial derivative', snippetType = "autosnippet"},
+    fmta([[
+    \frac{\partial^2 <>}{\partial <>^2}<>
+    ]],
+    { i(1), i(2), i(0) }),
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
+
+    autosnippet({ trig='ddx', name='derivative_1', dscr='first order derivative', snippetType = "autosnippet"},
+    fmta([[
+    \frac{d<>}{d<>}<>
+    ]],
+    { i(1), i(2), i(0) }),
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
+     autosnippet({ trig='d2dx', name='derivative_2', dscr='second order derivative', snippetType = "autosnippet"},
+    fmta([[
+    \frac{d^2<>}{d<>^2}<>
+    ]],
+    { i(1), i(2), i(0) }),
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
+    autosnippet({ trig='integ', name='integ_1', dscr='Single Variable Integral', snippetType = "autosnippet"},
+    fmta([[
+    \int_{<>}^{<>} <>\,dx 
+    ]],
+    { i(2), i(0), i(1) }),
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
 
 autosnippet({
     trig = 'arcsin',
@@ -649,6 +677,7 @@ local postfix_math_specs = {
 		context = {
 			name = "hat",
 			dscr = "hat",
+            snippetType = "autosnippet"
 		},
 		command = {
             pre = [[\hat{]],
@@ -659,6 +688,7 @@ local postfix_math_specs = {
 		context = {
 			name = "bar",
 			dscr = "bar (overline)",
+            snippetType = "autosnippet"
 		},
 		command = {
             pre = [[\overline{]],
