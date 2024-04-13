@@ -40,6 +40,7 @@
       XDG_BIN_HOME = "\${HOME}/.local/bin";
       XDG_DATA_HOME = "\${HOME}/.local/share";
       NIXPKGS_ALLOW_UNFREE = 1;
+      # OPENAI_API_KEY = "$(echo $(pass show api/openai_key))";
     };
     sessionPath = [
       "$HOME/.local/bin"

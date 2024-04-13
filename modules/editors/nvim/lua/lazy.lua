@@ -75,7 +75,16 @@ local plugins = {
         dependencies = {
             'nvim-tree/nvim-web-devicons' }
     }, --Dope ass dashboard
+    {
+      "jackMort/ChatGPT.nvim",
+      event = "VeryLazy",
+      dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+      }
+    },
 }
-
 local opts = {}
 require("lazy").setup(plugins, opts)

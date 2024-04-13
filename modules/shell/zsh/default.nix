@@ -69,6 +69,7 @@
                   alias mv='mv -i'
                   alias ff='find -L | fzf'
                   alias q='exit'
+                  alias nv_chad='export OPENAI_API_KEY=$(echo $(pass show api/openai_key)) && nvim'
       			alias animdl_start='nix-shell $HOME/NixOn/environment/animdl.nix'
             	  #yafetch
     '';
