@@ -85,6 +85,16 @@ local plugins = {
       "nvim-telescope/telescope.nvim"
       }
     },
+    {
+    "folke/noice.nvim",
+     event = "VeryLazy",
+     opts = { 
+      },
+     dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+       }
+    }, 
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

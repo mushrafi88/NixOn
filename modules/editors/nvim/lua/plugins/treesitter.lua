@@ -26,6 +26,9 @@ plugin.setup {
       "jsonnet",
       "yaml",
       "nix",
+      "bash",
+      "regex",
+      "markdown_inline"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

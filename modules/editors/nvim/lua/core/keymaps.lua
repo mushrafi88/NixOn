@@ -74,6 +74,9 @@ map("n", "<leader><S-l>", ":BufferLineMoveNext<CR>", opts)
 
 map("n", "<leader>qq", ":bdelete<CR>", opts) -- Close current buffer
 
+-- NOICE NOTIFICATION CLEAR 
+map("n", "<leader>nd", ":NoiceDismiss<CR>", opts)
+
 --vimtex
 
 vim.cmd[[
