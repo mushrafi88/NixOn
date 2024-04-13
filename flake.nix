@@ -29,6 +29,7 @@
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+      nix-gaming.url = "github:fufexan/nix-gaming";
       flake-root.url = "github:srid/flake-root";
       flake-compat = {
         url = "github:inclyc/flake-compat";

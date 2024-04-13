@@ -201,9 +201,25 @@
       helvum
       gnome.gnome-disk-utility
       bluez-tools
+      tree 
+      ncdu 
+      nvtop
+      (lutris.override {
+      extraLibraries = pkgs: [
+        # List library dependencies here
+      ];
+      extraPkgs = pkgs: [
+        # List package dependencies here
+        #wineWowPackages.unstableFull
+        wineWowPackages.wayland
+        libgudev
+        libvdpau
+        libsoup
+        libusb1
+      ];
+    })
     ];
   };
-
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
