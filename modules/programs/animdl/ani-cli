@@ -155,13 +155,13 @@ download() {
     case $1 in
         *m3u8*)
             if command -v "yt-dlp" >/dev/null; then
-                yt-dlp "$1" --no-skip-unavailable-fragments --fragment-retries infinite -N 16 -o "$download_dir/$2.mp4"
+                yt-dlp "$1" --no-skip-unavailable-fragments --fragment-retries infinite -N 16 -o "$ANIME_DOWNLOAD_FOLDER/$download_dir/$anime_raw_name/$2.mp4"
             else
-                ffmpeg -loglevel error -stats -i "$1" -c copy "$download_dir/$2.mp4"
+                ffmpeg -loglevel error -stats -i "$1" -c copy "$ANIME_DOWNLOAD_FOLDER/$download_dir/$anime_raw_name/$2.mp4"
             fi
             ;;
         *)
-            aria2c --enable-rpc=false --check-certificate=false --continue --summary-interval=0 -x 16 -s 16 "$1" --dir="$download_dir" -o "$2.mp4" --download-result=hide
+            aria2c --enable-rpc=false --check-certificate=false --continue --summary-interval=0 -x 16 -s 16 "$1" --dir="$download_dir" -o "$ANIME_DOWNLOAD_FOLDER/$download_dir/$anime_raw_name/$2.mp4" --download-result=hide
             ;;
     esac
 }
@@ -183,12 +183,12 @@ play_episode() {
             fi
             ;;
         android_mpv) nohup am start --user 0 -a android.intent.action.VIEW -d "$episode" -n is.xyz.mpv/.MPVActivity >/dev/null 2>&1 & ;;
-        android_vlc) nohup am start --user 0 -a android.intent.action.VIEW -d "$episode" -n org.videolan.vlc/org.videolan.vlc.gui.video.VideoPlayerActivity -e "title" "${allanime_title}Episode ${ep_no}" >/dev/null 2>&1 & ;;
-        iina) nohup "$player_function" --no-stdin --keep-running --mpv-force-media-title="${allanime_title}Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        flatpak_mpv) flatpak run io.mpv.Mpv --force-media-title="${allanime_title}Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        vlc*) nohup "$player_function" --play-and-exit --meta-title="${allanime_title}Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        *yncpla*) nohup "$player_function" "$episode" -- --force-media-title="${allanime_title}Episode ${ep_no}" >/dev/null 2>&1 & ;;
-        download) "$player_function" "$episode" "${allanime_title}Episode ${ep_no}" ;;
+        android_vlc) nohup am start --user 0 -a android.intent.action.VIEW -d "$episode" -n org.videolan.vlc/org.videolan.vlc.gui.video.VideoPlayerActivity -e "title" "Episode ${ep_no}" >/dev/null 2>&1 & ;;
+        iina) nohup "$player_function" --no-stdin --keep-running --mpv-force-media-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
+        flatpak_mpv) flatpak run io.mpv.Mpv --force-media-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
+        vlc*) nohup "$player_function" --play-and-exit --meta-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
+        *yncpla*) nohup "$player_function" "$episode" -- --force-media-title="Episode ${ep_no}" >/dev/null 2>&1 & ;;
+        download) "$player_function" "$episode" "Episode ${ep_no}" ;;
         catt) nohup catt cast "$episode" >/dev/null 2>&1 & ;;
         iSH)
             printf "\e]8;;vlc://%s\a~~~~~~~~~~~~~~~~~~~~\n~ Tap to open VLC ~\n~~~~~~~~~~~~~~~~~~~~\e]8;;\a\n" "$episode"
@@ -313,7 +313,8 @@ while [ $# -gt 0 ]; do
             ;;
         -N | --nextep-countdown) search=nextep ;;
         -U | --update) update_script ;;
-        *) query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
+        *)  anime_raw_name="$(printf "%s" "$anime_raw_name$1" | sed 's/ *$//')"
+            query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
     esac
     shift
 done
@@ -403,5 +404,4 @@ while cmd=$(printf "next\nreplay\nprevious\nselect\nchange_quality\nquit" | nth 
     [ -z "$ep_no" ] && die "Out of range"
     play
 done
-
 
