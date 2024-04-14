@@ -71,7 +71,8 @@ local plugins = {
     { 'glepnir/dashboard-nvim',   event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' } }, --Dope ass dashboard
     { "jackMort/ChatGPT.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "folke/trouble.nvim", "nvim-telescope/telescope.nvim"  } },
     { "folke/noice.nvim",  event = "VeryLazy", opts = { }, dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } },
-    {  "lewis6991/gitsigns.nvim",                                                                      }        --Shows deletions/additions/modifications if in git repo 
+    {  "lewis6991/gitsigns.nvim",                                                                      },        --Shows deletions/additions/modifications if in git repo 
+    { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
