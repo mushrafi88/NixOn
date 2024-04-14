@@ -14,11 +14,8 @@ if not status then
     print("cmp_nvim_lsp not installed")
     return
 end
--- local status, null_ls = pcall(require, "null-ls")
--- if not status then
---     print("null-ls not installed")
---     return
--- end
+
+
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
     print("lspconfig not installed")
@@ -173,47 +170,6 @@ local js_conf = function(root_files)
     }
 end
 
--- null_ls.setup({
---     on_attach = on_attach,
---     capabilities = capabilities,
---     sources = {
---         -- format
---         null_ls.builtins.formatting.stylua,
---         null_ls.builtins.formatting.prettierd.with({
---             extra_filetypes = { "svelte", "toml" },
---             js_conf({
---                 ".prettierrc",
---                 ".prettierrc.cjs",
---                 ".prettierrc.js",
---                 ".prettierrc.json",
---                 "prettier.config.js",
---             }),
---         }),
---         null_ls.builtins.formatting.eslint_d.with(js_conf({
---             ".eslintrc",
---             ".eslintrc.cjs",
---             ".eslintrc.js",
---             ".eslintrc.json",
---         })),
---
---         -- diagnostics
---         null_ls.builtins.diagnostics.eslint_d.with(js_conf({
---             ".eslintrc",
---             ".eslintrc.cjs",
---             ".eslintrc.js",
---             ".eslintrc.json",
---         })),
---
---         -- code actions
---         null_ls.builtins.code_actions.gitsigns,
---         null_ls.builtins.code_actions.eslint_d.with(js_conf({
---             ".eslintrc",
---             ".eslintrc.cjs",
---             ".eslintrc.js",
---             ".eslintrc.json",
---         })),
---     },
--- })
 local kind_icons = {
     Text = "",
     Method = "",

@@ -1,6 +1,7 @@
 --- Plugin Manager ---
 require(".lazy")
 require('chatgpt').setup()
+require('gitsigns').setup()
 
 --- Colorschemes ---
 vim.cmd("runtime! lua/plugins/colorschemes/*.lua")

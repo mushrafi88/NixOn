@@ -52,14 +52,13 @@ local plugins = {
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",                                                               --Completion snippets
    { "L3MON4D3/LuaSnip",                version = "v2.*",dependencies = { "rafamadriz/friendly-snippets" },build = "make install_jsregexp"},                  --luasnip
-   {"evesdropper/luasnip-latex-snippets.nvim"},                                                             --latex snippets
+   { "evesdropper/luasnip-latex-snippets.nvim",  },                                                             --latex snippets
     
    --- The Rest ----
     "lervag/vimtex",                                                                                        -- Vimtex
     "lukas-reineke/indent-blankline.nvim",                                                                  --Sexy indent lines
     "windwp/nvim-ts-autotag",                                                                               --Auto tags for HTML
     "norcalli/nvim-colorizer.lua",                                                                          --Visualize Hex/RGB/etc
-    "lewis6991/gitsigns.nvim",                                                                              --Shows deletions/additions/modifications if in git repo
     "numToStr/Comment.nvim",                                                                                --Easy full line or selection commenting out
     { "folke/which-key.nvim",            event = "VeryLazy" },                                              --Shows key combinations if youre dumb
     { 'windwp/nvim-autopairs',           event = "InsertEnter" },                                           --Automatic pairs for braces, brackets, quotes, etc.
@@ -69,32 +68,10 @@ local plugins = {
     { "akinsho/bufferline.nvim",         dependencies = { "nvim-tree/nvim-web-devicons" } },                --Tabs
     { "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons" } },                --Sexy bar at the bottom
     { "nvim-telescope/telescope.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },                      --Plenary needs g++ and gcc
-    {
-        'glepnir/dashboard-nvim',
-        event = 'VimEnter',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons' }
-    }, --Dope ass dashboard
-    {
-      "jackMort/ChatGPT.nvim",
-      event = "VeryLazy",
-      dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "folke/trouble.nvim",
-      "nvim-telescope/telescope.nvim"
-      }
-    },
-    {
-    "folke/noice.nvim",
-     event = "VeryLazy",
-     opts = { 
-      },
-     dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-       }
-    }, 
+    { 'glepnir/dashboard-nvim',   event = 'VimEnter', dependencies = { 'nvim-tree/nvim-web-devicons' } }, --Dope ass dashboard
+    { "jackMort/ChatGPT.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "folke/trouble.nvim", "nvim-telescope/telescope.nvim"  } },
+    { "folke/noice.nvim",  event = "VeryLazy", opts = { }, dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } },
+    {  "lewis6991/gitsigns.nvim",                                                                      }        --Shows deletions/additions/modifications if in git repo 
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
