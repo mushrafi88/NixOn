@@ -135,21 +135,6 @@ episodes_list() {
 
 # PLAYING
 
-process_hist_entry() {
-    ep_list=$(episodes_list "$id")
-    ep_no=$(printf "%s" "$ep_list" | sed -n "/^${ep_no}$/{n;p;}") 2>/dev/null
-    [ -n "$ep_no" ] && printf "%s\t%s - episode %s\n" "$id" "$title" "$ep_no"
-}
-
-update_history() {
-    if grep -q -- "$id" "$histfile"; then
-        sed -E "s/^[^\t]+\t${id}\t/${ep_no}\t${id}\t/" "$histfile" >"${histfile}.new"
-    else
-        cp "$histfile" "${histfile}.new"
-        printf "%s\t%s\t%s\n" "$ep_no" "$id" "$title" >>"${histfile}.new"
-    fi
-    mv "${histfile}.new" "$histfile"
-}
 
 download() {
     case $1 in
@@ -175,30 +160,11 @@ play_episode() {
             [ -z "$ANI_CLI_NON_INTERACTIVE" ] && printf "All links:\n%s\nSelected link:\n" "$links"
             printf "%s\n" "$episode"
             ;;
-        mpv*)
-            if [ "$no_detach" = 0 ]; then
-                nohup "$player_function" $skip_flag --force-media-title="${allanime_title}Episode ${ep_no}" "$episode" >/dev/null 2>&1 &
-            else
-                "$player_function" $skip_flag --force-media-title="${allanime_title}Episode ${ep_no}" "$episode"
-            fi
-            ;;
-        android_mpv) nohup am start --user 0 -a android.intent.action.VIEW -d "$episode" -n is.xyz.mpv/.MPVActivity >/dev/null 2>&1 & ;;
-        android_vlc) nohup am start --user 0 -a android.intent.action.VIEW -d "$episode" -n org.videolan.vlc/org.videolan.vlc.gui.video.VideoPlayerActivity -e "title" "Episode ${ep_no}" >/dev/null 2>&1 & ;;
-        iina) nohup "$player_function" --no-stdin --keep-running --mpv-force-media-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        flatpak_mpv) flatpak run io.mpv.Mpv --force-media-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        vlc*) nohup "$player_function" --play-and-exit --meta-title="Episode ${ep_no}" "$episode" >/dev/null 2>&1 & ;;
-        *yncpla*) nohup "$player_function" "$episode" -- --force-media-title="Episode ${ep_no}" >/dev/null 2>&1 & ;;
-        download) "$player_function" "$episode" "Episode ${ep_no}" ;;
-        catt) nohup catt cast "$episode" >/dev/null 2>&1 & ;;
-        iSH)
-            printf "\e]8;;vlc://%s\a~~~~~~~~~~~~~~~~~~~~\n~ Tap to open VLC ~\n~~~~~~~~~~~~~~~~~~~~\e]8;;\a\n" "$episode"
-            sleep 5
-            ;;
+         download) "$player_function" "$episode" "Episode ${ep_no}" ;;
         *) nohup "$player_function" "$episode" >/dev/null 2>&1 & ;;
     esac
     replay="$episode"
     unset episode
-    update_history
     [ "$use_external_menu" = "1" ] && wait
 }
 
@@ -260,24 +226,6 @@ search="${ANI_CLI_DEFAULT_SOURCE:-scrape}"
 
 while [ $# -gt 0 ]; do
     case "$1" in
-        -v | --vlc)
-            case "$(uname -a)" in
-                *ndroid*) player_function="android_vlc" ;;
-                MINGW* | *WSL2*) player_function="vlc.exe" ;;
-                *ish*) player_function="iSH" ;;
-                *) player_function="vlc" ;;
-            esac
-            ;;
-        -s | --syncplay)
-            case "$(uname -s)" in
-                Darwin*) player_function="/Applications/Syncplay.app/Contents/MacOS/syncplay" ;;
-                MINGW* | *Msys)
-                    export PATH="$PATH":"/c/Program Files (x86)/Syncplay/"
-                    player_function="syncplay.exe"
-                    ;;
-                *) player_function="syncplay" ;;
-            esac
-            ;;
         -q | --quality)
             [ $# -lt 2 ] && die "missing argument!"
             quality="$2"
@@ -288,25 +236,14 @@ while [ $# -gt 0 ]; do
             index="$2"
             shift
             ;;
-        -c | --continue) search=history ;;
-        -d | --download) player_function=download ;;
-        -D | --delete)
-            : >"$histfile"
-            exit 0
-            ;;
-        -V | --version) version_info ;;
-        -h | --help) help_info ;;
+          -d | --download) player_function=download ;;
         -e | --episode | -r | --range)
             [ $# -lt 2 ] && die "missing argument!"
             ep_no="$2"
             [ -n "$index" ] && ANI_CLI_NON_INTERACTIVE=1 #Checks for -S presence
             shift
             ;;
-        --dub) mode="dub" ;;
-        --no-detach) no_detach=1 ;;
-        --rofi) use_external_menu=1 ;;
-        --skip) skip_intro=1 ;;
-        --skip-title)
+         --skip-title)
             [ $# -lt 2 ] && die "missing argument!"
             skip_title="$2"
             shift
@@ -387,21 +324,4 @@ tput sc
 # playback & loop
 play
 [ "$player_function" = "download" ] || [ "$player_function" = "debug" ] && exit 0
-
-while cmd=$(printf "next\nreplay\nprevious\nselect\nchange_quality\nquit" | nth "Playing episode $ep_no of $title... "); do
-    case "$cmd" in
-        next) ep_no=$(printf "%s" "$ep_list" | sed -n "/^${ep_no}$/{n;p;}") 2>/dev/null ;;
-        replay) episode="$replay" ;;
-        previous) ep_no=$(printf "%s" "$ep_list" | sed -n "/^${ep_no}$/{g;1!p;};h") 2>/dev/null ;;
-        select) ep_no=$(printf "%s" "$ep_list" | nth "Select episode: " "$multi_selection_flag") ;;
-        change_quality)
-            episode=$(printf "%s" "$links" | launcher)
-            quality=$(printf "%s" "$episode" | grep -oE "^[0-9]+")
-            episode=$(printf "%s" "$episode" | cut -d'>' -f2)
-            ;;
-        *) exit 0 ;;
-    esac
-    [ -z "$ep_no" ] && die "Out of range"
-    play
-done
 

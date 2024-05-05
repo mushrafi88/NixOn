@@ -24,6 +24,7 @@
       #-- LSP --#
       yarp
       texlab
+      deno 
       nodePackages_latest.typescript
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted

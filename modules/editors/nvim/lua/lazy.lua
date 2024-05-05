@@ -72,7 +72,17 @@ local plugins = {
     { "jackMort/ChatGPT.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "folke/trouble.nvim", "nvim-telescope/telescope.nvim"  } },
     { "folke/noice.nvim",  event = "VeryLazy", opts = { }, dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } },
     {  "lewis6991/gitsigns.nvim",                                                                      },        --Shows deletions/additions/modifications if in git repo 
-    { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, }
+    {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+        require("peek").setup()
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+},
+
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

@@ -27,6 +27,7 @@
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       git
+      git-lfs
       neovim
       wget
       neofetch

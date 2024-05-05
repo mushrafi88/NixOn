@@ -72,6 +72,7 @@
                   alias nv_chad='export OPENAI_API_KEY=$(echo $(pass show api/openai_key)) && nvim'
       			alias animdl_start='nix-shell $HOME/NixOn/environment/animdl.nix'
             	  #yafetch
+                eval "$(zoxide init --cmd cd zsh)"
     '';
   };
 

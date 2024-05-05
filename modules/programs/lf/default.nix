@@ -18,6 +18,7 @@
       jq
       poppler_utils
       mdcat
+      zoxide
     ];
   };
   home.file.".config/lf".source = ./config;
