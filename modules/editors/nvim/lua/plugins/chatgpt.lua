@@ -4,7 +4,7 @@ if not status then
     return
 end
 plugin.setup({
-   api_key_cmd = "pass show api/openai_key", 
+   api_key_cmd = "", 
    yank_register = "+", 
    edit_with_instructions = { 
      diff = false, 

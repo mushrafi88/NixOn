@@ -27,7 +27,7 @@
       CLUTTER_BACKEND = "wayland";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       LIBVA_DRIVER_NAME = "nvidia";
-      WLR_RENDERER = "vulkan";
+      #WLR_RENDERER = "vulkan";
       NIXOS_OZONE_WL = "1";
       # __NV_PRIME_RENDER_OFFLOAD = "1";
       ANIME_DOWNLOAD_FOLDER = "/mnt/media_m/Anime/Airing";

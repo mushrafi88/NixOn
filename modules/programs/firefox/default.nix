@@ -16,16 +16,48 @@
         DisablePocket = true;
         DisableTelemetry = true;
         DisableFirefoxAccounts = true;
-        DisplayBookmarksToolbar = true;
-        Preferences = {
-          "browser.toolbars.bookmarks.visibility" = "never";
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "media.ffmpeg.vaapi.enabled" = true;
         };
-      };
     };
+
     profiles.venerable_asura = {
+
+      search = {
+				engines = {
+					"Nix Packages" = {
+						urls = [{
+							template = "https://search.nixos.org/packages";
+							params = [
+								{ name = "type"; value = "packages"; }
+								{ name = "query"; value = "{searchTerms}"; }
+							];
+						}];
+						icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+						definedAliases = [ "@nix" ];
+					};
+					"YT" = {
+						urls = [{
+							template = "https://www.youtube.com/results?search_query={searchTerms}";
+						}];
+						iconUpdateURL = "https://www.youtube.com/favicon.ico";
+						updateInterval = 24 * 60 * 60 * 1000;
+						definedAliases = [ "@yt" ];
+					};
+
+					"SearX" = {
+						urls = [{
+							template = "http://192.168.0.11:8888/search?q={searchTerms}";
+						}];
+						iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
+						updateInterval = 24 * 60 * 60 * 1000;
+						definedAliases = [ "@sx" ];
+					};
+				};
+				force = true;
+				default = "SearX";
+			};
+
       settings = {
+
         "dom.security.https_only_mode" = true;
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
@@ -38,6 +70,104 @@
         "browser.policies.runOncePerModification.displayBookmarksToolbar" = "never";
         "browser.toolbars.bookmarks.showOtherBookmarks" = "false";
         "browser.toolbars.bookmarks.visibility" = "never";
+
+        	/****************************************************************************
+				 * Betterfox                                                                *
+				 * "Ad meliora"                                                             *
+				 * version: 115                                                             *
+				 * url: https://github.com/yokoffing/Betterfox                              *
+				****************************************************************************/
+
+				/****************************************************************************
+				 * SECTION: FASTFOX                                                         *
+				****************************************************************************/
+
+        
+        "nglayout.initialpaint.delay" = 0;
+				"nglayout.initialpaint.delay_in_oopif" = 0;
+				"content.notify.interval" = 100000;
+				"browser.startup.preXulSkeletonUI" = false;
+        "layout.css.grid-template-masonry-value.enabled" = true;
+				"dom.enable_web_task_scheduling" = true;
+
+        /** GFX ***/
+				"gfx.webrender.all" = true;
+				"gfx.webrender.precache-shaders" = true;
+				"gfx.webrender.compositor" = true;
+				"layers.gpu-process.enabled" = true;
+				"media.hardware-video-decoding.enabled" = true;
+        /* "media.ffmpeg.vaapi.enabled" = true; */ 
+				"gfx.canvas.accelerated" = true;
+				"gfx.canvas.accelerated.cache-items" = 32768;
+				"gfx.canvas.accelerated.cache-size" = 4096;
+				"gfx.content.skia-font-cache-size" = 80;
+				"image.cache.size" = 10485760;
+				"image.mem.decode_bytes_at_a_time" = 131072;
+				"image.mem.shared.unmap.min_expiration_ms" = 120000;
+				"media.memory_cache_max_size" = 1048576;
+				"media.memory_caches_combined_limit_kb" = 2560000;
+				"media.cache_readahead_limit" = 9000;
+				"media.cache_resume_threshold" = 6000;
+				
+				/** BROWSER CACHE ***/
+				"browser.cache.memory.max_entry_size" = 153600;
+
+        /** NETWORK ***/
+				"network.buffer.cache.size" = 262144;
+				"network.buffer.cache.count" = 128;
+				"network.http.max-connections" = 1800;
+				"network.http.max-persistent-connections-per-server" = 10;
+				"network.ssl_tokens_cache_capacity" = 32768;
+
+        	/** WEBRTC ***/
+				"media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
+				"media.peerconnection.ice.default_address_only" = true;
+
+        /** MOZILLA ***/
+				"accessibility.force_disabled" = 1;
+				#"identity.fxaccounts.enabled" = false;
+				"browser.tabs.firefox-view" = false;
+				"permissions.default.desktop-notification" = 2;
+				"permissions.default.geo" = 2;
+				"geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+				"geo.provider.ms-windows-location" = false; # WINDOWS
+				"geo.provider.use_corelocation" = false; # MAC
+				"geo.provider.use_gpsd" = false; # LINUX
+				"geo.provider.use_geoclue" = false; # LINUX
+				"permissions.manager.defaultsUrl" = "";
+				"webchannel.allowObject.urlWhitelist" = "";
+
+        /** MOZILLA UI ***/
+				"layout.css.prefers-color-scheme.content-override" = 0;
+				"toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+				"app.update.suppressPrompts" = true;
+				"browser.compactmode.show" = true;
+				"browser.privatebrowsing.vpnpromourl" = "";
+				"extensions.getAddons.showPane" = false;
+				"extensions.htmlaboutaddons.recommendations.enabled" = false;
+				"browser.shell.checkDefaultBrowser" = false;
+				"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+				"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+				"browser.preferences.moreFromMozilla" = false;
+				"browser.tabs.tabmanager.enabled" = false;
+				"browser.aboutwelcome.enabled" = false;
+				"findbar.highlightAll" = true;
+				"middlemouse.contentLoadURL" = false;
+				"browser.privatebrowsing.enable-new-indicator" = false;
+
+				/** FULLSCREEN ***/
+				"full-screen-api.transition-duration.enter" = "0 0";
+				"full-screen-api.transition-duration.leave" = "0 0";
+				"full-screen-api.warning.delay" = -1;
+				"full-screen-api.warning.timeout" = 0;
+
+				/** URL BAR ***/
+				"browser.urlbar.suggest.engines" = false;
+				"browser.urlbar.suggest.topsites" = false;
+				"browser.urlbar.suggest.calculator" = true;
+				"browser.urlbar.unitConversion.enabled" = true;
+
+
       };
       userChrome = ''
               /* change these variables to get different colors */

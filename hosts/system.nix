@@ -2,8 +2,7 @@
 
 {
   nixpkgs.system = "x86_64-linux";
-
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true; 
 
   networking = {
     hostName = "nixon"; # Define your hostname.
@@ -20,7 +19,6 @@
       enable = true;
     };
   };
-
 
   environment = {
     binsh = "${pkgs.dash}/bin/dash";
@@ -71,7 +69,7 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes

@@ -18,10 +18,13 @@ in
   hardware = {
     nvidia = {
       open = false;
-      # package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
-      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true; 
+      powerManagement.enable = false; 
+      nvidiaSettings = true;
       prime = {
         offload.enable = true;
+        offload.enableOffloadCmd = true;
         intelBusId = "PCI:00:02:0";
         nvidiaBusId = "PCI:01:00:0";
       };
@@ -38,6 +41,7 @@ in
         vaapiVdpau
         libvdpau-va-gl
       ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ nvidia-vaapi-driver intel-media-driver ];
     };
     pulseaudio.support32Bit = true;
   };
