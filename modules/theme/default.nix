@@ -1,7 +1,7 @@
 [
   ./cava
   ./gtk
-  ./qt5ct
+./qt5ct
   ./swww
   ./mpvpaper
 ]

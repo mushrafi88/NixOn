@@ -15,9 +15,9 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
-
+  
   programs.zsh.enable = true;
-
+  
   users.users.venerable_white = {
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -200,7 +200,7 @@
     })
     ];
   };
-
+  
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";

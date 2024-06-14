@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  programs.firefox = {
+ programs.firefox = {
     enable = true;
     #nativeMessagingHosts.packages =  [ pkgs.tridactyl-native ] ;
     #nativeMessagingHosts.tridactyl = true;
@@ -18,46 +18,8 @@
         DisableFirefoxAccounts = true;
         };
     };
-
-    profiles.venerable_asura = {
-
-      search = {
-				engines = {
-					"Nix Packages" = {
-						urls = [{
-							template = "https://search.nixos.org/packages";
-							params = [
-								{ name = "type"; value = "packages"; }
-								{ name = "query"; value = "{searchTerms}"; }
-							];
-						}];
-						icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-						definedAliases = [ "@nix" ];
-					};
-					"YT" = {
-						urls = [{
-							template = "https://www.youtube.com/results?search_query={searchTerms}";
-						}];
-						iconUpdateURL = "https://www.youtube.com/favicon.ico";
-						updateInterval = 24 * 60 * 60 * 1000;
-						definedAliases = [ "@yt" ];
-					};
-
-					"SearX" = {
-						urls = [{
-							template = "http://192.168.0.11:8888/search?q={searchTerms}";
-						}];
-						iconUpdateURL = "http://192.168.0.11:8888/favicon.ico";
-						updateInterval = 24 * 60 * 60 * 1000;
-						definedAliases = [ "@sx" ];
-					};
-				};
-				force = true;
-				default = "SearX";
-			};
-
+    profiles.venerable_asura = { 
       settings = {
-
         "dom.security.https_only_mode" = true;
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
@@ -166,6 +128,39 @@
 				"browser.urlbar.suggest.topsites" = false;
 				"browser.urlbar.suggest.calculator" = true;
 				"browser.urlbar.unitConversion.enabled" = true;
+
+        /** TELEMETRY ***/
+				"toolkit.telemetry.unified" = false;
+				"toolkit.telemetry.enabled" = false;
+				"toolkit.telemetry.server" = "data:,";
+				"toolkit.telemetry.archive.enabled" = false;
+				"toolkit.telemetry.newProfilePing.enabled" = false;
+				"toolkit.telemetry.shutdownPingSender.enabled" = false;
+				"toolkit.telemetry.updatePing.enabled" = false;
+				"toolkit.telemetry.bhrPing.enabled" = false;
+				"toolkit.telemetry.firstShutdownPing.enabled" = false;
+				"toolkit.telemetry.coverage.opt-out" = true;
+				"toolkit.coverage.opt-out" = true;
+				"datareporting.healthreport.uploadEnabled" = false;
+				"datareporting.policy.dataSubmissionEnabled" = false;
+				"app.shield.optoutstudies.enabled" = false;
+				"browser.discovery.enabled" = false;
+				"breakpad.reportURL" = "";
+				"browser.tabs.crashReporting.sendReport" = false;
+				"browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+				"captivedetect.canonicalURL" = "";
+				"network.captive-portal-service.enabled" = false;
+				"network.connectivity-service.enabled" = false;
+				"default-browser-agent.enabled" = false;
+				"app.normandy.enabled" = false;
+				"app.normandy.api_url" = "";
+				"browser.ping-centre.telemetry" = false;
+				"browser.newtabpage.activity-stream.feeds.telemetry" = false;
+				"browser.newtabpage.activity-stream.telemetry" = false;
+
+        /*** POCKET ***/
+				"extensions.pocket.enabled" = false;
+
 
 
       };
