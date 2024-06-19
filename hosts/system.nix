@@ -56,7 +56,8 @@
       inotify-tools
       python311
       python311Packages.pip
-      glibcLocales 
+      glibcLocales
+      aria2 
     ];
   };
   services.dbus.enable = true;

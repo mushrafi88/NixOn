@@ -7,6 +7,6 @@
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-    zsh.enable = true;
+    bash.enable = true;
   };
 }

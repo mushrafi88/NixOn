@@ -430,6 +430,7 @@
         darkreader
         tridactyl
         youtube-shorts-block
+        aria2-integration
       ];
     };
   };

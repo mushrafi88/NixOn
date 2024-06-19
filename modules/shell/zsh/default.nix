@@ -73,6 +73,12 @@
       			alias animdl_start='nix-shell $HOME/NixOn/environment/animdl.nix'
             	  #yafetch
                 eval "$(zoxide init --cmd cd zsh)"
+
+                export DIRENV_LOG_FORMAT="$(printf "\033[2mdirenv: %%s\033[0m")"
+                eval "$(direnv hook zsh)"
+                _direnv_hook() {
+               eval "$(direnv export zsh 2> >(egrep -v -e '^....direnv: export' >&2))"
+               };
     '';
   };
 

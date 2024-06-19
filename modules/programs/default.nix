@@ -1,4 +1,5 @@
 [
+  ./ags
   ./animdl
   ./music
   ./resource_monitor

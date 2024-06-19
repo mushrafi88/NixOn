@@ -26,10 +26,13 @@ in
           users.venerable_white = {
             imports = [
               (import ./laptop_wayland/home.nix)
+              ] ++ [
+              inputs.ags.homeManagerModules.default
             ];
           };
         };
         nixpkgs = {
+          config.allowUnfree = true;
           overlays =
             [
              # inputs.picom.overlays.default
