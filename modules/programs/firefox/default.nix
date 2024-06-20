@@ -5,19 +5,7 @@
     enable = true;
     #nativeMessagingHosts.packages =  [ pkgs.tridactyl-native ] ;
     #nativeMessagingHosts.tridactyl = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      cfg = {
-        # Tridactyl native connector
-        enableTridactylNative = true;
-      };
-      extraPolicies = {
-        CaptivePortal = false;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DisableFirefoxAccounts = true;
-        };
-    };
+    #package = pkgs.firefox-devedition-unwrapped;
     profiles.venerable_asura = { 
       settings = {
         "dom.security.https_only_mode" = true;
