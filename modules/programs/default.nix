@@ -7,7 +7,7 @@
   ./yt-dlp
   ./zathura
   ./kitty
-  ./lf
+  #./lf
   ./rofi
   ./sioyek
   ./transmission
@@ -20,4 +20,5 @@
   ./waybar
   ./others
   ./discord
+  ./yazi 
 ]

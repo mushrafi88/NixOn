@@ -9,7 +9,8 @@
     networkmanager.enable = true;
   };
   time.timeZone = "Asia/Dhaka";
-
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "all" ]; 
   security.rtkit.enable = true;
   services = {
     openssh = {
@@ -57,7 +58,11 @@
       python311
       python311Packages.pip
       glibcLocales
-      aria2 
+      aria2
+      bun #ags 
+      brightnessctl #ags  
+      sass #ags 
+      matugen #ags
     ];
   };
   services.dbus.enable = true;
