@@ -20,389 +20,262 @@
     };
   };
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    extraConfig = ''
-                                                               $mainMod = SUPER
-                                                               # $scripts=$HOME/.config/hypr/scripts
 
-                                                               # monitor=,preferred,auto,1 
-                                                               monitor=HDMI-A-1, 1920x1080, 0x0, 1
-                                                               monitor=eDP-1, 1920x1080, 1920x0, 1
+    settings = {
+      "$mainMod" = "SUPER";
 
-                                                               # Source a file (multi-file configs)
-                                                               # source = ~/.config/hypr/myColors.conf
+      monitor = "eDP-1, 1920x1080, 1920x0, 1";
 
-                                                               input {
-                                                               kb_layout = us
-                                                               kb_variant =
-                                                               kb_model =
-                                                               kb_options = caps:escape
-                                                               kb_rules =
+      debug = {
+        disable_logs = false;
+        enable_stdout_logs = true;
+      };
 
-                                                               follow_mouse = 1 # 0|1|2|3
-                                                               float_switch_override_focus = 1
-                                                               numlock_by_default = true
+      input = {
+        kb_layout = "us";
+        kb_variant = "lang";
+        kb_options = "caps:escape";
+        
+        follow_mouse = 1;
+        float_switch_override_focus = 1;
+        numlock_by_default = true;
+        
+        touchpad = {
+          natural_scroll = false;
+          drag_lock = true;
+        };
 
-                                                               touchpad {
-                                                               disable_while_typing = true 
-                                                               natural_scroll = false 
-                                                               scroll_factor = 1.0
-                                                               middle_button_emulation = false 
-                                                               clickfinger_behavior = false 
-                                                               tap-to-click = true 
-                                                               drag_lock = true 
-                                                               }
+        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+      };
 
-                                                               sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-                                                               }
+      general = {
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 1;
+        "col.active_border" = "rgb(80d4ff)";
+        "col.inactive_border" = "rgba(595959aa)";
 
-                                                               general {
-                                                               gaps_in = 0 
-                                                               gaps_out = 0 
-                                                               border_size = 1
-                                                               col.active_border = rgb(80d4ff)
-                                                               # col.inactive_border = rgba(595959aa)
+        layout = "dwindle";
 
-                                                               layout = dwindle # master|dwindle 
-                                                               }
+        no_cursor_warps = false;
+      };
 
-                                                               dwindle {
-                                                               no_gaps_when_only = false
-                                                               force_split = 0 
-                                                               special_scale_factor = 0.8
-                                                               split_width_multiplier = 1.0 
-                                                               use_active_for_splits = true
-                                                               pseudotile = yes 
-                                                               preserve_split = yes 
-                                                               }
+      dwindle = {
+        no_gaps_when_only = false;
+        force_split = 0;
+        special_scale_factor = 0.8;
+        split_width_multiplier = 1.0; 
+        use_active_for_splits = true;
+        pseudotile = true;
+        preserve_split = true; 
+      };
 
-                                                               master {
-                                                               new_is_master = true
-                                                               special_scale_factor = 0.8
-                                                               new_is_master = true
-                                                               no_gaps_when_only = false
-                                                               }
-
-                                                               # cursor_inactive_timeout = 0
-                                                               decoration {
-                                                               active_opacity = 1.0 
-                                                               inactive_opacity = 1.0
-                                                               fullscreen_opacity = 1.0
-                                                               rounding = 1
-
-                                                               drop_shadow = false
-                                                               shadow_range = 4
-                                                               shadow_render_power = 3
-                                                               shadow_ignore_window = true
-                                                               # col.shadow = 
-                                                               # col.shadow_inactive
-                                                               # shadow_offset
-                                                               dim_inactive = false
-                                                               # dim_strength = #0.0 ~ 1.0
-                                                               col.shadow = rgba(1a1a1aee)
-                     										  blur {
-                     											  enabled = false 
-                     											  size = 1 
-                     											  passes = 3 
-                     											  new_optimizations = true 
-                     											  xray = true   
-                     											  ignore_opacity = false
-                     										  }
-                                                               }
-
-                                                               animations {
-                                                               enabled=1
-                                                               bezier = overshot, 0.13, 0.99, 0.29, 1.1
-                                                               animation = windows, 1, 4, overshot, slide
-                                                               animation = windowsOut, 1, 5, default, popin 80%
-                                                               animation = border, 1, 5, default
-                                                               animation = fade, 1, 8, default
-                                                               animation = workspaces, 1, 6, overshot, slidevert
-                                                               }
-
-                                                               gestures {
-                                                               workspace_swipe = true
-                                                               workspace_swipe_fingers = 4
-                                                               workspace_swipe_distance = 250
-                                                               workspace_swipe_invert = true
-                                                               workspace_swipe_min_speed_to_force = 15
-                                                               workspace_swipe_cancel_ratio = 0.5
-                                                               workspace_swipe_create_new = false
-                                                               }
-
-                                                               misc {
-                                                               disable_autoreload = true
-                                                               disable_hyprland_logo = true
-                                                               always_follow_on_dnd = true
-                                                               layers_hog_keyboard_focus = true
-                                                               animate_manual_resizes = false
-                                                               enable_swallow = true
-                                                               swallow_regex =
-                                                               focus_on_activate = true
-                                                               }
-
-                                                               #device:epic mouse V1 {
-                                                              # sensitivity = -0.5
-                                                              # }
-
-                                                               bind = $mainMod, Return, exec, kitty
-                                                               bind = CTRL ALT, t, exec, kitty --class="termfloat"
-                                                               bind = CTRL, q, killactive,
-                                                               bind = CTRL ALT, q, exit,
-                                                               bind = $mainMod, Space, togglefloating,
-                                                               bind = $mainMod,f,fullscreen
-                                                               bind = $mainMod,y,pin
-                                                               bind = $mainMod, p, pseudo, # dwindle
-                                                               bind = $mainMod, J, togglesplit, # dwindle
-
-                                                               #-----------------------#
-                                                               # Toggle grouped layout #
-                                                               #-----------------------#
-                                                               bind = $mainMod, K, togglegroup,
-                                                               bind = $mainMod, Tab, changegroupactive, f
-
-                                                               #------------#
-                                                               # change gap #
-                                                               #------------#
-                                                               bind = $mainMod SHIFT, G,exec,hyprctl --batch "keyword general:gaps_out 5;keyword general:gaps_in 3"
-                                                               bind = $mainMod , G,exec,hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0"
-
-                                                               #--------------------------------------#
-                                                               # Move focus with mainMod + arrow keys #
-                                                               #--------------------------------------#
-                                                               bind = $mainMod, left, movefocus, l
-                                                               bind = $mainMod, right, movefocus, r
-                                                               bind = $mainMod, up, movefocus, u
-                                                               bind = $mainMod, down, movefocus, d
-
-                                                               #----------------------------------------#
-                                                               # Switch workspaces with mainMod + [0-9] #
-                                                               #----------------------------------------#
-                                                               bind = $mainMod, 1, workspace, 1
-                                                               bind = $mainMod, 2, workspace, 2
-                                                               bind = $mainMod, 3, workspace, 3
-                                                               bind = $mainMod, 4, workspace, 4
-                                                               bind = $mainMod, 5, workspace, 5
-                                                               bind = $mainMod, 6, workspace, 6
-                                                               bind = $mainMod, 7, workspace, 7
-                                                               bind = $mainMod, 8, workspace, 8
-                                                               bind = $mainMod, 9, workspace, 9
-                                                               bind = $mainMod, 0, workspace, 10
-                                                               bind = $mainMod, S, workspace, +1
-                                                               bind = $mainMod, D, workspace, -1
-                                                               bind = $mainMod, period, workspace, e+1
-                                                               bind = $mainMod, comma, workspace,e-1
-                                                               bind = $mainMod, Q, workspace,QQ
-                                                               bind = $mainMod, T, workspace,TG
-                                                               bind = $mainMod, M, workspace,Music
-
-                                                               #-------------------------------#
-                                                               # special workspace(scratchpad) #
-                                                               #-------------------------------# 
-                                                               bind = $mainMod, minus, movetoworkspace,special
-                                                               bind = $mainMod, equal, togglespecialworkspace
-
-                                                               #----------------------------------#
-                                                               # move window in current workspace #
-                                                               #----------------------------------#
-                                                               bind = $mainMod SHIFT,left ,movewindow, l
-                                                               bind = $mainMod SHIFT,right ,movewindow, r
-                                                               bind = $mainMod SHIFT,up ,movewindow, u
-                                                               bind = $mainMod SHIFT,down ,movewindow, d
-
-                                                               #---------------------------------------------------------------#
-                                                               # Move active window to a workspace with mainMod + ctrl + [0-9] #
-                                                               #---------------------------------------------------------------#
-                                                               bind = $mainMod SHIFT, 1, movetoworkspace, 1
-                                                               bind = $mainMod SHIFT, 2, movetoworkspace, 2
-                                                               bind = $mainMod SHIFT, 3, movetoworkspace, 3
-                                                               bind = $mainMod SHIFT, 4, movetoworkspace, 4
-                                                               bind = $mainMod SHIFT, 5, movetoworkspace, 5
-                                                               bind = $mainMod SHIFT, 6, movetoworkspace, 6
-                                                               bind = $mainMod SHIFT, 7, movetoworkspace, 7
-                                                               bind = $mainMod SHIFT, 8, movetoworkspace, 8
-                                                               bind = $mainMod SHIFT, 9, movetoworkspace, 9
-                                                               bind = $mainMod SHIFT, 0, movetoworkspace, 10
-                                                               bind = $mainMod SHIFT, left, movetoworkspace, -1
-                                                               bind = $mainMod SHIFT, right, movetoworkspace, +1
-                                                               # same as above, but doesnt switch to the workspace
-                                                               bind = $mainMod CTRL, 1, movetoworkspacesilent, 1
-                                                               bind = $mainMod CTRL, 2, movetoworkspacesilent, 2
-                                                               bind = $mainMod CTRL, 3, movetoworkspacesilent, 3
-                                                               bind = $mainMod CTRL, 4, movetoworkspacesilent, 4
-                                                               bind = $mainMod CTRL, 5, movetoworkspacesilent, 5
-                                                               bind = $mainMod CTRL, 6, movetoworkspacesilent, 6
-                                                               bind = $mainMod CTRL, 7, movetoworkspacesilent, 7
-                                                               bind = $mainMod CTRL, 8, movetoworkspacesilent, 8
-                                                               bind = $mainMod CTRL, 9, movetoworkspacesilent, 9
-                                                               bind = $mainMod CTRL, 0, movetoworkspacesilent, 10
-                                                               # Scroll through existing workspaces with mainMod + scroll
-                                                               bind = CTRL ALT, RIGHT, workspace, e+1
-                                                               bind = CTRL ALT, LEFT, workspace, e-1
-
-                                                               #-------------------------------------------#
-                                                               # switch between current and last workspace #
-                                                               #-------------------------------------------#
-                                                               binds {
-                                                               workspace_back_and_forth = 1 
-                                                               allow_workspace_cycles = 1
-                                                               }
-                                                               bind=$mainMod,slash,workspace,previous
-
-                                                               #------------------------#
-                                                               # quickly launch program #
-                                                               #------------------------# 
-                                                               #bind=$mainMod,B,exec,nvidia-offload librewolf
-                                                               bind=CTRL ALT,F,exec, firefox 
-                                                               bind=$mainMod SHIFT,D,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
-                                                               bind=CTRL ALT,L,exec,myswaylock
-                                                               #bind=CTRL,,exec,telegram-desktop
-                                                               #bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
-                                                               bind=CTRL ALT,P,exec,grimblast --notify --cursor  copysave area ~/Pictures/Screenshot/$(date "+%Y-%m-%d"T"%H:%M:%S").png
-                                                               bind=$mainMod,A,exec,grimblast --notify copysave output ~/Pictures/Screenshot/$(date "+%Y-%m-%d"T"%H:%M:%S").png
-                                                               bind=$mainMod,r,exec, pkill rofi || ~/.config/rofi/launcher.sh
-      														 bind=$mainMod,t,exec, pkill rofi || ~/.config/rofi/launch_with_nvidia.sh
-                                                               bind=$mainMod,x,exec, bash ~/.config/rofi/powermenu.sh
-                                                               #bind=,XF86PowerOff,exec, bash ~/.config/rofi/powermenu.sh
-                                                               bind=CTRL ALT,B,exec,bluetooth_headphone
-                                                               bind=$mainMod,e,exec, bash ~/.config/rofi/drun.sh
-                                                               bind=$mainMod,n,exec, wallpaper_next 
-                                                               bind=$mainMod,m,exec, wallpaper_prev
-                                             				  bind=CTRL ALT,K,exec, bash ~/.config/rofi/kill_process.sh
-
-                                                               #-----------------------------------------#
-                                                               # control volume,brightness,media players-#
-                                                               #-----------------------------------------#
-                                                               bind=,XF86AudioRaiseVolume,exec, pamixer -i 5
-                                                               bind=,XF86AudioLowerVolume,exec, pamixer -d 5
-                                                               bind=,XF86AudioMute,exec, pamixer -t
-                                                               bind=,XF86AudioMicMute,exec, pamixer --default-source -t
-                                                               bind=,XF86MonBrightnessUp,exec, light -A 5
-                                                               bind=,XF86MonBrightnessDown, exec, light -U 5
-                                                               bind=,XF86AudioPlay,exec, mpc -q toggle 
-                                                               bind=,XF86AudioNext,exec, mpc -q next 
-                                                               bind=,XF86AudioPrev,exec, mpc -q prev
-
-                                                               #---------------#
-                                                               # waybar toggle #
-                                                               # --------------#
-                                                               #bind=$mainMod,O,exec,killall -SIGUSR1 .waybar-wrapped
-
-                                                               #---------------#
-                                                               # resize window #
-                                                               #---------------#
-                                                               bind=ALT,R,submap,resize
-                                                               submap=resize
-                                                               binde=,right,resizeactive,15 0
-                                                               binde=,left,resizeactive,-15 0
-                                                               binde=,up,resizeactive,0 -15
-                                                               binde=,down,resizeactive,0 15
-                                                               binde=,l,resizeactive,15 0
-                                                               binde=,h,resizeactive,-15 0
-                                                               binde=,k,resizeactive,0 -15
-                                                               binde=,j,resizeactive,0 15
-                                                               bind=,escape,submap,reset 
-                                                               submap=reset
-
-                                                               bind=CTRL SHIFT, left, resizeactive,-15 0
-                                                               bind=CTRL SHIFT, right, resizeactive,15 0
-                                                               bind=CTRL SHIFT, up, resizeactive,0 -15
-                                                               bind=CTRL SHIFT, down, resizeactive,0 15
-                                                               bind=CTRL SHIFT, l, resizeactive, 15 0
-                                                               bind=CTRL SHIFT, h, resizeactive,-15 0
-                                                               bind=CTRL SHIFT, k, resizeactive, 0 -15
-                                                               bind=CTRL SHIFT, j, resizeactive, 0 15
-
-                                                               bindm = $mainMod, mouse:272, movewindow
-                                                               bindm = $mainMod, mouse:273, resizewindow
-
-                                                                                           #---------------#
-                                                               # windows rules #
-                                                               #---------------#
-                                                               #`hyprctl clients` get class、title...
-                                                               windowrule=float,title:^(Picture-in-Picture)$
-                                                               windowrule=size 960 540,title:^(Picture-in-Picture)$
-                                                               windowrule=move 25%-,title:^(Picture-in-Picture)$
-                                                               windowrule=float,nsxiv 
-                                                               windowrule=move 25%-,nsxiv 
-                                                               windowrule=size 960 540,nsxiv 
-                                                               windowrule=fullscreen,mpv
-                           									                   windowrule=fullscreen,swayimg
-                                                               windowrule=float,danmufloat
-                                                               windowrule=move 25%-,danmufloat
-                                                               windowrule=pin,danmufloat
-                                                               windowrule=rounding 5,danmufloat
-                                                               windowrule=size 960 540,danmufloat
-                                                               windowrule=float,termfloat
-                                                               windowrule=move 25%-,termfloat
-                                                               windowrule=size 960 540,termfloat
-                                                               windowrule=rounding 5,termfloat
-                                                               windowrule=float,pcmanfm
-                                                               windowrule=move 25%-,pcmanfm 
-                                                               windowrule=size 960 540,pcmanfm
-
-                                                               windowrulev2 = opacity 90.95 0.95,class:^(org.telegram.desktop)$
-                                                               windowrulev2=workspace 9 silent, title:Telegram
-                                                               windowrulev2 = workspace 2 silent,class:^(obsidian)$
-
-                                                               windowrulev2 = opacity 1.0 1.0,class:^(librewolf)$
-                                                               windowrulev2= workspace 3,class:^(firefox)$
-                                                               windowrulev2 = opacity 1.0 1.0,class:^(firefox)$
-                                                               windowrulev2 = opacity 0.9 0.9,class:^(kitty)$
-                                                               windowrulev2 = workspace 4,class:^(org.kde.okular)$
-                                                               windowrulev2 = opacity 0.98 0.98,class:^(org.kde.okular)$
-                                                               windowrulev2 = workspace 10 silent,class:^(transmission-gtk)$
-                                                               windowrulev2 = opacity 0.88 0.88, class:^(transmission-gtk)$
-                                                               windowrulev2 = workspace 9 silent,class:^(discord)$
-                                                         	  windowrulev2 = opacity 0.9 0.9, class:^(pcmanfm)$
+      master = {
+        new_is_master = true;
+        special_scale_factor = 0.8;
+        no_gaps_when_only = false;
+      };
 
 
+      decoration = {
+        active_opacity = 1.0; 
+        inactive_opacity = 1.0; 
+        fullscreen_opacity = 1.0; 
+        rounding = 1;
 
-                                                               #windowrule=opacity 0.95,title:QQ
-                                                               windowrule=animation slide right,kitty
-                                                               windowrule=workspace 9 silent, title:Discord
-                                                               windowrule=float,ncmpcpp
-                                                               windowrule=move 25%-,ncmpcpp
-                                                               windowrule=size 960 540,ncmpcpp
+        drop_shadow = false; 
 
-            windowrule=float,calcurse
-                                                               windowrule=move 25%-,calcurse
-                                                               windowrule=size 960 540,calcurse
+        blur = {
+          enabled = false;
+          size = 1;
+          passes = 3;
+          new_optimizations = true;
+          xray = true; 
+          ignore_opacity = false;
+        };
 
+        shadow_range = 4;
+        shadow_render_power = 3;
+        dim_inactive = false;
+        "col.shadow" = "rgba(1a1a1aee)";
+      };
 
+      animations = {
+        enabled = true;
 
-                                                               #-----------------#
-                                                               #  Dunst Control  #
-                                                               #-----------------#
-                                                               bind=CTRL SHIFT,SPACE,exec, dunstctl close-all
-                                                               bind=CTRL, SPACE,exec, dunstctl close
+        bezier = "overshot, 0.13, 0.99, 0.29, 1.1";
+        # bezier = "myBezier, 0.33, 0.82, 0.9, -0.08";
 
-                                                               #------------#
-                                                               # auto start #
-                                                               #------------#
+        animation = [
+          "windows,     1, 4,  overshot, slide"
+          "windowsOut,  1, 7,  default, popin 80%"
+          "border,      1, 10, default"
+          "borderangle, 1, 8,  default"
+          "fade,        1, 7,  default"
+          "workspaces,  1, 6,  default"
+        ];
+      };
 
-                                                               exec-once = launch_waybar &
-                                                               exec-once = nm-applet --indicator &
-                                                               exec-once = transmission-gtk &
-                                                               exec-once = wallpaper_start &
-                                                               exec-once = wl-copy &
-                                                               exec-once = volume_high & 
-                                                               exec-once = battery_warning &
-                                                               exec-once = bluetoothctl power off & 
-                                                               exec-once = anime_list_update &
-                                                   		    exec-once = anime_dl_env &
-                                       						exec-once = yt_music &
-                                 							    exec-once = dunst_todo &
-                                                  exec-once = snippets_cp &
-               												
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 4;
+        workspace_swipe_invert = true;
+        workspace_swipe_distance = 250;
+        workspace_swipe_forever = true;
+        workspace_swipe_min_speed_to_force = 15; 
+        workspace_swipe_cancel_ratio = 0.5; 
+        workspace_swipe_create_new = false;
+      };
 
-                                                               #-----------------#
-                                                               # workspace rules #
-                                                               #-----------------#
-                                                               workspace=HDMI-A-1,10 
-    '';
+      misc = {
+        always_follow_on_dnd= true; 
+        layers_hog_keyboard_focus = true;
+        animate_manual_resizes = false;
+        animate_mouse_windowdragging = true;
+        enable_swallow = true;
+        render_ahead_of_time = false;
+        disable_hyprland_logo = true;
+      };
+
+      windowrule = [
+        "fullscreen, ^(mpv)$"
+        "fullscreen, ^(swayimg)$"
+        "float, ^(mpv)$"
+        "move 25%-,pcmanfm"
+        "size 960 540,pcmanfm"
+        "animation slide right,kitty"
+        "workspace 9 silent, title:Discord"
+        "float,ncmpcpp"
+        "move 25%-,ncmpcpp"
+        "size 960 540,ncmpcpp"
+        "float, calcurse"
+        "move 25%-,calcurse"
+        "size 960 540,calcurse"
+      ];
+      windowrulev2 = [
+      "workspace 9 silent, title:Telegram"
+      "workspace 2 silent,class:^(obsidian)$"
+      "workspace 3,class:^(firefox)$"
+      "workspace 4,class:^(org.kde.okular)$"
+      "workspace 10 silent,class:^(transmission-gtk)$"
+      "workspace 9 silent,class:^(discord)$"
+      "opacity 0.95 0.95,class:^(kitty)$"
+      ];
+
+      exec-once = [
+        "launch_waybar"
+        "nm-applet --indicator"
+        "transmission-gtk"
+        "wallpaper_start"
+        "wl-copy"
+        "volume_high"
+        "battery_warning"
+        "anime_list_update"
+        "anime_dl_env"
+        "yt_music"
+        "dunst_todo"
+        "snippets_cp"
+      ];
+
+      bind = [
+        "$mainMod, Return, exec, kitty"
+        "CTRL ALT, t, exec, kitty --class='termfloat' "
+        "CTRL, q, killactive,"
+        "CTRL ALT, q, exit"
+        "$mainMod, Space, togglefloating,"
+        "$mainMod,f,fullscreen"
+        "$mainMod,y,pin"
+        "$mainMod, p, pseudo," # dwindle
+        "$mainMod, J, togglesplit,"
+
+        # Move focus with mainMod + arrow keys
+        "$mainMod, left,  movefocus, l"
+        "$mainMod, right, movefocus, r"
+        "$mainMod, up,    movefocus, u"
+        "$mainMod, down,  movefocus, d"
+
+        # Moving windows
+        "$mainMod SHIFT, left,  swapwindow, l"
+        "$mainMod SHIFT, right, swapwindow, r"
+        "$mainMod SHIFT, up,    swapwindow, u"
+        "$mainMod SHIFT, down,  swapwindow, d"
+
+        # Window resizing                     X  Y
+        "$mainMod CTRL, left,  resizeactive, -60 0"
+        "$mainMod CTRL, right, resizeactive,  60 0"
+        "$mainMod CTRL, up,    resizeactive,  0 -60"
+        "$mainMod CTRL, down,  resizeactive,  0  60"
+
+        # Switch workspaces with mainMod + [0-9]
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
+
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
+        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
+        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
+        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
+        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
+        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
+        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
+        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
+        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
+        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
+
+        # Scroll through existing workspaces with mainMod + scroll
+        "CTRL ALT, RIGHT, workspace, e+1"
+        "CTRL ALT, LEFT, workspace, e-1"
+
+        # Volume and Media Control
+        ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
+        ", XF86AudioLowerVolume, exec, pamixer -d 5 "
+        ", XF86AudioMute, exec, pamixer -t"
+        ", XF86AudioMicMute, exec, pamixer --default-source -m"
+        
+        # Brightness control
+        ", XF86MonBrightnessDown, exec, light -U 5 "
+        ", XF86MonBrightnessUp, exec, light -A 5 "
+        ",XF86AudioPlay,exec, mpc -q toggle "
+        ",XF86AudioNext,exec, mpc -q next "
+        ",XF86AudioPrev,exec, mpc -q prev"
+        # Waybar
+        "$mainMod, B, exec, pkill -SIGUSR1 waybar"
+        "$mainMod, W, exec, pkill -SIGUSR2 waybar"
+
+        #quick launch 
+        "CTRL ALT,F,exec, firefox"
+        "CTRL ALT,L,exec,myswaylock"
+        "CTRL ALT,P,exec,grimblast --notify --cursor  copysave area ~/Pictures/Screenshot/$(date '+%Y-%m-%d'T'%H:%M:%S').png"
+        "$mainMod,A,exec,grimblast --notify copysave output ~/Pictures/Screenshot/$(date '+%Y-%m-%d'T'%H:%M:%S').png"
+        "$mainMod,r,exec, pkill rofi || ~/.config/rofi/launcher.sh"
+      	"$mainMod,t,exec, pkill rofi || ~/.config/rofi/launch_with_nvidia.sh"
+        "$mainMod,x,exec, bash ~/.config/rofi/powermenu.sh"
+        "CTRL ALT,B,exec,bluetooth_headphone"
+        "$mainMod,e,exec, bash ~/.config/rofi/drun.sh"
+        "$mainMod,n,exec, wallpaper_next"
+        "$mainMod,m,exec, wallpaper_prev"
+        "CTRL ALT,K,exec, bash ~/.config/rofi/kill_process.sh"
+        "CTRL ALT, h, exec, kitty yazi"
+      ];
+
+      # Move/resize windows with mainMod + LMB/RMB and dragging
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
+    };
   };
 }
