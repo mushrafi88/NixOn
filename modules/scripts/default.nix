@@ -6,7 +6,7 @@
     [ ./myswaylock.nix ] ++
     [ ./launch_waybar.nix ] ++
     [ ./wallpaper.nix ] ++
-    [ ./volume_high.nix ] ++
+    [ ./volume_warning.nix ] ++
     [ ./battery_warning.nix ] ++
     [ ./bluetooth_headphone.nix ] ++
     [ ./yt_music.nix ] ++

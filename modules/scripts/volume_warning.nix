@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  volume_high = pkgs.writeShellScriptBin "volume_high" ''
+  volume_warning = pkgs.writeShellScriptBin "volume_warning" ''
            while true
     		   do 
     			   connection_status=$(pamixer --list-sinks)
@@ -19,6 +19,6 @@ in
 
 {
   home.packages = with pkgs; [
-    volume_high
+    volume_warning 
   ];
 }

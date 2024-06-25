@@ -38,7 +38,6 @@
 
       input = {
         kb_layout = "us";
-        kb_variant = "lang";
         kb_options = "caps:escape";
         
         follow_mouse = 1;
@@ -156,6 +155,10 @@
         "float, calcurse"
         "move 25%-,calcurse"
         "size 960 540,calcurse"
+        "float, termfloat"
+        "move 25%-,termfloat"
+        "size 960 540,termfloat"
+        "rounding 5,termfloat"
       ];
       windowrulev2 = [
       "workspace 9 silent, title:Telegram"
@@ -173,7 +176,7 @@
         "transmission-gtk"
         "wallpaper_start"
         "wl-copy"
-        "volume_high"
+        "volume_warning"
         "battery_warning"
         "anime_list_update"
         "anime_dl_env"
@@ -254,6 +257,10 @@
         # Waybar
         "$mainMod, B, exec, pkill -SIGUSR1 waybar"
         "$mainMod, W, exec, pkill -SIGUSR2 waybar"
+
+        #dunst 
+        "CTRL SHIFT,SPACE,exec, dunstctl close-all"
+        "CTRL, SPACE,exec, dunstctl close"
 
         #quick launch 
         "CTRL ALT,F,exec, firefox"
