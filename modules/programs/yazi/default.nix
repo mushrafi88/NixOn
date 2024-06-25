@@ -22,10 +22,8 @@
       poppler_utils
       mdcat
       zoxide
+      xdragon 
     ];
   };
-  home.file.".config/yazi/yazi.toml".source = ./yazi/yazi.toml;
-  home.file.".config/yazi/theme.toml".source = ./yazi/theme.toml;
-  home.file.".config/yazi/keymap.toml".source = ./yazi/keymap.toml;
-  home.file.".config/yazi/flavors/catppuccin-mocha.yazi".source = ./yazi/flavors/catppuccin-mocha.yazi;
+  home.file.".config/yazi".source = ./yazi; 
 }
