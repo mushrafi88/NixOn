@@ -51,7 +51,7 @@ local plugins = {
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",                                                               --Completion snippets
-   { "L3MON4D3/LuaSnip",                version = "v2.*",dependencies = { "rafamadriz/friendly-snippets" },build = "make install_jsregexp"},                  --luasnip
+   { "L3MON4D3/LuaSnip",                version = "v2.3.0",dependencies = { "rafamadriz/friendly-snippets" },build = "make install_jsregexp"},                  --luasnip
    { "evesdropper/luasnip-latex-snippets.nvim",  },                                                             --latex snippets
     
    --- The Rest ----
