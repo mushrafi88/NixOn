@@ -5,7 +5,7 @@
 -- node position in the AST.
 
 local has_treesitter, ts = pcall(require, "vim.treesitter")
-local _, query = pcall(require, "vim.treesitter.query")
+--local _, query = pcall(require, "vim.treesitter.query")
 
 local M = {}
 
@@ -66,13 +66,14 @@ function M.in_math()
     while node do
       if MATH_NODES[node:type()] then
         return true
-      elseif node:type() == "math_environment" or node:type() == "generic_environment" then
+      elseif node:type() == "math_environment" -- or node:type() == "generic_environment" 
+          then
         local begin = node:child(0)
         local names = begin and begin:field "name"
         if
           names
           and names[1]
-          and MATH_ENVIRONMENTS[query.get_node_text(names[1], buf):match "[A-Za-z]+"]
+         -- and MATH_ENVIRONMENTS[ts.query(names[1], buf):match "[A-Za-z]+"]
         then
           return true
         end

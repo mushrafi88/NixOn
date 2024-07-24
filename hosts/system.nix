@@ -63,9 +63,13 @@
       brightnessctl #ags  
       sass #ags 
       matugen #ags
+      cloudflare-warp # warp 
     ];
   };
   services.dbus.enable = true;
+   
+  systemd.packages = [ pkgs.cloudflare-warp ]; 
+  systemd.targets.multi-user.wants = [ "warp-svc.service" ]; 
 
   nix = {
     settings = {

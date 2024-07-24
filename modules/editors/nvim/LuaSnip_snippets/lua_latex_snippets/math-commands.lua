@@ -40,13 +40,13 @@ local postfix_snippet = require("luasnip-latex-snippets.luasnippets.tex.utils.sc
 
 M = {
     -- superscripts
-    autosnippet({ trig = "sq", wordTrig = true, snippetType = "autosnippet" },
+    autosnippet({ trig = "p2", wordTrig = true, snippetType = "autosnippet" },
     { t("^2") },
     { condition = tex.in_math, show_condition = tex.in_math }),
-	autosnippet({ trig = "cb", wordTrig = false , snippetType = "autosnippet"},
+	autosnippet({ trig = "p3", wordTrig = false , snippetType = "autosnippet"},
     { t("^3") },
     { condition = tex.in_math, show_condition = tex.in_math }),
-	autosnippet({ trig = "compl", wordTrig = false },
+	autosnippet({ trig = "**", wordTrig = false },
     { t("^{c}") },
     { condition = tex.in_math, show_condition = tex.in_math }),
 	autosnippet({ trig = "vtr", wordTrig = false , snippetType = "autosnippet"},
@@ -107,6 +107,22 @@ M = {
 	{ c(1, { r(1, ""), sn(nil, { r(1, ""), t(" \\mid "), i(2) }), sn(nil, { r(1, ""), t(" \\colon "), i(2) })}), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
 
+    autosnippet({ trig = "matin", name = "math inline", dscr = "math inline" }, -- overload with set builders notation because analysis and algebra cannot agree on a singular notation
+	fmta([[
+    \( <> \)<>
+    ]],
+	{ c(1, { r(1, ""), sn(nil, { r(1, ""), t(" \\mid "), i(2) }), sn(nil, { r(1, ""), t(" \\colon "), i(2) })}), i(0) }),
+	{ condition = tex.in_text, show_condition = tex.in_text }),
+
+    autosnippet({ trig = "matdi", name = "math display mode", dscr = "math display mode" }, -- overload with set builders notation because analysis and algebra cannot agree on a singular notation
+	fmta([[
+    \[ <> \]<>
+    ]],
+	{ c(1, { r(1, ""), sn(nil, { r(1, ""), t(" \\mid "), i(2) }), sn(nil, { r(1, ""), t(" \\colon "), i(2) })}), i(0) }),
+	{ condition = tex.in_text, show_condition = tex.in_text }),
+
+
+
 	autosnippet({ trig = "nnn", name = "bigcap", dscr = "bigcap", snippetType = "autosnippet" },
 	fmta([[
     \bigcap<> <>
@@ -127,6 +143,14 @@ M = {
     ]],
     { i(1), i(2), i(0) }),
 	{ condition = tex.in_math, show_condition = tex.in_math }),
+
+    autosnippet({ trig='partial', name='partial_half', dscr='partial derivative', snippetType = "autosnippet"},
+    fmta([[
+    \partial <>
+    ]],
+    { i(0) }),
+    { condition = tex.in_math, show_condition = tex.in_math }),
+
 
     autosnippet({ trig='pd1', name='partial_1', dscr='first order partial derivative', snippetType = "autosnippet"},
     fmta([[
@@ -155,7 +179,14 @@ M = {
     \frac{d^2<>}{d<>^2}<>
     ]],
     { i(1), i(2), i(0) }),
-    { condition = tex.in_math, show_condition = tex.in_math }),
+    { condition = tex.in_math, show_condition = tex.in_math }), 
+
+    autosnippet({ trig='brak', name='bra-ket', dscr='Internal Product', snippetType = "autosnippet"},
+    fmta([[
+    \langle <> \rangle <>
+    ]],
+    { i(1), i(0) }),
+    { condition = tex.in_math, show_condition = tex.in_math }), 
 
     autosnippet({ trig='integ', name='integ_1', dscr='Single Variable Integral', snippetType = "autosnippet"},
     fmta([[
@@ -439,6 +470,7 @@ vim.list_extend(M, auto_backslash_snippets)
 -- Symbols/Commands
 -- TODO: fix symbols once font works
 local greek_specs = {
+    wedge =  { context = { name = "^" }, command = [[\wedge]] },
 	alpha = { context = { name = "α" }, command = [[\alpha]] },
 	beta = { context = { name = "β" }, command = [[\beta]] },
 	gam = { context = { name = "γ" }, command = [[\gamma]] },
@@ -607,7 +639,7 @@ local single_command_math_specs = {
 		},
 		command = [[\substack]],
 	},
-	sq = {
+	sqrt = {
 		context = {
 			name = "sqrt",
 			dscr = "sqrt",

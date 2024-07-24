@@ -59,9 +59,7 @@
         "col.active_border" = "rgb(80d4ff)";
         "col.inactive_border" = "rgba(595959aa)";
 
-        layout = "dwindle";
-
-        no_cursor_warps = false;
+        layout = "dwindle"; 
       };
 
       dwindle = {
@@ -75,7 +73,7 @@
       };
 
       master = {
-        new_is_master = true;
+        new_status = "master"; 
         special_scale_factor = 0.8;
         no_gaps_when_only = false;
       };

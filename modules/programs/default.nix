@@ -20,5 +20,6 @@
   ./waybar
   ./others
   ./discord
-  ./yazi 
+  ./yazi
+ # ./honkai_star_rail
 ]

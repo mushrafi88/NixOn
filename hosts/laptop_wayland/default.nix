@@ -179,10 +179,14 @@
       syncthing
       conda
       helvum
-      gnome.gnome-disk-utility
+      gnome-disk-utility
       bluez-tools
       tree 
       ncdu 
+      heroic-unwrapped
+      curl 
+      p7zip 
+      torrent7z 
       nvtopPackages.full
       (lutris.override {
       extraLibraries = pkgs: [
