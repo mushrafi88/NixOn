@@ -12,13 +12,13 @@ for key in $(jq -r '.anime_series | keys[]' "$JSON_FILE"); do
     episode=$((anime_num + 1))
     echo "$episode"
     # Download the episode
-    "$HOME/.config/animdl/ani-cli" -d -e "$episode" "$anime_name"
-
-    
+    poetry run python /mnt/research/anipy-cli/cli/src/anipy_cli/cli.py -D -s '"$anime_name":"$episode":sub' 
+    #"$HOME/.config/animdl/ani-cli" -d -e "$episode" "$anime_name"
+ 
     # Check if the anime folder exists
     if [ -d "$ANIME_DOWNLOAD_FOLDER/$anime_name" ]; then
         # Find the highest episode number available in the anime folder
-        highest_episode=$(find "$ANIME_DOWNLOAD_FOLDER/$anime_name" -type f -name 'Episode *.mp4' | sed -nE 's|.*/Episode ([0-9]+)\.mp4$|\1|p' | sort -nr | head -n1)
+        highest_episode=$(find "$ANIME_DOWNLOAD_FOLDER/$anime_name" -type f -name 'Episode *.ts' | sed -nE 's|.*/Episode ([0-9]+)\.ts$|\1|p' | sort -nr | head -n1)
         if [ -n "$highest_episode" ]; then
             # Compare the highest episode number with the current episode number
             if [ "$highest_episode" -gt "$anime_num" ]; then

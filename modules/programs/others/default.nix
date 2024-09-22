@@ -17,6 +17,7 @@
       inkscape-with-extensions
       zoom-us
       ghostscript_headless
+      kooha
     ];
   };
 }

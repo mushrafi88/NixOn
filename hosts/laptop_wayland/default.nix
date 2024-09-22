@@ -112,6 +112,13 @@
             ignorePerms = false;
           };
 
+          "Graduate_QIST" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/mnt/research/Graduate_QIST"; # Which folder to add to Syncthing
+            devices = [ "realme" ]; # Which devices to share the folder with
+            ignorePerms = false;
+          };
+
           "Important Files" = {
             # Name of folder in Syncthing, also the folder ID
             path = "/mnt/study/important_files"; # Which folder to add to Syncthing

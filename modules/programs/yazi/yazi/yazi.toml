@@ -3,12 +3,12 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-ratio          = [ 2, 2, 4 ]
+ratio          = [ 2, 3, 3 ]
 sort_by        = "natural"
 sort_sensitive = false
 sort_reverse   = false
 sort_dir_first = true
-linemode       = "mtime"
+linemode       = "none"
 show_hidden    = true 
 show_symlink   = true
 scrolloff      = 5
@@ -64,6 +64,7 @@ rules = [
 	{ mime = "text/*",          use = [ "edit", "reveal" ] },
 	{ mime = "image/*",         use = [ "img-open", "reveal" ] },
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
+    { mime = "application/ts", use = [ "play", "reveal" ] },
 	{ mime = "inode/x-empty",   use = [ "edit", "reveal" ] },
 
 	{ mime = "application/*zip", use = [ "extract", "reveal" ] },

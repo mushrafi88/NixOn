@@ -5,12 +5,12 @@ let
                 #!/usr/bin/env bash 
                 while true 
         			do 
-    					sleep 10m
+    					sleep 5m 
         				kitty -e bash -c " 
         				hyprctl dispatch movetoworkspacesilent 10 
-                nix-shell $HOME/.config/animdl/animdl.nix 
+                nix-shell /mnt/research/anipy-cli/shell.nix  
         				" 
-        				sleep 6h  
+        				sleep 6h   
         			done
   '';
   #  anime_downloader_daily = pkgs.writeShellScriptBin "anime_downloader_daily" '' 
