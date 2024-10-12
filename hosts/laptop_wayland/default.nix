@@ -189,7 +189,8 @@
       gnome-disk-utility
       bluez-tools
       tree 
-      ncdu 
+      ncdu
+      nwg-look
       heroic-unwrapped
       curl 
       p7zip 
