@@ -65,7 +65,7 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    #pulse.enable = true;
+    pulse.enable = true;
     wireplumber.enable = true;
   };
   #services.pipewire.wireplumber.extraConfig."10-bluez" = {

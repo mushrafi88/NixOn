@@ -176,10 +176,7 @@
         "wl-copy"
         "volume_warning"
         "battery_warning"
-        "anime_list_update"
-        "anime_dl_env"
         "yt_music"
-        "dunst_todo"
         "snippets_cp"
       ];
 
