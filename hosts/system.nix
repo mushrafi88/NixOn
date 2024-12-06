@@ -66,7 +66,12 @@
       cloudflare-warp # warp 
     ];
   };
-  services.dbus.enable = true;
+  services.dbus.enable = true; 
+
+  services.printing = { 
+    enable = true; 
+    drivers = [ pkgs.epson-201401w ];
+    };
    
   systemd.packages = [ pkgs.cloudflare-warp ]; 
   systemd.targets.multi-user.wants = [ "warp-svc.service" ]; 
