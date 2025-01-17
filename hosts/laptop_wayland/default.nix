@@ -68,6 +68,12 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
+
+  services.pipewire.wireplumber.extraConfig."11-bluetooth-policy" = {
+    "wireplumber.settings" = {
+      "bluetooth.autoswitch-to-headset-profile" = false;
+    };
+  };
   #services.pipewire.wireplumber.extraConfig."10-bluez" = {
   #  "monitor.bluez.properties" = {
   #    "bluez5.enable-sbc-xq" = true;
@@ -194,7 +200,7 @@
       ncdu
       nwg-look
       heroic-unwrapped
-      curl 
+      curl
       p7zip 
       torrent7z 
       nvtopPackages.full

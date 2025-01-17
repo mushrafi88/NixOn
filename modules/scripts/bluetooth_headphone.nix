@@ -2,33 +2,31 @@
 
 let
   bluetooth_headphone = pkgs.writeShellScriptBin "bluetooth_headphone" ''
-        #bluetoothctl power on 
-    	DEVICE_MAC="28:04:C6:47:46:A4"
+device_address="2C:BE:EB:C3:2B:1D"
 
-# Function to check the connection status
-function is_connected {
-    bluetoothctl info "$DEVICE_MAC" | grep "Connected" | awk '{print $NF}'
-}
+connection_status=$(bluetoothctl info $device_address | grep "Connected:" | awk '{print $2}')
 
-# Disconnect all existing connections to the device
-while [ "$(is_connected)" = "yes" ]; do
-    bluetoothctl disconnect "$DEVICE_MAC"
-    sleep 1
-done
-
-# Attempt to connect to the device
-bluetoothctl connect "$DEVICE_MAC"
-
-# Wait for a few seconds to allow the connection to establish
-sleep 3
-
-# Check the new connection status
-if [ "$(is_connected)" = "yes" ]; then
-    dunstify "Bluetooth Headphone" "HONOR AM61 Connected" -i "~/.config/dunst/icon/love.jpg" -t 5000
+if [ "$connection_status" == "yes" ]; then
+  status="connected"
 else
-    dunstify "Bluetooth Headphone" "Connection failed" -i "~/.config/dunst/icon/confused.jpg" -t 5000
+  status="disconnected"
 fi
-  '';
+
+echo "Device $device_address is currently $status"
+
+if [ "$connection_status" == "yes" ]; then
+  echo "Disconnecting from $device_address..."
+  status="disconnected"
+  bluetoothctl << EOF
+  disconnect $device_address
+EOF
+else
+  echo "Connecting to $device_address..."
+  status="connected"
+  bluetoothctl << EOF
+  connect $device_address
+EOF
+fi'';
 
 in
 
