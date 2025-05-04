@@ -1,1 +1,1 @@
-[ (import ./mpv) ]
+[ (import ./mpv) (import ./yt-dlp) ]

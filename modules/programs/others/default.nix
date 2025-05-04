@@ -17,7 +17,8 @@
       inkscape-with-extensions
       ghostscript_headless
       kooha
-      zoom-us  
+      zoom-us 
+      google-chrome
     ];
   };
 }
