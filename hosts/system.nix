@@ -45,7 +45,12 @@
       ffmpegthumbnailer
       glib
       xdg-utils
+      ntfs3g
+      scrounge-ntfs 
+      exfat 
+      exfatprogs 
       pciutils
+      parted 
       gdb
       killall
       broot
@@ -63,7 +68,8 @@
       brightnessctl #ags  
       sass #ags 
       matugen #ags
-      cloudflare-warp # warp 
+      cloudflare-warp # warp
+      gparted 
     ];
   };
   services.dbus.enable = true; 

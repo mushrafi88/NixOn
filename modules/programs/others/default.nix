@@ -19,6 +19,7 @@
       kooha
       zoom-us 
       google-chrome
+      img2pdf
     ];
   };
 }
