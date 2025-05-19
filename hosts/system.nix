@@ -69,7 +69,8 @@
       sass #ags 
       matugen #ags
       cloudflare-warp # warp
-      gparted 
+      gparted
+      woeusb-ng 
     ];
   };
   services.dbus.enable = true; 
