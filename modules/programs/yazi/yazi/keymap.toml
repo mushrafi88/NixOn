@@ -366,6 +366,6 @@ run  = "plugin what-size"
 desc = "Calc size of selection or cwd" 
 
 [[manager.prepend_keymap]]
-on   = "f"
+on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"

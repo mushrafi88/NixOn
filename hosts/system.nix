@@ -68,7 +68,9 @@
       matugen #ags
       cloudflare-warp # warp
       gparted
-      woeusb-ng 
+      woeusb-ng
+      ntfs3g 
+      ntfsprogs
     ];
   };
   services.dbus.enable = true; 

@@ -194,20 +194,20 @@
 
 /* URL bar elements - uncomment selectors to _hide_ them */
 
-/* #back-button {
+#back-button {
   display: none !important;
-} */
+}
 
-/* #forward-button {
+ #forward-button {
   display: none !important;
-} */
+}
 
-/* #tracking-protection-icon-container {
+#tracking-protection-icon-container {
   display: none !important;
-} */
+}
 
 #urlbar-container {
-  min-width: 175px !important;
+  min-width: 120px !important;
 }
 
 #urlbar-background {
