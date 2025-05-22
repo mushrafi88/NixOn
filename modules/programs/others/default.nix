@@ -16,10 +16,7 @@
       calcurse
       inkscape-with-extensions
       ghostscript_headless
-      kooha
       zoom-us 
-      google-chrome
-      img2pdf
     ];
   };
 }

@@ -62,13 +62,7 @@
       python311Packages.pip
       glibcLocales
       aria2
-      bun #ags 
-      brightnessctl #ags  
-      sass #ags 
-      matugen #ags
       cloudflare-warp # warp
-      gparted
-      woeusb-ng
       ntfs3g 
       ntfsprogs
     ];

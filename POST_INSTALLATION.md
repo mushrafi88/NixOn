@@ -39,8 +39,20 @@ ln -s /mnt/media_m/Anime/Airing ~/Videos/
 
 ## Cleaning up the system 
 ```
-doas nix-collect-garbage -d 
+doas rm -rf /nix/var/nix/gcroots/auto/*
+doas nix-collect-garbage -d
+doas nix-store --verify --check-contents --repair
+doas nix-store --optimize
 ```
+## To delete older versions
+```
+doas nix-collect-garbage --delete-older-than 1d
+```
+finally rebuild the whole system after Cleaning up 
+```
+doas nixos-rebuild switch --flake .#nixon
+```
+
 ## Incase of git permission error 
 ```bash
 git config --global --add safe.directory $dirname

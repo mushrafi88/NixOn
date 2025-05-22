@@ -199,7 +199,6 @@
       tree 
       ncdu
       nwg-look
-      heroic-unwrapped
       curl
       p7zip 
       torrent7z 
