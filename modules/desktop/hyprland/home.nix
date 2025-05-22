@@ -63,7 +63,6 @@
       };
 
       dwindle = {
-        no_gaps_when_only = false;
         force_split = 0;
         special_scale_factor = 0.8;
         split_width_multiplier = 1.0; 
@@ -75,7 +74,6 @@
       master = {
         new_status = "master"; 
         special_scale_factor = 0.8;
-        no_gaps_when_only = false;
       };
 
 
@@ -83,9 +81,7 @@
         active_opacity = 1.0; 
         inactive_opacity = 1.0; 
         fullscreen_opacity = 1.0; 
-        rounding = 1;
-
-        drop_shadow = false; 
+        rounding = 1; 
 
         blur = {
           enabled = false;
@@ -94,12 +90,8 @@
           new_optimizations = true;
           xray = true; 
           ignore_opacity = false;
-        };
-
-        shadow_range = 4;
-        shadow_render_power = 3;
+        }; 
         dim_inactive = false;
-        "col.shadow" = "rgba(1a1a1aee)";
       };
 
       animations = {
@@ -139,25 +131,26 @@
         disable_hyprland_logo = true;
       };
 
-      windowrule = [
-        "fullscreen, ^(mpv)$"
-        "fullscreen, ^(swayimg)$"
-        "float, ^(mpv)$"
-        "move 25%-,pcmanfm"
-        "size 960 540,pcmanfm"
-        "animation slide right,kitty"
+        windowrule = [
+        "fullscreen, title:^(mpv)$"
+        "fullscreen, title:^(swayimg)$"
+        "float, title:^(mpv)$"
+        "move 25%-,title:pcmanfm"
+        "size 960 540,title:pcmanfm"
+        "animation slide right,title:kitty"
         "workspace 9 silent, title:Discord"
-        "float,ncmpcpp"
-        "move 25%-,ncmpcpp"
-        "size 960 540,ncmpcpp"
-        "float, calcurse"
-        "move 25%-,calcurse"
-        "size 960 540,calcurse"
-        "float, termfloat"
-        "move 25%-,termfloat"
-        "size 960 540,termfloat"
-        "rounding 5,termfloat"
+        "float,title:ncmpcpp"
+        "move 25%-,title:ncmpcpp"
+        "size 960 540,title:ncmpcpp"
+        "float, title:calcurse"
+        "move 25%-,title:calcurse"
+        "size 960 540,title:calcurse"
+        "float, title:termfloat"
+        "move 25%-,title:termfloat"
+        "size 960 540,title:termfloat"
+        "rounding 5,title:termfloat"
       ];
+
       windowrulev2 = [
       "workspace 9 silent, title:Telegram"
       "workspace 2 silent,class:^(obsidian)$"

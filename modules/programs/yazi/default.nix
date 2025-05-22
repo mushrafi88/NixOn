@@ -22,7 +22,7 @@
       poppler_utils
       mdcat
       zoxide
-      xdragon 
+      xdragon
     ];
   };
   home.file.".config/yazi".source = ./yazi; 

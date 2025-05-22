@@ -45,8 +45,6 @@
       ffmpegthumbnailer
       glib
       xdg-utils
-      ntfs3g
-      scrounge-ntfs 
       exfat 
       exfatprogs 
       pciutils

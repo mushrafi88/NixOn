@@ -7,9 +7,14 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
-      nerdfonts
+      nerd-fonts.ubuntu-sans
+      nerd-fonts.dejavu-sans-mono 
+      nerd-fonts.fira-code
+      nerd-fonts.iosevka-term
+      nerd-fonts.iosevka-term-slab
+      nerd-fonts.jetbrains-mono
       twemoji-color-font
       lohit-fonts.bengali
     ];
