@@ -101,7 +101,7 @@ keymap = [
 	{ on = [ "c", "n" ], run = "copy name_without_ext", desc = "Copy the name of the file without the extension" },
 
 	# Filter
-	{ on = [ "f" ], run = "filter --smart", desc = "Filter the files" },
+#	{ on = [ "f" ], run = "filter --smart", desc = "Filter the files" },
 
 	# Find
 	{ on = [ "/" ], run = "find --smart",            desc = "Find next file" },
@@ -346,11 +346,6 @@ run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
 [[manager.prepend_keymap]]
-on   = [ "i" ]
-run = "plugin easyjump"
-desc = "easyjump"
-
-[[manager.prepend_keymap]]
 on   = [ "f","g" ]
 run  = "plugin fg"
 desc = "find file by content (fuzzy match)"
@@ -371,6 +366,6 @@ run  = "plugin what-size"
 desc = "Calc size of selection or cwd" 
 
 [[manager.prepend_keymap]]
-on   = "F"
+on   = "f"
 run  = "plugin smart-filter"
 desc = "Smart filter"
