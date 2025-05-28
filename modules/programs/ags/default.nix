@@ -5,7 +5,7 @@
     #configDir = ./ags; 
     extraPackages = with pkgs; [ 
     gtksourceview 
-    webkitgtk 
+    webkitgtk_4_0 
     accountsservice 
     ];
   };

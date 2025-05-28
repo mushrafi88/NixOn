@@ -14,6 +14,7 @@ in
     tlp.enable = true;
     auto-cpufreq.enable = true;
     xserver.videoDrivers = [ "nvidia" ];
+    pulseaudio.support32Bit = true;
   };
   hardware = {
     nvidia = {
@@ -42,7 +43,6 @@ in
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [ nvidia-vaapi-driver intel-media-driver ];
     };
-    pulseaudio.support32Bit = true;
   };
   environment = {
     systemPackages = with pkgs; [

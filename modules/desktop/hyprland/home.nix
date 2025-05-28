@@ -6,7 +6,7 @@
   ];
   programs = {
     zsh = {
-      initExtra = '' 
+      initContent = '' 
 			if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then 
 				exec  Hyprland 
 			fi 
@@ -253,7 +253,7 @@
         #quick launch 
         "CTRL ALT,F,exec, firefox"
         "CTRL ALT,L,exec,myswaylock"
-        "CTRL ALT,P,exec,grimblast --notify --cursor  copysave area ~/Pictures/Screenshot/$(date '+%Y-%m-%d'T'%H:%M:%S').png"
+        "CTRL ALT,P,exec,grimblast --notify  copysave area ~/Pictures/Screenshot/$(date '+%Y-%m-%d'T'%H:%M:%S').png"
         "$mainMod,A,exec,grimblast --notify copysave output ~/Pictures/Screenshot/$(date '+%Y-%m-%d'T'%H:%M:%S').png"
         "$mainMod,r,exec, pkill rofi || ~/.config/rofi/launcher.sh"
       	"$mainMod,t,exec, pkill rofi || ~/.config/rofi/launch_with_nvidia.sh"

@@ -18,7 +18,7 @@
       ];
       theme = "af-magic";
     };
-    initExtra = ''
+    initContent = ''
                         bindkey '^f' autosuggest-accept
 
                        # ALIAS CONFIGS # 
