@@ -2,15 +2,15 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
 ratio          = [ 1, 4, 3 ]
 sort_by        = "natural"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_dir_first = true
-sort_translit  = false
-linemode       = "none"
-show_hidden    = true 
+sort_translit  = true
+linemode       = "size_and_mtime"
+show_hidden    = false 
 show_symlink   = true
 scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
@@ -18,14 +18,13 @@ title_format   = "Yazi: {cwd}"
 
 [preview]
 wrap            = "yes"
-tab_size        = 5
-max_width       = 1200
-max_height      = 1600
+tab_size        = 2
+max_width       = 600
+max_height      = 900
 cache_dir       = ""
 image_delay     = 30
 image_filter    = "triangle"
 image_quality   = 75
-sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
@@ -40,12 +39,6 @@ open = [
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 	{ run = 'termux-open "$1"',             desc = "Open", for = "android" },
-]
-img-open = [
-    { run = 'swayimg "$1"',                desc = "Open", for = "linux" },
-]
-pdf-open = [
-    { run = 'okular "$1"',                desc = "Open", for = "linux" },
 ]
 reveal = [
 	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
@@ -64,6 +57,14 @@ play = [
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
+show = [ 
+    { run = 'swayimg "$@"', desc = "Show image", for = "unix" },
+]
+
+read = [
+    { run  = 'okular "$@"', desc = "Open PDF", for = "unix"},
+]
+
 [open]
 rules = [
 	# Folder
@@ -71,9 +72,10 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "show" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
+    { mime = "application/pdf", use = ["read", "reveal"]},
 	# Archive
 	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
 	# JSON
@@ -90,7 +92,7 @@ micro_workers    = 10
 macro_workers    = 10
 bizarre_retry    = 3
 image_alloc      = 536870912  # 512MB
-image_bound      = [ 0, 0 ]
+image_bound      = [ 5000, 5000 ]
 suppress_preload = false
 
 [plugin]
@@ -228,12 +230,3 @@ sort_by      	 = "none"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_translit  = false
-
-
-[[plugin.prepend_previewers]]
-mime = "application/{,g}zip"
-run  = "lsar"
-
-[[plugin.prepend_previewers]]
-mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}"
-run  = "lsar"

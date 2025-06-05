@@ -40,6 +40,7 @@
       url = "github:lordkekz/nix-yazi-plugins?ref=yazi-v0.2.5"; 
       inputs.nixpkgs.follows = "nixpkgs";
       };
+      zen-browser.url = "github:MarceColl/zen-browser-flake";
     };
 
   outputs = { self, nixpkgs, flake-parts, ... }@inputs:

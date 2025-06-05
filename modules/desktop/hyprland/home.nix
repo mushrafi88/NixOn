@@ -132,8 +132,8 @@
       };
 
         windowrule = [
-        "fullscreen, title:^(mpv)$"
-        "fullscreen, title:^(swayimg)$"
+        "fullscreen, title:(.*)(mpv)"
+        "fullscreen, title:^swayimg\s.*$"
         "float, title:^(mpv)$"
         "move 25%-,title:pcmanfm"
         "size 960 540,title:pcmanfm"

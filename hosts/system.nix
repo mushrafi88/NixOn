@@ -65,6 +65,7 @@
       cloudflare-warp # warp
       ntfs3g 
       ntfsprogs
+      inputs.zen-browser.packages."${system}".default
     ];
   };
   services.dbus.enable = true; 
